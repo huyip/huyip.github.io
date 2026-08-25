@@ -2406,3 +2406,36 @@ body {
 .faq-item:not(:last-child) {
     margin-bottom: 38px !important;
 }
+.faq-item p {
+    color: #8f8f8f !important;
+    font-size: 14.5px !important;
+    line-height: 1.75 !important;
+
+    background: none !important;
+    background-image: none !important;
+
+    -webkit-text-fill-color: #8f8f8f !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+
+    text-shadow: none !important;
+}
+.marquee {
+    overflow: hidden;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 12%,
+        black 88%,
+        transparent 100%
+    );
+}
