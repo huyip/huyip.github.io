@@ -3015,3 +3015,403 @@ body {
 .security-icon {
     color: #ffb000 !important;
 }
+
+/* CỤC CSKH 24/7 */
+.support-main {
+    right: 0;
+    bottom: 0;
+
+    background: #13a9eb;
+    color: #fff;
+
+    font-size: 11px;
+    cursor: pointer;
+    z-index: 10;
+
+    box-shadow: 0 0 20px rgba(19,169,235,.65);
+}
+
+.support-main strong {
+    font-size: 18px;
+}
+
+
+/* TELEGRAM */
+.item-telegram {
+    background: #229ed9;
+}
+
+
+
+/* CỤC 24/7 CHÍNH */
+.support-main {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #13a9e8;
+    color: white;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(19, 169, 232, .7),
+        0 0 30px rgba(19, 169, 232, .25);
+
+    z-index: 10;
+}
+
+
+
+
+.support-icon {
+    width: 20px !important;
+    height: 20px !important;
+
+    fill: none !important;
+    stroke: #ffb000 !important;
+    stroke-width: 1.8 !important;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    margin-bottom: 3px;
+}
+
+.support-icon {
+    display: block;
+    font-size: 20px;
+    line-height: 1;
+    color: #ffb000;
+}
+
+
+/* ===== SUPPORT 24/7 - BLACK GOLD THEME ===== */
+
+.support-main,
+.support-item {
+    background: #17130b !important;
+    border: 1px solid #a86f00 !important;
+    color: #ffb000 !important;
+    box-shadow:
+        0 0 0 3px rgba(255, 176, 0, 0.05),
+        0 5px 18px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Cục 24/7 chính */
+.support-main {
+    background: linear-gradient(
+        145deg,
+        #241b08,
+        #120f09
+    ) !important;
+
+    border: 2px solid #d99000 !important;
+    color: #ffc107 !important;
+
+    box-shadow:
+        0 0 18px rgba(255, 176, 0, 0.25),
+        inset 0 0 10px rgba(255, 176, 0, 0.06) !important;
+}
+
+/* 3 cục bung */
+.item-cskh,
+.item-complaint,
+.item-hotline {
+    background: #15120c !important;
+    border: 1px solid #8f6200 !important;
+    color: #ffb000 !important;
+}
+
+/* Icon vàng */
+.support-icon {
+    color: #ffb000 !important;
+}
+
+/* Chữ */
+.support-item span,
+.support-main strong {
+    color: #ffb000 !important;
+}
+
+
+
+.support-svg-icon {
+    width: 24px !important;
+    height: 24px !important;
+    fill: none !important;
+    stroke: #ffb000 !important;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* =========================================
+   SUPPORT 24/7 - CLEAN VERSION
+========================================= */
+
+.support-fab {
+    position: fixed;
+    right: 40px;
+    bottom: 110px;
+
+    width: 80px;
+    height: 80px;
+
+    z-index: 9999999;
+}
+
+/* ===== CỤC 24/7 CHÍNH ===== */
+
+.support-main {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(145deg, #241b08, #120f09);
+    border: 2px solid #d99000;
+
+    color: #ffc107;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 18px rgba(255,176,0,.25),
+        inset 0 0 10px rgba(255,176,0,.06);
+
+    z-index: 20;
+}
+
+/* ===== 3 CỤC CON ===== */
+
+.support-item {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 2px;
+
+    background: #15120c;
+    border: 1px solid #8f6200;
+
+    color: #ffb000;
+    text-decoration: none;
+    text-align: center;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: scale(.55);
+
+    transition:
+        opacity .2s ease,
+        transform .25s ease,
+        visibility 0s linear .25s;
+
+    z-index: 30;
+}
+
+/* Khi OPEN mới hiện */
+.support-fab.open .support-item {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transition:
+        opacity .2s ease,
+        transform .3s ease,
+        visibility 0s;
+}
+
+/* ===== VỊ TRÍ ===== */
+
+/* 1 - KHIẾU NẠI trên */
+.support-fab.open .item-complaint {
+    transform: translate(-65px, -88px) scale(1);
+    transition-delay: 0s;
+}
+
+/* 2 - CSKH giữa */
+.support-fab.open .item-cskh {
+    transform: translate(-100px, 0) scale(1);
+    transition-delay: .18s;
+}
+
+/* 3 - HOTLINE dưới */
+.support-fab.open .item-hotline {
+    transform: translate(-65px, 88px) scale(1);
+    transition-delay: .36s;
+}
+
+/* ĐÓNG = mất nhanh, không chờ 2 giây */
+/* Thu lần lượt khi đóng */
+/* ===== THU MENU MƯỢT ===== */
+
+.support-fab:not(.open) .item-hotline {
+    opacity: 0 !important;
+    transform: translate(-65px, 88px) scale(.55) !important;
+    transition-delay: 0s !important;
+}
+
+.support-fab:not(.open) .item-cskh {
+    opacity: 0 !important;
+    transform: translate(-100px, 0) scale(.55) !important;
+    transition-delay: .12s !important;
+}
+
+.support-fab:not(.open) .item-complaint {
+    opacity: 0 !important;
+    transform: translate(-65px, -88px) scale(.55) !important;
+    transition-delay: .24s !important;
+}
+
+/* ===== ICON ===== */
+
+.support-icon,
+.support-svg-icon {
+    width: 23px;
+    height: 23px;
+
+    color: #ffb000;
+}
+
+.support-svg-icon {
+    fill: none;
+    stroke: #ffb000;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.support-item span:last-child {
+    color: #ffb000;
+    font-size: 9px;
+    line-height: 1.05;
+    font-weight: 800;
+}
+
+.support-item:hover {
+    background: #2a1d05;
+    border-color: #ffb000;
+
+    box-shadow: 0 0 15px rgba(255,176,0,.3);
+}
+
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 900px) {
+
+    .support-fab {
+        right: 22px;
+        bottom: 100px;
+    }
+
+    .support-main {
+        width: 70px;
+        height: 70px;
+        font-size: 18px;
+    }
+
+    .support-item {
+        width: 66px;
+        height: 66px;
+    }
+
+    .support-fab.open .item-complaint {
+        transform: translate(-62px, -78px) scale(1);
+    }
+
+    .support-fab.open .item-cskh {
+        transform: translate(-92px, 0) scale(1);
+    }
+
+    .support-fab.open .item-hotline {
+        transform: translate(-62px, 78px) scale(1);
+    }
+}
+/* ===== ÉP 3 CỤC SUPPORT BẤM ĐƯỢC ===== */
+
+.support-fab {
+    overflow: visible !important;
+}
+
+.support-fab.open .support-item {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+
+    position: absolute !important;
+    z-index: 99999999 !important;
+}
+
+.support-main {
+    z-index: 99999998 !important;
+}
+/* ===== HOVER SÁNG NÚT SUPPORT ===== */
+
+
+.support-item:hover {
+    filter: brightness(1.5) !important;
+    box-shadow:
+        0 0 12px rgba(255, 183, 0, 0.8),
+        0 0 25px rgba(255, 183, 0, 0.45) !important;
+}
+/* ===== HOVER SÁNG CỤC 24/7 ===== */
+.support-main:hover {
+    filter: brightness(1.5) !important;
+
+    box-shadow:
+        0 0 15px rgba(255, 183, 0, 0.9),
+        0 0 30px rgba(255, 183, 0, 0.5) !important;
+
+    scale: 1.08;
+}
+.support-main:hover {
+    filter: brightness(1.5) !important;
+
+    box-shadow:
+        0 0 12px rgba(255, 183, 0, 0.8),
+        0 0 25px rgba(255, 183, 0, 0.45) !important;
+
+    scale: 1.08;
+}
+.support-item:hover {
+    filter: brightness(1.5) !important;
+
+    box-shadow:
+        0 0 12px rgba(255, 183, 0, 0.8),
+        0 0 25px rgba(255, 183, 0, 0.45) !important;
+
+    scale: 1.10;
+}
