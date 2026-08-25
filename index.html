@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUYIP.COM</title>
+     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="countryScreen" class="country-screen" style="display:none;">
+</div>
+
+<!-- WEB CHÍNH -->
+<div id="mainWebsite">
+
+    <div id="particles"></div>
+
+    <div class="container">
+
+        <!-- TOÀN BỘ WEB HIỆN TẠI CỦA MÀY Ở ĐÂY -->
+
+    </div>
+
+</div>
+<body>
+    <div id="particles"></div>
+
+<div class="container">
+
+    <header class="topbar">
+        <div>
+            <h1 class="logo">HUYIP.COM</h1>
+
+            <p class="tagline">
+                Hủy mã ẩn mọi tài khoản — Không còn bị nhà cái theo dõi
+            </p>
+        </div>
+
+     <div class="clock">
+    <span style="
+        display:inline-block;
+        width:8px;
+        height:8px;
+        min-width:8px;
+        background:#ffae00;
+        border-radius:50%;
+        box-shadow:0 0 8px #ffae00;
+        margin-right:7px;
+    "></span>
+
+    <span id="time">--/--/---- --:--:--</span>
+</div>
+    </header>
+
+    <div class="marquee">
+        <div class="marquee-track">
+            <span>Mã ẩn là đoạn code do nhà cái cài vào, dùng AI để theo dõi hành vi nạp cược nhằm nhấp nhá, kích thích và thao túng tâm lý người chơi.</span>
+            <span>Mã ẩn là đoạn code do nhà cái cài vào, dùng AI để theo dõi hành vi nạp cược nhằm nhấp nhá, kích thích và thao túng tâm lý người chơi.</span>
+        </div>
+    </div>
+
+    <div class="line"></div>
+
+   <div class="layout">
+
+    <section class="panel">
+            <div class="panel-title">
+                <div class="title-icon">⚡</div>
+
+                <div>
+                    <h2>Code Manager</h2>
+                    <p>Bảo vệ & quản lý tài khoản</p>
+                </div>
+            </div>
+
+            <ul class="feature-list">
+                <li>Kiểm tra dữ liệu tài khoản</li>
+                <li>Kiểm tra lịch sử truy cập</li>
+                <li>Thiết lập lớp bảo mật bổ sung</li>
+                <li>Giám sát trạng thái hệ thống</li>
+            </ul>
+
+  <a
+    href="https://dggqb.xx0733.com/register.html"
+    class="primary-btn"
+    id="startBtn"
+>
+    ⚡ Tìm cổng đang nhả cho tài khoản mới
+</a>
+        </section>
+<div class="right-column">
+
+    <section class="panel">
+
+        <div class="panel-title">
+            <div class="title-icon">◎</div>
+            <div>
+                <h2>System Info</h2>
+            </div>
+        </div>
+
+        <div class="info-box">
+    <span><b class="sys-icon">◉</b> IP</span>
+    <strong id="publicIP">Đang kiểm tra...</strong>
+</div>
+
+        <div class="info-box">
+            <span>▣ Device</span>
+            <strong>Desktop</strong>
+        </div>
+
+        <div class="info-box">
+            <span>⚙ OS</span>
+            <strong>Windows</strong>
+        </div>
+
+        <div class="info-box">
+           <span><b class="sys-icon">◉</b> Browser</span>
+            <strong>Chrome</strong>
+        </div>
+
+    </section>
+
+    <div class="status-box">
+
+        <div class="status-row">
+            <span>Status</span>
+            <strong class="online">
+                <i></i> ONLINE
+            </strong>
+        </div>
+
+        <div class="status-row">
+            <span>Location</span>
+            <strong>VIETNAM</strong>
+        </div>
+
+        <div class="status-row">
+            <span>Protocol</span>
+            <strong class="secure">🛡 SECURE</strong>
+        </div>
+
+    </div>
+
+   <div class="security-box" onclick="start2FA()">
+    <div class="security-icon">🛡️</div>
+
+    <div class="security-content">
+        <h3>Thiết lập bảo mật 2 lớp 2FA</h3>
+        <p>Click để thiết lập 2 lớp bảo mật và chế độ đa tường lửa</p>
+    </div>
+</div>
+
+</div>
+
+<script>
+async function getPublicIP() {
+    try {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const data = await response.json();
+
+        document.getElementById("publicIP").textContent = data.ip;
+    } catch (error) {
+        document.getElementById("publicIP").textContent = "Không xác định";
+    }
+}
+
+getPublicIP();
+
+
+function updateClock() {
+    const now = new Date();
+
+    const date = now.toLocaleDateString("vi-VN");
+    const time = now.toLocaleTimeString("vi-VN");
+
+    document.getElementById("time").textContent =
+        date + " " + time;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+
+function start2FA() {
+    const toast = document.getElementById("securityToast");
+
+    if (!toast) return;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 5000);
+}
+</script>
+
+
+<div id="securityToast" class="security-toast">
+    <div class="toast-icon">🛡️</div>
+
+    <div class="toast-content">
+    <strong>Đang thiết lập bảo mật</strong>
+    <span>Vui lòng chờ trong giây lát...</span>
+</div>
+</div>
+
+<script>
+const particlesContainer = document.getElementById("particles");
+
+for (let i = 0; i < 45; i++) {
+    const particle = document.createElement("span");
+   
+    const size = Math.random() * 2 + 1;
+
+    particle.style.width = size + "px";
+    particle.style.height = size + "px";
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.top = Math.random() * 100 + "%";
+    particle.style.animationDuration = (Math.random() * 4 + 4) + "s";
+    particle.style.animationDelay = -(Math.random() * 14) + "s";
+    particle.style.opacity = Math.random() * 0.6 + 0.15;
+
+    particlesContainer.appendChild(particle);
+}
+</script>
+
+<!-- MÀN HÌNH LOADING -->
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-box">
+
+        <div class="loading-spinner"></div>
+
+        <h2>Đang tìm cổng đang nhả</h2>
+
+        <p>Quét node · lọc latency · xác thực cổng...</p>
+
+    </div>
+</div>
+<div id="securityToast" class="security-toast">
+    <span class="toast-icon">🛡️</span>
+
+    <div>
+        <strong>Đang khởi tạo</strong>
+        <p>thiết lập bảo mật 2 lớp 2FA...</p>
+    </div>
+</div>
+<script>
+
+const startBtn = document.getElementById("startBtn");
+const loadingOverlay = document.getElementById("loadingOverlay");
+
+startBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    loadingOverlay.classList.add("show");
+
+    const link = startBtn.href;
+
+    setTimeout(function() {
+        window.location.href = link;
+    }, 3000);
+});
+</script>
+</script>
+
+<!-- TELEGRAM -->
+<a href="https://t.me/colentoioiiiii"
+   class="telegram-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   style="
+       position: fixed !important;
+       right: 5px !important;
+       bottom: 20px !important;
+       left: auto !important;
+       margin: 0 !important;
+       z-index: 999999 !important;
+   ">
+
+    <!-- GIỮ NGUYÊN SVG CỦA MÀY Ở ĐÂY -->
+
+</a>
+
+</body>
+</html>
+</body>
+</html>
