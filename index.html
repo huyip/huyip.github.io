@@ -97,7 +97,12 @@
 <!-- SYSTEM TARGETS -->
 <section class="panel">
     <div class="panel-title">
-        <div class="title-icon">🔒</div>
+        <div class="title-icon">
+    <svg class="gold-icon" viewBox="0 0 24 24">
+        <path d="M7 10V7a5 5 0 0 1 10 0v3"/>
+        <rect x="5" y="10" width="14" height="10" rx="2"/>
+    </svg>
+</div>
         <div>
             <h2>System Targets</h2>
             <p>Chọn cổng & thực thi xoá mã ẩn</p>
@@ -106,7 +111,12 @@
 
     <div class="target-form">
 
-        <label>🛡️ Chọn cổng game đang được tối ưu</label>
+        <label class="field-label">
+    <svg class="gold-icon" viewBox="0 0 24 24">
+        <path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/>
+    </svg>
+    Chọn cổng game đang được tối ưu
+</label>
         <div class="game-dropdown" id="gameDropdown">
 
     <button type="button" class="game-dropdown-btn" id="gameDropdownBtn">
@@ -320,14 +330,28 @@
     </div>
 </div>
 
-        <label>🔒 Tài khoản để thực thi</label>
-        <input type="text" placeholder="Nhập tài khoản...">
+        <label class="field-label">
+    <svg class="gold-icon" viewBox="0 0 24 24">
+        <path d="M7 10V7a5 5 0 0 1 10 0v3"/>
+        <rect x="5" y="10" width="14" height="10" rx="2"/>
+    </svg>
+    Tài khoản để thực thi
+</label>
 
-        <button type="button" class="primary-btn" id="runBtn" disabled>
+<input
+    type="text"
+    id="accountInput"
+    placeholder="Nhập tài khoản..."
+>
+
+<button type="button"
+        class="primary-btn"
+        id="runBtn"
+        disabled>
     〉_ &nbsp; Chạy xoá mã ẩn
 </button>
 
-        <a href="https://t.me/colentoioiiiii"
+<a href="https://t.me/colentoioiiiii"
    class="support-btn"
    target="_blank"
    rel="noopener noreferrer">
@@ -336,9 +360,61 @@
 
     </div>
 </section>
+<!-- POPUP NHẬP MÃ -->
+<div class="code-overlay" id="codeOverlay">
+    <div class="code-modal">
+
+        <div class="code-modal-header">
+            <div class="code-modal-title">
+                <span class="code-lock">🔒</span>
+                <strong>Nhập mã xác thực</strong>
+            </div>
+
+            <button type="button" class="code-close" id="codeClose">×</button>
+        </div>
+
+        <div class="code-modal-body">
+
+            <p>Nhập mã để thực thi xoá mã ẩn.</p>
+
+            <label for="verifyCode">Mã</label>
+
+            <input
+                type="text"
+                id="verifyCode"
+                placeholder="Nhập mã..."
+                autocomplete="off"
+            >
+
+            <div class="code-actions">
+                <button type="button" id="codeCancel">
+                    Hủy
+                </button>
+
+                <button type="button" id="codeConfirm" disabled>
+                    Xác nhận
+                </button>
+            </div>
+
+            <div class="code-hint">
+                Enter để xác nhận · ESC để hủy
+            </div>
+<a href="https://t.me/colentoioiiiii"
+   class="get-code-btn"
+   id="getCodeBtn">
+    Liên hệ nhận mã
+</a>
+
+        </div>
+    </div>
+</div>
+<div id="codeToast" class="code-toast">
+    <span>●</span>
+    <strong>Code không tồn tại</strong>
+</div>
 <!-- LIVE ACTIVITY -->
 <section class="live-activity">
-
+<div id="codeToast" class="code-toast"></div>
     <div class="live-header">
         <div class="live-title">
            <span class="live-icon">◉</span>
@@ -349,7 +425,10 @@
     </div>
 
     <div id="activityList" class="activity-list"></div>
-
+<div id="codeToast" class="code-toast">
+    <span>●</span>
+    <strong>Code không tồn tại</strong>
+</div>
 </section>
 <!-- END LIVE ACTIVITY -->
 </div>
@@ -409,7 +488,12 @@
     </div>
 
    <div class="security-box" onclick="start2FA()">
-    <div class="security-icon">🛡️</div>
+    <div class="security-icon">
+    <svg class="security-gold-icon" viewBox="0 0 24 24">
+        <path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/>
+        <path d="M9.5 12l1.7 1.7 3.5-3.7"/>
+    </svg>
+</div>
 
     <div class="security-content">
         <h3>Thiết lập bảo mật 2 lớp 2FA</h3>
@@ -602,17 +686,26 @@ gameDropdownBtn.addEventListener("click", function () {
 });
 
 document.querySelectorAll(".game-row").forEach(function (row) {
-    row.addEventListener("click", function () {
+    row.addEventListener("click", function (event) {
 
         const game = row.dataset.game;
 
-        // XX88
-        if (game === "1-XX88") {
-            window.location.href = "https://dggqb.xx0733.com/register.html";
+        // BẤM TÊN CỔNG BÊN TRÁI -> CHỌN CỔNG
+        if (event.target.closest(".game-code")) {
+            selectedGame.textContent = game;
+            gameDropdown.classList.remove("open");
+            updateRunButton();
             return;
         }
 
-        // Các cổng còn lại
+        // BẤM PHẦN GIỮA -> GIỮ CHỨC NĂNG CŨ
+        if (game === "1-XX88") {
+            window.location.href =
+                "https://dggqb.xx0733.com/register.html";
+            return;
+        }
+
+        // Các cổng khác
         showLowRateWarning();
     });
 });
@@ -749,6 +842,123 @@ for (let i = 0; i < 6; i++) {
 
 /* Sau đó cứ 4 giây thêm 1 dòng */
 setInterval(addDemoActivity, 4000);
+
+const accountInput = document.getElementById("accountInput");
+const runBtn = document.getElementById("runBtn");
+
+function updateRunButton() {
+    const hasAccount = accountInput.value.trim().length > 0;
+    const hasGame = selectedGame.textContent.trim() !== "Vui lòng chọn cổng game...";
+
+    runBtn.disabled = !(hasAccount && hasGame);
+}
+
+accountInput.addEventListener("input", updateRunButton);
+const codeOverlay = document.getElementById("codeOverlay");
+const codeClose = document.getElementById("codeClose");
+const codeCancel = document.getElementById("codeCancel");
+const verifyCode = document.getElementById("verifyCode");
+const codeConfirm = document.getElementById("codeConfirm");
+
+runBtn.addEventListener("click", function () {
+    if (runBtn.disabled) return;
+
+    codeOverlay.classList.add("show");
+
+    setTimeout(function () {
+        verifyCode.focus();
+    }, 100);
+});
+
+function closeCodeModal() {
+    codeOverlay.classList.remove("show");
+    verifyCode.value = "";
+    codeConfirm.disabled = true;
+}
+
+codeClose.addEventListener("click", closeCodeModal);
+codeCancel.addEventListener("click", closeCodeModal);
+
+verifyCode.addEventListener("input", function () {
+    codeConfirm.disabled = verifyCode.value.trim() === "";
+});
+
+document.addEventListener("keydown", function (event) {
+    if (!codeOverlay.classList.contains("show")) return;
+
+    if (event.key === "Escape") {
+        closeCodeModal();
+    }
+
+    if (
+        event.key === "Enter" &&
+        !codeConfirm.disabled
+    ) {
+        codeConfirm.click();
+    }
+});
+const codeToast = document.getElementById("codeToast");
+
+function showInvalidCode() {
+    codeToast.classList.remove("show");
+
+    void codeToast.offsetWidth;
+
+    codeToast.classList.add("show");
+
+    setTimeout(function () {
+        codeToast.classList.remove("show");
+    }, 3000);
+}
+
+codeConfirm.addEventListener("click", function () {
+    const code = verifyCode.value.trim();
+
+    if (!code) return;
+
+    showInvalidCode();
+});
+function showWaitAndGo(url) {
+    const overlay = document.createElement("div");
+    overlay.className = "wait-overlay show";
+
+    overlay.innerHTML = `
+        <div class="wait-box">
+            <div class="wait-spinner"></div>
+            <strong>Vui lòng đợi trong giây lát...</strong>
+            <span>Đang chuyển đến bộ phận hỗ trợ</span>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    setTimeout(function () {
+        overlay.remove();
+        window.location.href = url;
+    }, 2000);
+}
+
+
+// NÚT "LIÊN HỆ NHẬN MÃ"
+const getCodeBtn = document.getElementById("getCodeBtn");
+
+if (getCodeBtn) {
+    getCodeBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        showWaitAndGo(this.href);
+    });
+}
+
+
+// CỤC TELEGRAM XANH GÓC PHẢI
+const telegramFloat = document.querySelector(".telegram-float");
+
+if (telegramFloat) {
+    telegramFloat.addEventListener("click", function (event) {
+        event.preventDefault();
+        showWaitAndGo(this.href);
+    });
+}
 </script>
 <!-- ===== FAQ MÃ ẨN ===== -->
 <section class="faq-section">

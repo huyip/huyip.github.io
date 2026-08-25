@@ -1902,17 +1902,35 @@ body {
     80%  { transform: translateX(7px); }
     100% { transform: translateX(0); }
 }
-#runBtn {
+/* Chưa chọn cổng hoặc chưa nhập tài khoản */
+#runBtn:disabled {
     background: #6b470d !important;
     background-image: none !important;
     color: #1a1208 !important;
     border: none !important;
     box-shadow: none !important;
-
     opacity: 0.65 !important;
     filter: brightness(0.75) !important;
-
     cursor: not-allowed !important;
+}
+
+/* Đã chọn cổng + đã nhập tài khoản */
+#runBtn:not(:disabled) {
+    background: linear-gradient(
+        90deg,
+        #ffc52b,
+        #ff9200
+    ) !important;
+
+    color: #111 !important;
+    border: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+
+    box-shadow:
+        0 0 16px rgba(255, 176, 0, 0.28) !important;
+
+    cursor: pointer !important;
 }
 .telegram-float {
     position: fixed !important;
@@ -2438,4 +2456,562 @@ body {
         black 88%,
         transparent 100%
     );
+}
+/* ===== POPUP NHẬP MÃ ===== */
+
+.code-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.76);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.code-overlay.show {
+    display: flex;
+}
+
+.code-modal {
+    width: min(450px, calc(100% - 32px));
+
+    background: #171512;
+    border: 1px solid rgba(255, 176, 0, 0.4);
+    border-radius: 17px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.65),
+        0 0 35px rgba(255, 176, 0, 0.05);
+
+    overflow: hidden;
+
+    animation: codeModalIn 0.22s ease;
+}
+
+@keyframes codeModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.code-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 22px;
+
+    border-bottom: 1px solid rgba(255, 176, 0, 0.18);
+}
+
+.code-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    color: #fff;
+    font-size: 19px;
+}
+
+.code-lock {
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+    background: rgba(255, 176, 0, 0.13);
+}
+
+.code-close {
+    border: 0;
+    background: transparent;
+
+    color: #999;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+.code-close:hover {
+    color: #ffb000;
+}
+
+.code-modal-body {
+    padding: 25px;
+}
+
+.code-modal-body p {
+    margin: 0 0 22px;
+
+    color: #999;
+    font-size: 14px;
+}
+
+.code-modal-body label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #ddd;
+    font-weight: 600;
+}
+
+#verifyCode {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 16px;
+
+    background: #0d0c0b;
+    color: #fff;
+
+    border: 2px solid #b77b00;
+    border-radius: 13px;
+
+    outline: none;
+
+    font-size: 17px;
+}
+
+#verifyCode:focus {
+    border-color: #ffb000;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 176, 0, 0.10);
+}
+
+.code-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.code-actions button {
+    height: 54px;
+
+    border-radius: 12px;
+    border: 1px solid #805700;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+#codeCancel {
+    background: #171512;
+    color: #ffb000;
+}
+
+#codeConfirm {
+    background: linear-gradient(90deg, #ffc02a, #ef8b00);
+    color: #111;
+}
+
+#codeConfirm:disabled {
+    background: #76500e;
+    color: #17110a;
+
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.code-hint {
+    margin-top: 20px;
+
+    text-align: center;
+
+    color: #666;
+    font-size: 12px;
+}
+.code-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.76);
+    backdrop-filter: blur(7px);
+}
+
+.code-overlay.show {
+    display: flex;
+}
+/* ===== NÚT LIÊN HỆ NHẬN MÃ ===== */
+
+.get-code-btn {
+    width: 100%;
+    height: 46px;
+
+    margin-top: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    background: linear-gradient(90deg, #ffc02a, #f39200);
+    color: #15100a;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.get-code-btn:hover {
+    filter: brightness(1.12);
+
+    box-shadow:
+        0 0 18px rgba(255, 176, 0, 0.35);
+
+    transform: translateY(-1px);
+}
+
+
+/* ===== THÔNG BÁO CODE SAI ===== */
+
+.code-toast {
+    position: fixed;
+
+    top: 22px;
+    right: 22px;
+
+    min-width: 285px;
+
+    padding: 15px 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: #1b1916;
+
+    border: 1px solid #805700;
+    border-radius: 9px;
+
+    color: #fff;
+
+    z-index: 9999999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(25px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s;
+}
+
+.code-toast span {
+    color: #fff;
+    font-size: 10px;
+}
+
+.code-toast strong {
+    font-size: 13px;
+}
+
+.code-toast.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(0);
+}
+/* ===== COMPACT 2 KHUNG CHÍNH ===== */
+
+/* Code Manager + System Targets */
+.left-column > .panel {
+    padding: 22px 24px;
+}
+
+/* Tiêu đề */
+.left-column .panel-title {
+    margin-bottom: 14px;
+}
+
+/* Danh sách Code Manager */
+.left-column .feature-list {
+    margin: 10px 0 18px;
+}
+
+.left-column .feature-list li {
+    margin-bottom: 8px;
+    line-height: 1.35;
+}
+
+/* Nút tìm cổng */
+.left-column .scan-btn {
+    min-height: 52px;
+    padding: 12px 18px;
+}
+
+/* System Targets */
+#gameDropdownBtn,
+#accountInput {
+    min-height: 50px;
+}
+
+/* Khoảng cách các thành phần */
+.left-column label {
+    margin-bottom: 7px;
+}
+
+#gameDropdown {
+    margin-bottom: 14px;
+}
+
+#accountInput {
+    margin-bottom: 14px;
+}
+
+/* Nút chạy */
+#runBtn {
+    min-height: 52px;
+    padding: 12px 18px;
+}
+
+/* Nút liên hệ */
+.support-btn {
+    min-height: 46px;
+    padding: 10px 18px;
+    margin-top: 12px;
+}
+.gold-icon {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+    stroke: #ffb000;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    flex-shrink: 0;
+}
+.field-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gold-icon {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: #ffb000;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+.gold-icon {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: #ffb000;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.title-icon .gold-icon {
+    width: 19px;
+    height: 19px;
+}
+/* ===== VUI LÒNG ĐỢI ===== */
+
+.wait-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.wait-overlay.show {
+    display: flex;
+}
+
+.wait-box {
+    width: 300px;
+    padding: 28px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+
+    background: #171512;
+    border: 1px solid #9a6800;
+    border-radius: 15px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.65),
+        0 0 25px rgba(255,176,0,.10);
+
+    animation: waitPop .2s ease;
+}
+
+.wait-box strong {
+    color: #fff;
+    font-size: 16px;
+}
+
+.wait-box span {
+    color: #888;
+    font-size: 12px;
+}
+
+.wait-spinner {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 7px;
+
+    border: 3px solid rgba(255,176,0,.2);
+    border-top-color: #ffb000;
+    border-radius: 50%;
+
+    animation: waitSpin .7s linear infinite;
+}
+
+@keyframes waitSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes waitPop {
+    from {
+        opacity: 0;
+        transform: scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.security-box {
+    padding: 14px 18px;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    transition: 0.25s ease;
+}
+
+.security-box:hover {
+    border-color: rgba(255, 176, 0, 0.75);
+
+    background: rgba(255, 176, 0, 0.06);
+
+    box-shadow:
+        0 0 16px rgba(255, 176, 0, 0.14);
+
+    transform: translateY(-2px);
+}
+
+.security-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+
+    display: grid;
+    place-items: center;
+}
+
+.security-content h3 {
+    margin: 0 0 3px;
+    font-size: 16px;
+}
+
+.security-content p {
+    margin: 0;
+    font-size: 12px;
+    color: #888;
+}
+/* ===== FIX CỤC 2FA GỌN ===== */
+
+.security-box {
+    padding: 14px 18px !important;
+    min-height: 0 !important;
+    height: auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+
+    border-radius: 16px !important;
+}
+
+.security-icon {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(255, 174, 0, 0.12) !important;
+    color: #ffb000 !important;
+
+    border-radius: 12px !important;
+    font-size: 20px !important;
+}
+
+.security-content h3 {
+    margin: 0 0 3px 0 !important;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+}
+
+.security-content p {
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+}
+.security-gold-icon {
+    width: 20px;
+    height: 20px;
+
+    fill: none !important;
+    stroke: #ffb000 !important;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.security-icon {
+    color: #ffb000 !important;
 }
