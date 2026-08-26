@@ -168,7 +168,7 @@
     class="primary-btn"
     id="startBtn"
 >
-    ⚡ Tìm cổng đang nhả cho tài khoản mới
+    ⚡ Tìm trang uy tín cho tài khoản mới
 </a>
 </section>
 
@@ -716,10 +716,16 @@ for (let i = 0; i < 45; i++) {
 
         <div class="loading-spinner"></div>
 
-        <h2>Đang tìm cổng đang nhả</h2>
+        <h2>Đang tìm trang uy tín</h2>
 
-        <p>Quét node · lọc latency · xác thực cổng...</p>
+        <p>Đang kiểm tra dữ liệu · đánh giá độ tin cậy...</p>
+<div class="trust-progress">
+    <div class="trust-progress-bar" id="trustProgressBar"></div>
+</div>
 
+<div class="trust-progress-text" id="trustProgressText">
+    Đang khởi tạo kiểm tra...
+</div>
     </div>
 </div>
 <script>
@@ -740,7 +746,26 @@ startBtn.addEventListener("click", function(e) {
     });
 
     loadingOverlay.classList.add("show");
+const progressBar = document.getElementById("trustProgressBar");
+const progressText = document.getElementById("trustProgressText");
 
+progressBar.style.width = "18%";
+progressText.textContent = "Đang khởi tạo kiểm tra...";
+
+setTimeout(() => {
+    progressBar.style.width = "42%";
+    progressText.textContent = "Đang kiểm tra dữ liệu...";
+}, 600);
+
+setTimeout(() => {
+    progressBar.style.width = "68%";
+    progressText.textContent = "Đang đánh giá độ tin cậy...";
+}, 1400);
+
+setTimeout(() => {
+    progressBar.style.width = "92%";
+    progressText.textContent = "Đang hoàn tất kết quả...";
+}, 2200);
     setTimeout(function() {
         if (link) {
             window.location.href = link;

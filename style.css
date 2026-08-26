@@ -3352,7 +3352,9 @@ body.welcome-open {
     border-radius: inherit;
     padding: 1px;
     background: linear-gradient(125deg, rgba(255,220,140,.55), transparent 22%, transparent 72%, rgba(255,164,0,.25));
+    
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
@@ -3791,4 +3793,30 @@ body.welcome-open {
 
 .shake-error {
     animation: errorShake 0.45s ease;
+}
+.trust-progress {
+    width: 100%;
+    height: 7px;
+    margin-top: 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,176,0,0.28);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.trust-progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ffb000, #ffd66b);
+    border-radius: inherit;
+    box-shadow: 0 0 12px rgba(255,176,0,0.45);
+    transition: width 0.45s ease;
+}
+
+.trust-progress-text {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #8f8f8f;
+    text-align: center;
+    letter-spacing: 0.01em;
 }
