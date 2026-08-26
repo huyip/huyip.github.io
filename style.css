@@ -3415,3 +3415,55 @@ body {
 
     scale: 1.10;
 }
+.faq-divider {
+    display: block !important;
+    width: 100% !important;
+    height: 1px !important;
+
+    margin: 32px 0 28px !important;
+
+    background: #8a6200 !important;
+    opacity: 0.65 !important;
+
+    border: 0 !important;
+}
+/* ===== ĐƯỜNG KẺ NGAY TRÊN FAQ ===== */
+.faq-section h2 {
+    border-top: 1px solid rgba(255, 176, 0, 0.45) !important;
+    padding-top: 16px !important;
+    margin-top: 0 !important;
+}
+/* ===== FIX CLICK SUPPORT CUỐI CÙNG ===== */
+
+.support-fab {
+    pointer-events: auto !important;
+    overflow: visible !important;
+    z-index: 2147483647 !important;
+}
+
+.support-fab .support-main {
+    pointer-events: auto !important;
+    z-index: 100 !important;
+}
+
+.support-fab.open .support-item {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 999 !important;
+}
+
+.support-fab.open .item-complaint,
+.support-fab.open .item-cskh,
+.support-fab.open .item-hotline {
+    pointer-events: auto !important;
+}
+/* FIX CLICK 3 NUT SUPPORT */
+.support-fab.open .support-item {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 2147483647 !important;
+}
+
+.support-fab.open .item-complaint {
+    pointer-events: auto !important;
+}
