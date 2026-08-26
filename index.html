@@ -9,8 +9,86 @@
 </head>
 <body>
 
-<div id="countryScreen" class="country-screen" style="display:none;">
+<!-- ===== HUYIP PREMIUM WELCOME ===== -->
+<div id="huyipWelcome" class="huyip-welcome" aria-hidden="true">
+    <div class="welcome-aurora welcome-aurora-a"></div>
+    <div class="welcome-aurora welcome-aurora-b"></div>
+    <div class="welcome-grid"></div>
+    <div class="welcome-noise"></div>
+
+    <div class="welcome-shell">
+        <div class="welcome-eyebrow">
+            <span class="welcome-live-dot"></span>
+            SECURE ACCESS PORTAL
+        </div>
+
+        <div class="welcome-brand-wrap">
+            <div class="welcome-brand-glow"></div>
+            <h1 class="welcome-brand">HUYIP<span>.COM</span></h1>
+        </div>
+
+        <p class="welcome-kicker">WELCOME / CHÀO MỪNG</p>
+        <h2 class="welcome-title">Chọn ngôn ngữ của bạn</h2>
+        <p class="welcome-subtitle">
+            Select your preferred language to continue
+        </p>
+
+        <div class="welcome-languages" role="list">
+            <button class="welcome-lang" type="button" data-lang="vi" data-label="Tiếng Việt">
+                <span class="welcome-lang-code">VI</span>
+                <span class="welcome-lang-copy">
+                    <strong>Tiếng Việt</strong>
+                    <small>Vietnamese</small>
+                </span>
+                <span class="welcome-lang-check">✓</span>
+            </button>
+
+            <button class="welcome-lang" type="button" data-lang="en" data-label="English">
+                <span class="welcome-lang-code">EN</span>
+                <span class="welcome-lang-copy">
+                    <strong>English</strong>
+                    <small>International</small>
+                </span>
+                <span class="welcome-lang-check">✓</span>
+            </button>
+
+            <button class="welcome-lang" type="button" data-lang="zh" data-label="中文">
+                <span class="welcome-lang-code">中</span>
+                <span class="welcome-lang-copy">
+                    <strong>中文</strong>
+                    <small>Chinese</small>
+                </span>
+                <span class="welcome-lang-check">✓</span>
+            </button>
+
+            <button class="welcome-lang" type="button" data-lang="th" data-label="ภาษาไทย">
+                <span class="welcome-lang-code">TH</span>
+                <span class="welcome-lang-copy">
+                    <strong>ภาษาไทย</strong>
+                    <small>Thai</small>
+                </span>
+                <span class="welcome-lang-check">✓</span>
+            </button>
+        </div>
+
+        <button id="welcomeContinue" class="welcome-continue" type="button" disabled>
+            <span>CHỌN NGÔN NGỮ ĐỂ TIẾP TỤC</span>
+            <b>→</b>
+        </button>
+
+        <div class="welcome-footer">
+            <span><i></i> Encrypted session</span>
+            <span>HUYIP SYSTEM • 2026</span>
+        </div>
+    </div>
 </div>
+
+<button id="welcomeLanguageSwitch" class="welcome-language-switch" type="button"
+        aria-label="Đổi ngôn ngữ" title="Đổi ngôn ngữ">
+    <span>🌐</span>
+    <b id="welcomeCurrentLang">VI</b>
+</button>
+<!-- ===== END HUYIP PREMIUM WELCOME ===== -->
 
 <!-- WEB CHÍNH -->
 <div id="mainWebsite">
@@ -536,70 +614,73 @@ let securityConfigured = false;
 let securityTimer1;
 let securityTimer2;
 
-function start2FA() {
+async function start2FA() {
     const toast = document.getElementById("securityToast");
 
     if (!toast) return;
 
-    // Nếu đã thiết lập rồi
-    if (securityConfigured) {
-        clearTimeout(securityTimer1);
-        clearTimeout(securityTimer2);
-
-        toast.innerHTML = `
-            <div class="toast-icon">✓</div>
-            <div class="toast-content">
-                <strong>Bạn đã thiết lập bảo mật</strong>
-                <span>Không cần thiết lập lại lần nữa.</span>
-            </div>
-        `;
-
-        toast.classList.remove("show", "shake");
-        void toast.offsetWidth;
-
-        toast.classList.add("show", "shake");
-
-        securityTimer2 = setTimeout(() => {
-            toast.classList.remove("show", "shake");
-        }, 3000);
-
-        return;
-    }
-
-    // LẦN ĐẦU TIÊN
-    clearTimeout(securityTimer1);
-    clearTimeout(securityTimer2);
-
     toast.classList.remove("show", "shake");
-    void toast.offsetWidth;
 
     toast.innerHTML = `
         <div class="toast-icon">🛡️</div>
         <div class="toast-content">
-            <strong>Đang thiết lập bảo mật</strong>
-            <span>Vui lòng chờ trong giây lát...</span>
+            <strong>Đang gửi yêu cầu...</strong>
+            <span>Đang kết nối tới HUYIP Backend</span>
         </div>
     `;
 
     toast.classList.add("show");
 
-    securityTimer1 = setTimeout(() => {
-        securityConfigured = true;
+    try {
+        const response = await fetch(
+            "http://localhost:3000/api/security/2fa",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+        );
 
+      
+        const data = await response.json();
+
+       console.log("BACKEND RESPONSE:", data);
+
+if (data.success) {
+    toast.innerHTML = `
+        <div class="toast-icon">✓</div>
+        <div class="toast-content">
+            <strong>Thiết lập thành công</strong>
+            <span>${data.message}</span>
+        </div>
+    `;
+} else {
+    toast.innerHTML = `
+        <div class="toast-icon">✕</div>
+        <div class="toast-content">
+            <strong>Thiết lập thất bại</strong>
+            <span>${data.message || "Vui lòng thử lại"}</span>
+        </div>
+    `;
+}
+
+    } catch (error) {
         toast.innerHTML = `
-            <div class="toast-icon">✓</div>
+            <div class="toast-icon">✕</div>
             <div class="toast-content">
-                <strong>Thiết lập thành công</strong>
-                <span>Bảo mật 2 lớp đã được kích hoạt.</span>
+                <strong>Kết nối thất bại</strong>
+                <span>Không thể kết nối tới backend</span>
             </div>
         `;
+    }
 
-        securityTimer2 = setTimeout(() => {
-            toast.classList.remove("show");
-        }, 3000);
-
-    }, 4000);
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3500);
 }
+
+ 
 </script>
 
 
@@ -644,14 +725,6 @@ for (let i = 0; i < 45; i++) {
 
     </div>
 </div>
-<div id="securityToast" class="security-toast">
-    <span class="toast-icon">🛡️</span>
-
-    <div>
-        <strong>Đang khởi tạo</strong>
-        <p>thiết lập bảo mật 2 lớp 2FA...</p>
-    </div>
-</div>
 <script>
 
 const startBtn = document.getElementById("startBtn");
@@ -660,12 +733,21 @@ const loadingOverlay = document.getElementById("loadingOverlay");
 startBtn.addEventListener("click", function(e) {
     e.preventDefault();
 
-    loadingOverlay.classList.add("show");
-
     const link = startBtn.href;
 
+    fetch("http://localhost:3000/api/log/tim-cong", {
+        method: "POST",
+        keepalive: true
+    }).catch((error) => {
+        console.log("LOG TÌM CỔNG ERROR:", error);
+    });
+
+    loadingOverlay.classList.add("show");
+
     setTimeout(function() {
-        window.location.href = link;
+        if (link) {
+            window.location.href = link;
+        }
     }, 3000);
 });
 </script>
@@ -1067,5 +1149,270 @@ if (supportFab && supportMain) {
     });
 }
 </script>
+
+<script>
+(function () {
+    const welcome = document.getElementById("huyipWelcome");
+    const continueBtn = document.getElementById("welcomeContinue");
+    const languageSwitch = document.getElementById("welcomeLanguageSwitch");
+    const currentLang = document.getElementById("welcomeCurrentLang");
+    const languageButtons = Array.from(document.querySelectorAll(".welcome-lang"));
+
+    if (!welcome || !continueBtn || !languageSwitch) return;
+
+    const labels = {
+        vi: { title: "Chọn ngôn ngữ của bạn", sub: "Select your preferred language to continue", button: "TIẾP TỤC VỚI TIẾNG VIỆT" },
+        en: { title: "Choose your language", sub: "Select your preferred language to continue", button: "CONTINUE IN ENGLISH" },
+        zh: { title: "选择您的语言", sub: "选择首选语言以继续", button: "继续使用中文" },
+        th: { title: "เลือกภาษาของคุณ", sub: "เลือกภาษาที่ต้องการเพื่อดำเนินการต่อ", button: "ดำเนินการต่อ" }
+    };
+
+    let selectedLang = null;
+
+    function applySelection(lang) {
+        selectedLang = lang;
+        const copy = labels[lang] || labels.vi;
+
+        languageButtons.forEach(btn => {
+            const active = btn.dataset.lang === lang;
+            btn.classList.toggle("selected", active);
+            btn.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+
+        const title = welcome.querySelector(".welcome-title");
+        const subtitle = welcome.querySelector(".welcome-subtitle");
+        if (title) title.textContent = copy.title;
+        if (subtitle) subtitle.textContent = copy.sub;
+
+        continueBtn.disabled = false;
+        continueBtn.querySelector("span").textContent = copy.button;
+    }
+
+    function openWelcome(force) {
+        const saved = localStorage.getItem("huyip_language");
+
+        if (!force && saved) {
+            document.documentElement.lang = saved;
+            currentLang.textContent = saved.toUpperCase();
+            return;
+        }
+
+        const browserLang = (navigator.language || "vi").toLowerCase();
+        const suggested =
+            browserLang.startsWith("zh") ? "zh" :
+            browserLang.startsWith("th") ? "th" :
+            browserLang.startsWith("en") ? "en" : "vi";
+
+        applySelection(saved || suggested);
+
+        welcome.classList.remove("leaving");
+        welcome.classList.add("show");
+        welcome.setAttribute("aria-hidden", "false");
+        document.body.classList.add("welcome-open");
+    }
+
+    function closeWelcome() {
+        if (!selectedLang) return;
+
+        localStorage.setItem("huyip_language", selectedLang);
+        document.documentElement.lang = selectedLang;
+        currentLang.textContent = selectedLang.toUpperCase();
+
+        if (typeof applySiteLanguage === "function") {
+            applySiteLanguage(selectedLang);
+        }
+
+        welcome.classList.add("leaving");
+        document.body.classList.remove("welcome-open");
+
+        setTimeout(function () {
+            welcome.classList.remove("show", "leaving");
+            welcome.setAttribute("aria-hidden", "true");
+        }, 760);
+    }
+
+    languageButtons.forEach(btn => {
+        btn.addEventListener("click", function () {
+            applySelection(this.dataset.lang);
+        });
+    });
+
+    continueBtn.addEventListener("click", closeWelcome);
+
+    languageSwitch.addEventListener("click", function () {
+        openWelcome(true);
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && welcome.classList.contains("show") && !continueBtn.disabled) {
+            closeWelcome();
+        }
+    });
+
+    openWelcome(false);
+})();
+</script>
+
+
+<script>
+/* =========================================================
+   HUYIP.COM — SAFE MULTI-LANGUAGE SYSTEM
+   VI / EN / 中文 / TH
+========================================================= */
+(function () {
+    const T = {
+        vi: {
+            "Hủy mã ẩn mọi tài khoản — Không còn bị nhà cái theo dõi":"Hủy mã ẩn mọi tài khoản — Không còn bị nhà cái theo dõi",
+            "Bảo vệ & quản lý tài khoản":"Bảo vệ & quản lý tài khoản",
+            "Kiểm tra dữ liệu tài khoản":"Kiểm tra dữ liệu tài khoản",
+            "Kiểm tra lịch sử truy cập":"Kiểm tra lịch sử truy cập",
+            "Thiết lập lớp bảo mật bổ sung":"Thiết lập lớp bảo mật bổ sung",
+            "Giám sát trạng thái hệ thống":"Giám sát trạng thái hệ thống",
+            "⚡ Tìm cổng đang nhả cho tài khoản mới":"⚡ Tìm cổng đang nhả cho tài khoản mới",
+            "Chọn cổng & thực thi xoá mã ẩn":"Chọn cổng & thực thi xoá mã ẩn",
+            "Chọn cổng game đang được tối ưu":"Chọn cổng game đang được tối ưu",
+            "Vui lòng chọn cổng game...":"Vui lòng chọn cổng game...",
+            "Tài khoản để thực thi":"Tài khoản để thực thi",
+            "〉_ Chạy xoá mã ẩn":"〉_ Chạy xoá mã ẩn",
+            "Liên hệ hỗ trợ xoá mã ẩn":"Liên hệ hỗ trợ xoá mã ẩn",
+            "Nhập mã xác thực":"Nhập mã xác thực",
+            "Nhập mã để thực thi xoá mã ẩn.":"Nhập mã để thực thi xoá mã ẩn.",
+            "Mã":"Mã","Hủy":"Hủy","Xác nhận":"Xác nhận",
+            "Enter để xác nhận · ESC để hủy":"Enter để xác nhận · ESC để hủy",
+            "Liên hệ nhận mã":"Liên hệ nhận mã","Code không tồn tại":"Code không tồn tại",
+            "Đang kiểm tra...":"Đang kiểm tra...",
+            "Thiết lập bảo mật 2 lớp 2FA":"Thiết lập bảo mật 2 lớp 2FA",
+            "Click để thiết lập 2 lớp bảo mật và chế độ đa tường lửa":"Click để thiết lập 2 lớp bảo mật và chế độ đa tường lửa",
+            "Đang tìm cổng đang nhả":"Đang tìm cổng đang nhả",
+            "Quét node · lọc latency · xác thực cổng...":"Quét node · lọc latency · xác thực cổng...",
+            "Tỷ lệ nhà đang thấp":"Tỷ lệ nhà đang thấp","Chưa có cổng phù hợp":"Chưa có cổng phù hợp",
+            "Vui lòng thử lại sau":"Vui lòng thử lại sau","Đóng":"Đóng",
+            "Câu hỏi thường gặp về mã ẩn":"Câu hỏi thường gặp về mã ẩn",
+            "Mã ẩn là gì?":"Mã ẩn là gì?","Làm cách nào để xóa mã ẩn?":"Làm cách nào để xóa mã ẩn?",
+            "KHIẾU NẠI":"KHIẾU NẠI","HOTLINE":"HOTLINE","CSKH":"CSKH"
+        },
+        en: {
+            "Hủy mã ẩn mọi tài khoản — Không còn bị nhà cái theo dõi":"Remove hidden tracking codes — Protect your account from monitoring",
+            "Bảo vệ & quản lý tài khoản":"Account protection & management",
+            "Kiểm tra dữ liệu tài khoản":"Check account data","Kiểm tra lịch sử truy cập":"Review access history",
+            "Thiết lập lớp bảo mật bổ sung":"Enable additional security","Giám sát trạng thái hệ thống":"Monitor system status",
+            "⚡ Tìm cổng đang nhả cho tài khoản mới":"⚡ Find an optimized gateway for new accounts",
+            "Chọn cổng & thực thi xoá mã ẩn":"Select gateway & run hidden-code removal",
+            "Chọn cổng game đang được tối ưu":"Select an optimized game gateway",
+            "Vui lòng chọn cổng game...":"Please select a game gateway...","Tài khoản để thực thi":"Account to process",
+            "〉_ Chạy xoá mã ẩn":"〉_ Run hidden-code removal","Liên hệ hỗ trợ xoá mã ẩn":"Contact support",
+            "Nhập mã xác thực":"Enter verification code","Nhập mã để thực thi xoá mã ẩn.":"Enter the verification code to continue.",
+            "Mã":"Code","Hủy":"Cancel","Xác nhận":"Confirm","Enter để xác nhận · ESC để hủy":"Press Enter to confirm · ESC to cancel",
+            "Liên hệ nhận mã":"Contact us for a code","Code không tồn tại":"Invalid code","Đang kiểm tra...":"Checking...",
+            "Thiết lập bảo mật 2 lớp 2FA":"Enable 2FA security",
+            "Click để thiết lập 2 lớp bảo mật và chế độ đa tường lửa":"Enable two-factor authentication and advanced firewall protection",
+            "Đang tìm cổng đang nhả":"Searching for an optimized gateway",
+            "Quét node · lọc latency · xác thực cổng...":"Scanning nodes · filtering latency · verifying gateway...",
+            "Tỷ lệ nhà đang thấp":"Gateway rate is currently low","Chưa có cổng phù hợp":"No suitable gateway available",
+            "Vui lòng thử lại sau":"Please try again later","Đóng":"Close","Câu hỏi thường gặp về mã ẩn":"Frequently Asked Questions",
+            "Mã ẩn là gì?":"What is a hidden code?","Làm cách nào để xóa mã ẩn?":"How do I remove a hidden code?",
+            "KHIẾU NẠI":"COMPLAINT","HOTLINE":"HOTLINE","CSKH":"SUPPORT"
+        },
+        zh: {
+            "Hủy mã ẩn mọi tài khoản — Không còn bị nhà cái theo dõi":"清除隐藏追踪代码 — 保护您的账户免受监控",
+            "Bảo vệ & quản lý tài khoản":"账户保护与管理","Kiểm tra dữ liệu tài khoản":"检查账户数据","Kiểm tra lịch sử truy cập":"检查访问记录",
+            "Thiết lập lớp bảo mật bổ sung":"启用额外安全保护","Giám sát trạng thái hệ thống":"监控系统状态",
+            "⚡ Tìm cổng đang nhả cho tài khoản mới":"⚡ 为新账户查找最佳通道","Chọn cổng & thực thi xoá mã ẩn":"选择通道并执行隐藏代码清除",
+            "Chọn cổng game đang được tối ưu":"选择已优化的游戏通道","Vui lòng chọn cổng game...":"请选择游戏通道...",
+            "Tài khoản để thực thi":"执行账户","〉_ Chạy xoá mã ẩn":"〉_ 开始清除隐藏代码","Liên hệ hỗ trợ xoá mã ẩn":"联系技术支持",
+            "Nhập mã xác thực":"输入验证码","Nhập mã để thực thi xoá mã ẩn.":"请输入验证码以继续操作。","Mã":"验证码","Hủy":"取消","Xác nhận":"确认",
+            "Enter để xác nhận · ESC để hủy":"按 Enter 确认 · ESC 取消","Liên hệ nhận mã":"联系客服获取验证码","Code không tồn tại":"验证码无效",
+            "Đang kiểm tra...":"正在检查...","Thiết lập bảo mật 2 lớp 2FA":"启用双重身份验证 2FA",
+            "Click để thiết lập 2 lớp bảo mật và chế độ đa tường lửa":"启用双重身份验证和高级防火墙保护",
+            "Đang tìm cổng đang nhả":"正在搜索最佳通道","Quét node · lọc latency · xác thực cổng...":"扫描节点 · 延迟筛选 · 验证通道...",
+            "Tỷ lệ nhà đang thấp":"当前通道比例较低","Chưa có cổng phù hợp":"暂无合适通道","Vui lòng thử lại sau":"请稍后再试","Đóng":"关闭",
+            "Câu hỏi thường gặp về mã ẩn":"常见问题","Mã ẩn là gì?":"什么是隐藏代码？","Làm cách nào để xóa mã ẩn?":"如何清除隐藏代码？",
+            "KHIẾU NẠI":"投诉","HOTLINE":"热线","CSKH":"客服"
+        },
+        th: {
+            "Hủy mã ẩn mọi tài khoản — Không còn bị nhà cái theo dõi":"ลบรหัสติดตามที่ซ่อนอยู่ — ปกป้องบัญชีของคุณจากการติดตาม",
+            "Bảo vệ & quản lý tài khoản":"ปกป้องและจัดการบัญชี","Kiểm tra dữ liệu tài khoản":"ตรวจสอบข้อมูลบัญชี",
+            "Kiểm tra lịch sử truy cập":"ตรวจสอบประวัติการเข้าใช้งาน","Thiết lập lớp bảo mật bổ sung":"ตั้งค่าความปลอดภัยเพิ่มเติม",
+            "Giám sát trạng thái hệ thống":"ตรวจสอบสถานะระบบ","⚡ Tìm cổng đang nhả cho tài khoản mới":"⚡ ค้นหาเกตเวย์ที่เหมาะสมสำหรับบัญชีใหม่",
+            "Chọn cổng & thực thi xoá mã ẩn":"เลือกเกตเวย์และดำเนินการลบรหัสที่ซ่อนอยู่",
+            "Chọn cổng game đang được tối ưu":"เลือกเกตเวย์เกมที่ได้รับการปรับแต่ง","Vui lòng chọn cổng game...":"กรุณาเลือกเกตเวย์เกม...",
+            "Tài khoản để thực thi":"บัญชีที่ต้องการดำเนินการ","〉_ Chạy xoá mã ẩn":"〉_ เริ่มลบรหัสที่ซ่อนอยู่","Liên hệ hỗ trợ xoá mã ẩn":"ติดต่อฝ่ายสนับสนุน",
+            "Nhập mã xác thực":"กรอกรหัสยืนยัน","Nhập mã để thực thi xoá mã ẩn.":"กรอกรหัสยืนยันเพื่อดำเนินการต่อ",
+            "Mã":"รหัส","Hủy":"ยกเลิก","Xác nhận":"ยืนยัน","Enter để xác nhận · ESC để hủy":"กด Enter เพื่อยืนยัน · ESC เพื่อยกเลิก",
+            "Liên hệ nhận mã":"ติดต่อเพื่อรับรหัส","Code không tồn tại":"รหัสไม่ถูกต้อง","Đang kiểm tra...":"กำลังตรวจสอบ...",
+            "Thiết lập bảo mật 2 lớp 2FA":"เปิดใช้งานความปลอดภัย 2FA",
+            "Click để thiết lập 2 lớp bảo mật và chế độ đa tường lửa":"เปิดใช้งานการยืนยันสองขั้นตอนและไฟร์วอลล์ขั้นสูง",
+            "Đang tìm cổng đang nhả":"กำลังค้นหาเกตเวย์ที่เหมาะสม","Quét node · lọc latency · xác thực cổng...":"สแกนโหนด · กรอง latency · ตรวจสอบเกตเวย์...",
+            "Tỷ lệ nhà đang thấp":"อัตราเกตเวย์อยู่ในระดับต่ำ","Chưa có cổng phù hợp":"ยังไม่มีเกตเวย์ที่เหมาะสม",
+            "Vui lòng thử lại sau":"กรุณาลองใหม่ภายหลัง","Đóng":"ปิด","Câu hỏi thường gặp về mã ẩn":"คำถามที่พบบ่อย",
+            "Mã ẩn là gì?":"รหัสที่ซ่อนอยู่คืออะไร?","Làm cách nào để xóa mã ẩn?":"จะลบรหัสที่ซ่อนอยู่ได้อย่างไร?",
+            "KHIẾU NẠI":"ร้องเรียน","HOTLINE":"สายด่วน","CSKH":"ฝ่ายบริการ"
+        }
+    };
+
+    const LONG = {
+        vi: [
+            "Mã ẩn là đoạn code do nhà cái cài vào, dùng AI để theo dõi hành vi nạp cược nhằm nhấp nhả, kích thích và thao túng tâm lý người chơi.",
+            "Trang xoaip.com là hệ thống kiểm tra và bóc tách mã độc ra khỏi tài khoản của khách hàng. Đồng thời hệ thống này cũng tạo lớp vỏ bọc giúp thoát khỏi các chương trình theo dõi của nhà cái và tránh các phiền phức khi tham gia cờ bạc mạng."
+        ],
+        en: [
+            "A hidden code is tracking code embedded in a platform to monitor account activity and user behavior.",
+            "The system checks account data and removes unwanted tracking components while adding an additional privacy layer to reduce unnecessary monitoring."
+        ],
+        zh: [
+            "隐藏代码是一种嵌入平台中的追踪程序，用于监控账户活动和用户行为。",
+            "系统会检查账户数据、移除不需要的追踪组件，并增加额外的隐私保护层，以减少不必要的监控。"
+        ],
+        th: [
+            "รหัสที่ซ่อนอยู่คือโค้ดติดตามที่ฝังอยู่ในแพลตฟอร์มเพื่อใช้ตรวจสอบกิจกรรมของบัญชีและพฤติกรรมของผู้ใช้งาน",
+            "ระบบจะตรวจสอบข้อมูลบัญชี ลบส่วนประกอบการติดตามที่ไม่ต้องการ และเพิ่มชั้นความเป็นส่วนตัวเพื่อลดการติดตามที่ไม่จำเป็น"
+        ]
+    };
+
+    const normalize = s => (s || "").replace(/\s+/g, " ").trim();
+    const reverse = {};
+    Object.keys(T).forEach(lang => Object.keys(T[lang]).forEach(key => reverse[normalize(T[lang][key])] = key));
+
+    window.applySiteLanguage = function(lang) {
+        if (!T[lang]) lang = "vi";
+        document.documentElement.lang = lang;
+
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+
+        nodes.forEach(node => {
+            const p = node.parentElement;
+            if (!p || p.closest("#huyipWelcome, script, style")) return;
+            const current = normalize(node.nodeValue);
+            const key = reverse[current];
+            if (!key || T[lang][key] === undefined) return;
+            const lead = (node.nodeValue.match(/^\s*/) || [""])[0];
+            const trail = (node.nodeValue.match(/\s*$/) || [""])[0];
+            node.nodeValue = lead + T[lang][key] + trail;
+        });
+
+        const faq = document.querySelectorAll(".faq-item p");
+        if (faq[0]) faq[0].textContent = LONG[lang][0];
+        if (faq[1]) faq[1].textContent = LONG[lang][1];
+        document.querySelectorAll(".marquee-track span").forEach(s => s.textContent = LONG[lang][0]);
+
+        const account = document.getElementById("accountInput");
+        if (account) account.placeholder = ({vi:"Nhập tài khoản...",en:"Enter account...",zh:"输入账户...",th:"กรอกบัญชี..."})[lang];
+
+        const verify = document.getElementById("verifyCode");
+        if (verify) verify.placeholder = ({vi:"Nhập mã...",en:"Enter code...",zh:"输入验证码...",th:"กรอกรหัส..."})[lang];
+
+        const badge = document.getElementById("welcomeCurrentLang");
+        if (badge) badge.textContent = lang.toUpperCase();
+    };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const saved = localStorage.getItem("huyip_language");
+        if (saved) window.applySiteLanguage(saved);
+    });
+})();
+</script>
+
 </body>
 </html>
