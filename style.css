@@ -3820,3 +3820,60 @@ body.welcome-open {
     text-align: center;
     letter-spacing: 0.01em;
 }
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-brand img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    flex-shrink: 0;
+
+    filter: drop-shadow(0 0 8px rgba(255, 176, 0, 0.3));
+}
+
+.logo-brand .logo {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .logo-brand {
+        gap: 10px;
+    }
+
+    .logo-brand img {
+        width: 42px;
+        height: 42px;
+    }
+}
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-brand img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.logo-brand .logo {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .logo-brand {
+        gap: 10px;
+    }
+
+    .logo-brand img {
+        width: 42px;
+        height: 42px;
+    }
+}
