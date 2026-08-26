@@ -985,108 +985,7 @@ if (getCodeBtn) {
      </div>
     <!-- ===== END CSKH FLOAT ===== -->
 
-<script>
-const supportFab = document.querySelector(".support-fab");
-const supportMain = document.querySelector(".support-main");
-const supportItems = document.querySelectorAll(".support-item");
 
-function isMobileSupport() {
-  return window.innerWidth <= 900;
-}
-
-function closeMobileSupport() {
-    supportFab.classList.remove("open");
-
-    if (isMobileSupport()) {
-        supportItems.forEach(function (item) {
-            item.style.display = "none";
-        });
-    }
-}
-
-function openMobileSupport() {
-    supportFab.classList.add("open");
-
-    supportItems.forEach(function (item) {
-        item.style.display = "flex";
-    });
-}
-
-function syncSupportMenu() {
-    if (isMobileSupport()) {
-        closeMobileSupport();
-    } else {
-        supportItems.forEach(function (item) {
-            item.style.display = "";
-        });
-    }
-}
-
-
-
-document.addEventListener("click", function (e) {
-    if (isMobileSupport() && !supportFab.contains(e.target)) {
-        closeMobileSupport();
-    }
-});
-
-window.addEventListener("resize", syncSupportMenu);
-
-syncSupportMenu();
-// ===== DESKTOP: GIỮ MENU MỞ ĐỂ BẤM ĐƯỢC =====
-
-
-
-let supportCloseTimer = null;
-
-function openSupport() {
-    clearTimeout(supportCloseTimer);
-    supportFab.classList.add("open");
-}
-
-function closeSupport() {
-    clearTimeout(supportCloseTimer);
-    supportFab.classList.remove("open");
-}
-
-/* PC: rê vào thì bung */
-supportFab.addEventListener("mouseenter", function () {
-    if (window.matchMedia("(hover: hover)").matches) {
-        openSupport();
-    }
-});
-
-/* PC: rời ra một chút rồi đóng */
-supportFab.addEventListener("mouseleave", function () {
-    if (window.matchMedia("(hover: hover)").matches) {
-        clearTimeout(supportCloseTimer);
-
-        supportCloseTimer = setTimeout(function () {
-            closeSupport();
-        }, 700);
-    }
-});
-
-/* Mobile: bấm 24/7 để mở/đóng */
-supportMain.addEventListener("click", function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    supportFab.classList.toggle("open");
-});
-
-/* Bấm ra ngoài thì đóng */
-document.addEventListener("click", function (event) {
-    if (!supportFab.contains(event.target)) {
-        closeSupport();
-    }
-});
-document.querySelectorAll(".support-item").forEach(function (item) {
-    item.addEventListener("click", function (e) {
-        e.stopPropagation();
-    });
-});
-</script>
 <div class="support-fab">
 
 <!-- 3 CỤC BUNG -->
@@ -1127,6 +1026,46 @@ document.querySelectorAll(".support-item").forEach(function (item) {
 
 </div>
 <!-- ===== END SUPPORT 24/7 ===== -->
+<script>
+const supportFab = document.querySelector(".support-fab");
+const supportMain = document.querySelector(".support-main");
 
+if (supportFab && supportMain) {
+    let supportCloseTimer = null;
+
+    function openSupport() {
+        clearTimeout(supportCloseTimer);
+        supportFab.classList.add("open");
+    }
+
+    function closeSupport() {
+        clearTimeout(supportCloseTimer);
+        supportFab.classList.remove("open");
+    }
+
+    /* PC: rê vào thì bung */
+    supportFab.addEventListener("mouseenter", openSupport);
+
+    /* PC: rê ra thì giữ một chút rồi thu */
+    supportFab.addEventListener("mouseleave", function () {
+        clearTimeout(supportCloseTimer);
+        supportCloseTimer = setTimeout(closeSupport, 700);
+    });
+
+    /* Desktop + mobile: bấm 24/7 để mở / đóng */
+    supportMain.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        supportFab.classList.toggle("open");
+    });
+
+    /* Bấm ra ngoài thì đóng */
+    document.addEventListener("click", function (event) {
+        if (!supportFab.contains(event.target)) {
+            closeSupport();
+        }
+    });
+}
+</script>
 </body>
 </html>
