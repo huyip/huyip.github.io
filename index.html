@@ -492,7 +492,7 @@
 </div>
 <!-- LIVE ACTIVITY -->
 <section class="live-activity">
-<div id="codeToast" class="code-toast"></div>
+
     <div class="live-header">
         <div class="live-title">
            <span class="live-icon">◉</span>
@@ -503,10 +503,7 @@
     </div>
 
     <div id="activityList" class="activity-list"></div>
-<div id="codeToast" class="code-toast">
-    <span>●</span>
-    <strong>Code không tồn tại</strong>
-</div>
+
 </section>
 <!-- END LIVE ACTIVITY -->
 </div>
@@ -978,14 +975,14 @@ document.addEventListener("keydown", function (event) {
 const codeToast = document.getElementById("codeToast");
 
 function showInvalidCode() {
-    codeToast.classList.remove("show");
+    codeToast.classList.remove("show", "shake-error");
 
     void codeToast.offsetWidth;
 
-    codeToast.classList.add("show");
+    codeToast.classList.add("show", "shake-error");
 
     setTimeout(function () {
-        codeToast.classList.remove("show");
+        codeToast.classList.remove("show", "shake-error");
     }, 3000);
 }
 
