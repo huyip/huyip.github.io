@@ -16,9 +16,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- ===== HUYIP BACKGROUND FX ===== -->
 
 <!-- ===== HUYIP PREMIUM WELCOME ===== -->
-<div id="huyipWelcome" class="huyip-welcome" aria-hidden="true">
+<div id="huyipWelcome" class="huyip-welcome" aria-hidden="false">
+    <div id="huyipBackgroundFX" aria-hidden="true">
+    <div class="huyip-stars" id="huyipStars"></div>
+
+    <div class="huyip-smoke huyip-smoke-1"></div>
+    <div class="huyip-smoke huyip-smoke-2"></div>
+</div>
     <div class="welcome-aurora welcome-aurora-a"></div>
     <div class="welcome-aurora welcome-aurora-b"></div>
     <div class="welcome-grid"></div>
@@ -34,7 +41,10 @@
             <div class="welcome-brand-glow"></div>
             <h1 class="welcome-brand">HUYIP<span>.COM</span></h1>
         </div>
-
+        <button class="huyip-explore-btn" type="button" id="huyipExploreBtn">
+    <span>KHÁM PHÁ HỆ THỐNG</span>
+    <span class="huyip-explore-arrow">›</span>
+</button>
         <p class="welcome-kicker">WELCOME / CHÀO MỪNG</p>
         <h2 class="welcome-title">Chọn ngôn ngữ của bạn</h2>
         <p class="welcome-subtitle">
@@ -1135,12 +1145,16 @@ if (getCodeBtn) {
 </a>
 
     <!-- CỤC CHÍNH -->
-    <div class="support-main">
-        <strong>24/7</strong>
-    </div>
+   <div class="support-main">
+    <strong id="supportRotatingText">
+        <span class="support-rotating-icon">●</span>
+        <span class="support-rotating-label">24/7</span>
+    </strong>
+</div>
 
 </div>
 <!-- ===== END SUPPORT 24/7 ===== -->
+
 <script>
 const supportFab = document.querySelector(".support-fab");
 const supportMain = document.querySelector(".support-main");
@@ -1182,7 +1196,43 @@ if (supportFab && supportMain) {
     });
 }
 </script>
+<script>
+const supportRotatingText = document.getElementById("supportRotatingText");
+const supportFabBox = document.querySelector(".support-fab");
 
+const supportRotatingItems = [
+    { icon: "●", text: "24/7" },
+    { icon: "➤", text: "TELE" },
+    { icon: "◉", text: "CSKH" },
+    { icon: "◇", text: "ZALO" }
+];
+
+let supportRotatingIndex = 0;
+
+function changeSupportLabel() {
+    if (!supportRotatingText || !supportFabBox) return;
+
+    // Khi menu bung thì luôn giữ 24/7
+
+    supportRotatingText.classList.add("support-changing");
+
+    setTimeout(() => {
+        supportRotatingIndex =
+            (supportRotatingIndex + 1) % supportRotatingItems.length;
+
+        const item = supportRotatingItems[supportRotatingIndex];
+
+        supportRotatingText.innerHTML = `
+            <span class="support-rotating-icon">${item.icon}</span>
+            <span class="support-rotating-label">${item.text}</span>
+        `;
+
+        supportRotatingText.classList.remove("support-changing");
+    }, 220);
+}
+
+setInterval(changeSupportLabel, 2000);
+</script>
 <script>
 (function () {
     const welcome = document.getElementById("huyipWelcome");
@@ -1261,7 +1311,7 @@ if (supportFab && supportMain) {
         setTimeout(function () {
             welcome.classList.remove("show", "leaving");
             welcome.setAttribute("aria-hidden", "true");
-        }, 760);
+        }, 300);
     }
 
     languageButtons.forEach(btn => {
@@ -1270,8 +1320,40 @@ if (supportFab && supportMain) {
         });
     });
 
-    continueBtn.addEventListener("click", closeWelcome);
+    continueBtn.addEventListener("click", function () {
 
+    const loader = document.getElementById("huyipLoader");
+
+    // Hiện loading ngay lập tức
+    if (loader) {
+        loader.classList.add("active");
+    }
+
+    // Cho loader xoay rõ 1.2 giây
+    setTimeout(function () {
+
+        // Tắt intro NGAY - không chạy animation leaving cũ
+        welcome.classList.remove("show", "leaving");
+        welcome.setAttribute("aria-hidden", "true");
+        welcome.style.display = "none";
+
+        document.body.classList.remove("welcome-open");
+
+        // Cho web chính hiện bên dưới trước
+        requestAnimationFrame(function () {
+
+            // Sau đó mới tắt loader
+            setTimeout(function () {
+                if (loader) {
+                    loader.classList.remove("active");
+                }
+            }, 150);
+
+        });
+
+    }, 1200);
+
+});
     languageSwitch.addEventListener("click", function () {
         openWelcome(true);
     });
@@ -1446,6 +1528,126 @@ if (supportFab && supportMain) {
     });
 })();
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const intro = document.getElementById("huyipWelcome");
+    const exploreBtn = document.getElementById("huyipExploreBtn");
+
+    if (!intro || !exploreBtn) return;
+
+
+    /* =========================
+       NÚT KHÁM PHÁ
+       ========================= */
+
+    exploreBtn.addEventListener("click", function () {
+
+        intro.classList.add("explore-open");
+
+        const languageArea =
+            intro.querySelector(".welcome-languages");
+
+        if (languageArea) {
+
+            setTimeout(function () {
+
+                languageArea.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 150);
+        }
+
+    });
+
+ });  
+</script>
+<div id="huyipLoader" class="huyip-loader">
+    <div class="huyip-loader-ring">
+        <div class="huyip-loader-core">H</div>
+    </div>
+
+    <div class="huyip-loader-title">ĐANG THIẾT LẬP KẾT NỐI</div>
+    <div class="huyip-loader-line"></div>
+    <div class="huyip-loader-status">SECURE ACCESS • INITIALIZING</div>
+</div>
+<script>
+(function () {
+
+    const stars =
+        document.querySelector(".huyip-stars");
+
+    if (!stars) return;
+
+
+    const particleCount =
+        window.innerWidth <= 650 ? 22 : 48;
+
+
+    for (let i = 0; i < particleCount; i++) {
+
+        const particle =
+            document.createElement("span");
+
+        particle.className =
+            "huyip-particle";
+
+
+        /* vị trí ngang */
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        /* xuất phát ngẫu nhiên */
+        particle.style.bottom =
+            (-10 + Math.random() * 45) + "%";
+
+
+        /* kích thước */
+        const size =
+            1 + Math.random() * 3;
+
+        particle.style.width =
+            size + "px";
+
+        particle.style.height =
+            size + "px";
+
+
+        /* tốc độ */
+        particle.style.setProperty(
+            "--duration",
+            (9 + Math.random() * 12) + "s"
+        );
+
+
+        /* delay */
+        particle.style.setProperty(
+            "--delay",
+            (-Math.random() * 15) + "s"
+        );
+
+
+        /* độ sáng */
+        particle.style.setProperty(
+            "--opacity",
+            (.2 + Math.random() * .65)
+        );
+
+
+        /* lệch trái/phải khi bay */
+        particle.style.setProperty(
+            "--drift",
+            (-70 + Math.random() * 140) + "px"
+        );
+
+
+        stars.appendChild(particle);
+    }
+
+})();
+</script>
 </body>
 </html>
