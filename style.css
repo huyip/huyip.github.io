@@ -3877,3 +3877,19 @@ body.welcome-open {
         height: 42px;
     }
 }
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-brand img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.logo-brand .logo {
+    margin: 0;
+}
