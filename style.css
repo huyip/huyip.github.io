@@ -3893,3 +3893,20 @@ body.welcome-open {
 .logo-brand .logo {
     margin: 0;
 }
+
+/* FIX LOGO HUYIP */
+.logo-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+}
+
+.logo-brand > img {
+    width: 58px !important;
+    height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+    object-fit: contain !important;
+    display: block !important;
+    flex: 0 0 58px !important;
+}
