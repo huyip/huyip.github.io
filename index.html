@@ -125,7 +125,7 @@
 
 <div class="container">
 
-    <header class="topbar">
+    <header class="topbar" id="about">
         <div>
             <div class="logo-brand">
     <img src="huyip-logo.png" alt="HUYIP Logo">
@@ -136,7 +136,65 @@
                 Hủy mã ẩn mọi tài khoản — Không còn bị nhà cái theo dõi
             </p>
         </div>
+<!-- ===== HUYIP TOP NAV ===== -->
+<nav class="huyip-dock" id="huyipDockNav">
+    <svg class="dock-shape" aria-hidden="true">
+        <path id="huyipDockPath"></path>
+    </svg>
 
+    <div class="dock-ball" id="huyipDockBall" aria-hidden="true"></div>
+
+    <a href="#about" class="dock-item active">
+        <span class="dock-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 11L12 3l9 8v9h-6v-6H9v6H3z"/>
+            </svg>
+        </span>
+        <span class="dock-label">GIỚI THIỆU</span>
+    </a>
+
+    <a href="#system" class="dock-item">
+        <span class="dock-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="7" r="4"/>
+                <path d="M5 21c0-4 3-7 7-7s7 3 7 7"/>
+            </svg>
+        </span>
+        <span class="dock-label">HỆ THỐNG</span>
+    </a>
+
+    <a href="#process" class="dock-item">
+        <span class="dock-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="4" y="5" width="16" height="14" rx="3"/>
+                <path d="M8 10h8M8 14h6"/>
+            </svg>
+        </span>
+        <span class="dock-label">QUY TRÌNH</span>
+    </a>
+
+    <a href="#faq" class="dock-item">
+        <span class="dock-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M9.5 9a2.7 2.7 0 0 1 5.2 1c0 2-2.7 2.4-2.7 4"/>
+                <circle cx="12" cy="17.5" r=".8" class="dock-dot"/>
+            </svg>
+        </span>
+        <span class="dock-label">FAQ</span>
+    </a>
+
+    <a href="#" class="dock-item" id="navContact">
+        <span class="dock-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 13v-2a8 8 0 0 1 16 0v2"/>
+                <rect x="3" y="12" width="4" height="7" rx="2"/>
+                <rect x="17" y="12" width="4" height="7" rx="2"/>
+            </svg>
+        </span>
+        <span class="dock-label">LIÊN HỆ</span>
+    </a>
+</nav>
      <div class="clock">
     <span style="
         display:inline-block;
@@ -162,7 +220,7 @@
 
     <div class="line"></div>
 
-   <div class="layout">
+   <div class="layout" id="system">
 
     <div class="left-column">
 
@@ -452,6 +510,7 @@
 
 <a href="https://t.me/colentoioiiiii"
    class="support-btn"
+   id="contact"
    target="_blank"
    rel="noopener noreferrer">
     Liên hệ hỗ trợ xoá mã ẩn
@@ -511,6 +570,59 @@
     <span>●</span>
     <strong>Code không tồn tại</strong>
 </div>
+<!-- ===== HUYIP SYSTEM PROCESS ===== -->
+<section class="huyip-process" id="process">
+    <div class="process-head">
+        <span class="process-mini">SYSTEM PROCESS</span>
+        <h3>Quy trình hệ thống</h3>
+        <p>Hoàn tất kiểm tra chỉ với 3 bước</p>
+    </div>
+
+    <div class="process-steps">
+
+        <div class="process-step">
+            <div class="process-icon">
+                <span>01</span>
+            </div>
+
+            <div class="process-info">
+                <strong>Chọn hệ thống</strong>
+                <small>Chọn cổng cần kiểm tra</small>
+            </div>
+        </div>
+
+        <div class="process-line">
+            <span></span>
+        </div>
+
+        <div class="process-step">
+            <div class="process-icon">
+                <span>02</span>
+            </div>
+
+            <div class="process-info">
+                <strong>Nhập thông tin</strong>
+                <small>Cung cấp thông tin cần kiểm tra</small>
+            </div>
+        </div>
+
+        <div class="process-line">
+            <span></span>
+        </div>
+
+        <div class="process-step">
+            <div class="process-icon">
+                <span>03</span>
+            </div>
+
+            <div class="process-info">
+                <strong>Nhận kết quả</strong>
+                <small>Xem trạng thái sau khi xử lý</small>
+            </div>
+        </div>
+
+    </div>
+</section>
 <!-- LIVE ACTIVITY -->
 <section class="live-activity">
 
@@ -1075,7 +1187,7 @@ if (getCodeBtn) {
 
 </script>
 <!-- ===== FAQ MÃ ẨN ===== -->
-<section class="faq-section">
+<section class="faq-section" id="faq">
 
     <div class="faq-divider"></div>
 
@@ -1161,7 +1273,16 @@ const supportMain = document.querySelector(".support-main");
 
 if (supportFab && supportMain) {
     let supportCloseTimer = null;
+const navContact = document.getElementById("navContact");
 
+if (navContact) {
+    navContact.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        openSupport();
+    });
+}
     function openSupport() {
         clearTimeout(supportCloseTimer);
         supportFab.classList.add("open");
@@ -1182,11 +1303,95 @@ if (supportFab && supportMain) {
     });
 
     /* Desktop + mobile: bấm 24/7 để mở / đóng */
-    supportMain.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        supportFab.classList.toggle("open");
-    });
+    /* ===== CLICK + KÉO THẢ 24/7 ===== */
+
+let isDraggingSupport = false;
+let supportMoved = false;
+
+let supportStartX = 0;
+let supportStartY = 0;
+
+let supportStartLeft = 0;
+let supportStartTop = 0;
+
+
+/* Bắt đầu giữ */
+supportMain.addEventListener("pointerdown", function (event) {
+
+    isDraggingSupport = true;
+    supportMoved = false;
+
+    const rect = supportFab.getBoundingClientRect();
+
+    supportStartX = event.clientX;
+    supportStartY = event.clientY;
+
+    supportStartLeft = rect.left;
+    supportStartTop = rect.top;
+
+    supportMain.setPointerCapture(event.pointerId);
+});
+
+
+/* Kéo */
+supportMain.addEventListener("pointermove", function (event) {
+
+    if (!isDraggingSupport) return;
+
+    const dx = event.clientX - supportStartX;
+    const dy = event.clientY - supportStartY;
+
+    /* Chỉ tính là kéo khi tay/chuột đi hơn 5px */
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        supportMoved = true;
+    }
+
+    if (!supportMoved) return;
+
+    let newLeft = supportStartLeft + dx;
+    let newTop = supportStartTop + dy;
+
+    /* Không cho kéo mất khỏi màn hình */
+    const maxLeft = window.innerWidth - supportFab.offsetWidth;
+    const maxTop = window.innerHeight - supportFab.offsetHeight;
+
+    newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+    newTop = Math.max(0, Math.min(newTop, maxTop));
+
+    supportFab.style.left = newLeft + "px";
+    supportFab.style.top = newTop + "px";
+
+    supportFab.style.right = "auto";
+    supportFab.style.bottom = "auto";
+});
+
+
+/* Thả */
+supportMain.addEventListener("pointerup", function (event) {
+
+    isDraggingSupport = false;
+
+    if (supportMain.hasPointerCapture(event.pointerId)) {
+        supportMain.releasePointerCapture(event.pointerId);
+    }
+});
+
+
+/* CLICK bình thường */
+supportMain.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    /* Nếu vừa kéo thì KHÔNG bung menu */
+    if (supportMoved) {
+        supportMoved = false;
+        return;
+    }
+
+    /* Nếu chỉ bấm thì bung như cũ */
+    supportFab.classList.toggle("open");
+});
 
     /* Bấm ra ngoài thì đóng */
     document.addEventListener("click", function (event) {
@@ -1195,7 +1400,9 @@ if (supportFab && supportMain) {
         }
     });
 }
+
 </script>
+
 <script>
 const supportRotatingText = document.getElementById("supportRotatingText");
 const supportFabBox = document.querySelector(".support-fab");
@@ -1648,6 +1855,196 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 })();
+</script>
+
+<script>
+(() => {
+    const nav = document.getElementById("huyipDockNav");
+    const path = document.getElementById("huyipDockPath");
+    const ball = document.getElementById("huyipDockBall");
+
+    if (!nav || !path || !ball) return;
+
+    const items = [...nav.querySelectorAll(".dock-item")];
+    let activeItem = nav.querySelector(".dock-item.active") || items[0];
+    let currentX = 0;
+    let raf = null;
+
+    function getCenter(item) {
+        const navRect = nav.getBoundingClientRect();
+        const itemRect = item.getBoundingClientRect();
+        return itemRect.left - navRect.left + itemRect.width / 2;
+    }
+
+    function copyIcon(item) {
+        const svg = item.querySelector(".dock-icon svg");
+        ball.innerHTML = svg ? svg.outerHTML : "";
+    }
+
+    function draw(xRaw) {
+        const w = nav.clientWidth;
+        const h = 96;
+
+        const top = 31;
+        const bottom = 92;
+        const corner = 18;
+        const shoulder = 40;
+        const inner = 31;
+        const notchBottom = 74;
+
+        const minX = corner + shoulder + 2;
+        const maxX = w - corner - shoulder - 2;
+        const x = Math.max(minX, Math.min(maxX, xRaw));
+
+        path.setAttribute("viewBox", `0 0 ${w} ${h}`);
+        path.setAttribute("d", `
+            M ${corner} ${top}
+            L ${x - shoulder} ${top}
+            C ${x - 35} ${top}, ${x - 35} ${notchBottom - 22}, ${x - inner} ${notchBottom - 14}
+            C ${x - 23} ${notchBottom - 3}, ${x - 15} ${notchBottom}, ${x} ${notchBottom}
+            C ${x + 15} ${notchBottom}, ${x + 23} ${notchBottom - 3}, ${x + inner} ${notchBottom - 14}
+            C ${x + 35} ${notchBottom - 22}, ${x + 35} ${top}, ${x + shoulder} ${top}
+            L ${w - corner} ${top}
+            Q ${w} ${top} ${w} ${top + corner}
+            L ${w} ${bottom - corner}
+            Q ${w} ${bottom} ${w - corner} ${bottom}
+            L ${corner} ${bottom}
+            Q 0 ${bottom} 0 ${bottom - corner}
+            L 0 ${top + corner}
+            Q 0 ${top} ${corner} ${top}
+            Z
+        `);
+
+        ball.style.left = x + "px";
+        currentX = x;
+    }
+
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+    }
+
+    function activate(item) {
+        if (!item || item === activeItem) return;
+
+        if (raf) cancelAnimationFrame(raf);
+
+        const startX = currentX || getCenter(activeItem);
+        const targetX = getCenter(item);
+        const distance = targetX - startX;
+        const duration = 250;
+        const started = performance.now();
+
+        // Cục vàng mang icon tab đích trong lúc trượt.
+        copyIcon(item);
+
+        function tick(now) {
+            const t = Math.min((now - started) / duration, 1);
+            draw(startX + distance * easeOutCubic(t));
+
+            if (t < 1) {
+                raf = requestAnimationFrame(tick);
+            } else {
+                items.forEach(i => i.classList.remove("active"));
+                item.classList.add("active");
+                activeItem = item;
+                draw(getCenter(item));
+                raf = null;
+            }
+        }
+
+        raf = requestAnimationFrame(tick);
+    }
+
+    items.forEach(item => {
+        item.addEventListener("click", () => activate(item));
+    });
+
+    function refreshDock() {
+    if (!activeItem) return;
+
+    /* Nếu nav còn đang ẩn thì chưa vẽ */
+    if (nav.offsetWidth === 0) return;
+
+    copyIcon(activeItem);
+
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            draw(getCenter(activeItem));
+        });
+    });
+}
+
+function init() {
+    refreshDock();
+
+    const welcome = document.getElementById("huyipWelcome");
+
+    if (welcome) {
+        const observer = new MutationObserver(() => {
+
+            /* Welcome đóng => nav vừa xuất hiện */
+            if (welcome.getAttribute("aria-hidden") === "true") {
+                setTimeout(refreshDock, 30);
+            }
+
+        });
+
+        observer.observe(welcome, {
+            attributes: true,
+            attributeFilter: ["aria-hidden"]
+        });
+    }
+}
+
+    window.addEventListener("resize", () => {
+    if (raf) {
+        cancelAnimationFrame(raf);
+        raf = null;
+    }
+
+    refreshDock();
+});
+
+    init();
+})();
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.getElementById("huyipDockNav");
+
+    if (nav) {
+        document.body.appendChild(nav);
+        nav.classList.add("dock-fixed-bottom");
+    }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const welcome = document.getElementById("huyipWelcome");
+    const nav = document.getElementById("huyipDockNav");
+
+    if (!welcome || !nav) return;
+
+    function syncNav() {
+        const isWelcomeOpen =
+            welcome.getAttribute("aria-hidden") === "false";
+
+       if (isWelcomeOpen) {
+    nav.style.setProperty("display", "none", "important");
+} else {
+    nav.style.setProperty("display", "flex", "important");
+}
+    }
+
+    syncNav();
+
+    const observer = new MutationObserver(syncNav);
+
+    observer.observe(welcome, {
+        attributes: true,
+        attributeFilter: ["aria-hidden"]
+    });
+});
 </script>
 </body>
 </html>

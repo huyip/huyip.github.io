@@ -3036,6 +3036,7 @@ body {
     bottom: 0;
     width: 78px;
     height: 78px;
+    touch-action: none;
     border-radius: 50%;
 
     display: flex;
@@ -5779,3 +5780,2546 @@ body:has(#huyipWelcome:not(.huyip-intro-leaving))
     display: block !important;
     visibility: visible !important;
 }
+
+/* =========================================
+   HUYIP MOBILE FINAL FIX
+   DÁN CUỐI CÙNG style.css
+========================================= */
+
+@media (max-width: 650px) {
+
+    #huyipWelcome {
+        padding: 12px !important;
+        place-items: center !important;
+    }
+
+    #huyipWelcome .welcome-shell {
+        width: calc(100vw - 24px) !important;
+        max-width: 430px !important;
+
+        padding: 24px 16px 20px !important;
+
+        border-radius: 18px !important;
+        box-sizing: border-box !important;
+
+        transform: none !important;
+    }
+
+    /* HUYIP.COM */
+    #huyipWelcome .welcome-brand {
+        font-size: clamp(38px, 12vw, 58px) !important;
+        letter-spacing: 2px !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+    }
+
+    #huyipWelcome .welcome-brand-wrap {
+        transform: none !important;
+    }
+
+    /* KHÁM PHÁ */
+    #huyipWelcome .huyip-explore-btn {
+        margin-top: 16px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Tiêu đề chọn ngôn ngữ */
+    #huyipWelcome .welcome-title {
+        font-size: 21px !important;
+        line-height: 1.25 !important;
+    }
+
+    #huyipWelcome .welcome-subtitle {
+        font-size: 11px !important;
+    }
+
+    /* 4 ngôn ngữ thành 2 x 2 */
+    #huyipWelcome .welcome-languages {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    #huyipWelcome .welcome-lang {
+        min-width: 0 !important;
+        min-height: 68px !important;
+
+        padding: 9px !important;
+
+        transform: none !important;
+    }
+
+    /* Tắt nghiêng 3D trên mobile */
+    #huyipWelcome .welcome-lang:hover {
+        transform: translateY(-2px) !important;
+    }
+
+    /* Nút tiếp tục */
+    #huyipWelcome .welcome-continue {
+        width: 100% !important;
+        min-height: 52px !important;
+        margin-top: 12px !important;
+    }
+
+    /* Footer */
+    #huyipWelcome .welcome-footer {
+        font-size: 8px !important;
+        justify-content: center !important;
+    }
+
+    #huyipWelcome .welcome-footer span:last-child {
+        display: none !important;
+    }
+}
+
+/* ==================================================
+   HUYIP SYSTEM PROCESS
+================================================== */
+
+.huyip-process {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+
+    padding: 24px 24px 26px;
+
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,176,0,.055),
+            transparent 55%
+        ),
+        rgba(8,8,8,.55);
+
+    border-top: 1px solid rgba(255,176,0,.22);
+    border-bottom: 1px solid rgba(255,176,0,.13);
+
+    overflow: hidden;
+}
+
+
+/* ---------- TITLE ---------- */
+
+.process-head {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.process-mini {
+    display: block;
+
+    color: #ffb000;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 7px;
+
+    opacity: .75;
+}
+
+.process-head h3 {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    letter-spacing: .3px;
+}
+
+.process-head p {
+    margin: 5px 0 0;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* ---------- STEPS ---------- */
+
+.process-steps {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0,1fr)
+        70px
+        minmax(0,1fr)
+        70px
+        minmax(0,1fr);
+
+    align-items: start;
+
+    width: 100%;
+}
+
+
+/* ---------- STEP ---------- */
+
+.process-step {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+
+    cursor: default;
+}
+
+
+/* ---------- NUMBER ---------- */
+
+.process-icon {
+    position: relative;
+
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,176,0,.55);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,176,0,.15),
+            rgba(255,176,0,.025) 65%
+        );
+
+    box-shadow:
+        0 0 0 5px rgba(255,176,0,.025),
+        0 0 22px rgba(255,176,0,.08);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+}
+
+.process-icon span {
+    color: #ffb000;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+/* ---------- CONNECTOR ---------- */
+
+.process-line {
+    position: relative;
+
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+}
+
+.process-line::before {
+    content: "";
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,176,0,.15),
+            rgba(255,176,0,.8),
+            rgba(255,176,0,.15)
+        );
+}
+
+.process-line span {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #ffb000;
+
+    box-shadow:
+        0 0 8px #ffb000,
+        0 0 15px rgba(255,176,0,.7);
+
+    animation: huyipProcessSignal 2.6s linear infinite;
+}
+
+
+/* ---------- TEXT ---------- */
+
+.process-info {
+    margin-top: 12px;
+}
+
+.process-info strong {
+    display: block;
+
+    color: #eee;
+
+    font-size: 12px;
+    font-weight: 750;
+
+    transition:
+        color .25s ease,
+        text-shadow .25s ease;
+}
+
+.process-info small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #666;
+
+    font-size: 9px;
+}
+
+
+/* ---------- HOVER ---------- */
+
+.process-step:hover .process-icon {
+    transform: translateY(-3px) scale(1.06);
+
+    border-color: #ffb000;
+
+    box-shadow:
+        0 0 0 6px rgba(255,176,0,.04),
+        0 0 28px rgba(255,176,0,.25);
+}
+
+.process-step:hover .process-info strong {
+    color: #ffb000;
+
+    text-shadow:
+        0 0 12px rgba(255,176,0,.3);
+}
+
+
+/* ---------- SIGNAL ---------- */
+
+@keyframes huyipProcessSignal {
+
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        left: calc(100% - 5px);
+        opacity: 0;
+    }
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 650px) {
+
+    .huyip-process {
+        padding: 22px 16px;
+        margin: 15px 0;
+    }
+
+    .process-head {
+        margin-bottom: 22px;
+    }
+
+    .process-steps {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .process-step {
+        flex-direction: row;
+
+        text-align: left;
+
+        gap: 14px;
+    }
+
+    .process-icon {
+        width: 44px;
+        height: 44px;
+
+        flex: 0 0 44px;
+    }
+
+    .process-info {
+        margin-top: 3px;
+    }
+
+    .process-info strong {
+        font-size: 12px;
+    }
+
+    .process-info small {
+        font-size: 9px;
+    }
+
+    .process-line {
+        width: 44px;
+        height: 34px;
+
+        justify-content: center;
+    }
+
+    .process-line::before {
+        width: 1px;
+        height: 100%;
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255,176,0,.15),
+                rgba(255,176,0,.8),
+                rgba(255,176,0,.15)
+            );
+    }
+
+    .process-line span {
+        display: none;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#about,
+#system,
+#process,
+#faq,
+#contact {
+    scroll-margin-top: 90px;
+}
+
+/* ==================================================
+   HUYIP TOP NAV - PREMIUM
+================================================== */
+
+.huyip-top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+
+    align-self: start;
+    justify-self: center;
+
+    margin-top: 18px;
+    padding: 10px 22px;
+
+    background: rgba(8, 7, 4, 0.55);
+    border: 1px solid rgba(255, 176, 0, 0.18);
+    border-radius: 999px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.35),
+        inset 0 0 20px rgba(255,176,0,.025);
+
+    white-space: nowrap;
+}
+
+.huyip-top-nav a {
+    position: relative;
+
+    color: rgba(255,255,255,.62) !important;
+    text-decoration: none !important;
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+
+    transition:
+        color .25s ease,
+        text-shadow .25s ease,
+        transform .25s ease;
+}
+
+.huyip-top-nav a:hover {
+    color: #ffb000 !important;
+
+    text-shadow:
+        0 0 8px rgba(255,176,0,.55),
+        0 0 18px rgba(255,176,0,.25);
+
+    transform: translateY(-1px);
+}
+
+.huyip-top-nav a::after {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    bottom: -6px;
+
+    width: 0;
+    height: 1px;
+
+    background: #ffb000;
+
+    box-shadow: 0 0 8px #ffb000;
+
+    transform: translateX(-50%);
+    transition: width .25s ease;
+}
+
+.huyip-top-nav a:hover::after {
+    width: 100%;
+}
+
+.huyip-top-nav a.active::after {
+    width: 0;
+}
+
+.huyip-top-nav a.active {
+    color: #ffb000 !important;
+    text-shadow: 0 0 10px rgba(255,176,0,.45);
+}
+/* ===== LIQUID NAV INDICATOR ===== */
+
+.huyip-top-nav {
+    position: relative;
+}
+
+.huyip-top-nav a {
+    z-index: 2;
+}
+
+.nav-liquid {
+    display: none;
+    position: absolute;
+
+    left: 0;
+    bottom: 4px;
+
+    width: 70px;
+    height: 3px;
+
+    border-radius: 999px;
+
+    background: #ffb000;
+
+    box-shadow:
+        0 0 8px rgba(255,176,0,.9),
+        0 0 18px rgba(255,176,0,.45);
+
+    pointer-events: none;
+
+    transition:
+        left .45s cubic-bezier(.2,.9,.2,1),
+        width .45s cubic-bezier(.2,.9,.2,1);
+
+    z-index: 1;
+}
+
+/* 2 giọt nhỏ tạo cảm giác liquid */
+.nav-liquid::before,
+.nav-liquid::after {
+    content: "";
+    position: absolute;
+
+    top: 50%;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ffb000;
+
+    transform: translateY(-50%);
+
+    box-shadow: 0 0 10px rgba(255,176,0,.8);
+
+    transition: transform .4s ease;
+}
+
+.nav-liquid::before {
+    left: -2px;
+}
+
+.nav-liquid::after {
+    right: -2px;
+}
+
+.huyip-top-nav.is-moving .nav-liquid::before {
+    transform: translateY(-50%) scale(1.45, .65);
+}
+
+.huyip-top-nav.is-moving .nav-liquid::after {
+    transform: translateY(-50%) scale(1.45, .65);
+}
+
+/* ===== TOPBAR: LOGO | MENU | CLOCK ===== */
+
+.topbar {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto !important;
+    align-items: start !important;
+    column-gap: 28px !important;
+}
+
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 850px) {
+
+    .topbar {
+        grid-template-columns: 1fr auto !important;
+    }
+
+    .huyip-top-nav {
+        grid-column: 1 / -1;
+
+        width: 100%;
+        justify-content: flex-start;
+
+        gap: 22px;
+        margin-top: 12px;
+        padding: 10px 4px;
+
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+
+        overflow-x: auto;
+
+        scrollbar-width: none;
+    }
+
+    .huyip-top-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .huyip-top-nav a {
+        flex: 0 0 auto;
+        font-size: 11px;
+    }
+}
+
+/* ===== LIQUID BLOB - BƯỚC 2 ===== */
+
+
+
+/* lúc đang di chuyển thì cục liquid bị kéo dài */
+
+/* ===== LIQUID MORPH - BƯỚC 3 ===== */
+
+.huyip-top-nav {
+    overflow: visible;
+}
+
+
+
+/* tạo vùng lõm/phồng ngay phía trên cục */
+.nav-liquid {
+    height: 4px;
+    bottom: 2px;
+    border-radius: 999px;
+}
+/* ===== LIQUID INDICATOR GIỐNG VIDEO ===== */
+
+.huyip-top-nav {
+    position: relative;
+    overflow: visible;
+}
+
+.nav-indicator {
+    position: absolute;
+
+    width: 32px;
+    height: 32px;
+
+    top: -20px;
+    left: 0;
+
+    border-radius: 50%;
+
+    background: #ffb000;
+
+    border: 3px solid #0b0b09;
+
+    box-shadow:
+        0 0 12px rgba(255,176,0,.65),
+        0 0 25px rgba(255,176,0,.25);
+
+    pointer-events: none;
+
+    transform: translateX(-50%);
+
+    transition:
+        left .48s cubic-bezier(.65,.05,.2,1);
+
+    z-index: 5;
+}
+
+.nav-indicator::before,
+.nav-indicator::after {
+    content: "";
+    position: absolute;
+
+    top: 24px;
+
+    width: 12px;
+    height: 12px;
+
+    background: transparent;
+
+    pointer-events: none;
+}
+
+.nav-indicator::before,
+.nav-indicator::after {
+    content: "";
+    position: absolute;
+
+    top: 21px;
+
+    width: 10px;
+    height: 10px;
+
+    background: transparent;
+    pointer-events: none;
+}
+
+.nav-indicator::before {
+    left: -8px;
+    border-top-right-radius: 10px;
+    box-shadow: 3px -3px 0 2px #0b0b09;
+}
+
+.nav-indicator::after {
+    right: -8px;
+    border-top-left-radius: 10px;
+    box-shadow: -3px -3px 0 2px #0b0b09;
+}
+.huyip-top-nav.is-moving .nav-indicator {
+    animation: navDive .48s cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes navDive {
+
+    /* đang nhô lên */
+    0% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+
+    /* chìm xuống thanh */
+    28% {
+        transform:
+            translateX(-50%)
+            translateY(14px)
+            scale(.72);
+    }
+
+    /* chạy ngang trong trạng thái chìm */
+    72% {
+        transform:
+            translateX(-50%)
+            translateY(14px)
+            scale(.72);
+    }
+
+    /* tới nơi rồi nhô lên */
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+}
+
+.huyip-top-nav:not(.is-moving) .nav-indicator {
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
+}
+
+.nav-indicator {
+    transition:
+        left .48s cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes navCurveDive {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    28% {
+        opacity: .25;
+        transform: translateY(8px) scale(.7);
+    }
+
+    72% {
+        opacity: .25;
+        transform: translateY(8px) scale(.7);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.huyip-top-nav.is-moving .nav-indicator::before,
+.huyip-top-nav.is-moving .nav-indicator::after {
+    animation: navCurveDive .48s cubic-bezier(.4, 0, .2, 1);
+}
+/* =========================================
+   HUYIP FLOATING / NOTCH NAV
+========================================= */
+
+.huyip-top-nav {
+    --active-x: 0px;
+
+    position: relative !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 0 !important;
+
+    height: 44px !important;
+    padding: 0 16px !important;
+
+    overflow: visible !important;
+
+    background: rgba(8, 7, 4, .78) !important;
+    border: 1px solid rgba(255, 176, 0, .28) !important;
+    border-radius: 18px !important;
+
+    isolation: isolate;
+}
+
+
+/* ===============================
+   TỪNG MỤC
+================================ */
+
+.huyip-top-nav > a {
+    position: relative !important;
+
+    width: 92px !important;
+    height: 44px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;
+
+    color: rgba(255,255,255,.62) !important;
+    text-decoration: none !important;
+
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+
+    z-index: 5 !important;
+
+    transition:
+        color .32s ease,
+        transform .42s cubic-bezier(.34,1.56,.64,1) !important;
+}
+
+
+/* TẮT underline cũ */
+.huyip-top-nav > a::after {
+    display: none !important;
+}
+
+
+/* ===============================
+   ACTIVE NHÔ LÊN
+================================ */
+
+.huyip-top-nav > a.active {
+    color: #ffb000 !important;
+    transform: none !important;
+
+    text-shadow:
+        0 0 8px rgba(255,176,0,.55) !important;
+}
+
+
+/* vòng tròn active */
+.huyip-top-nav > a.active::before {
+    content: "";
+
+    position: absolute;
+
+    width: 38px;
+    height: 38px;
+
+    left: 50%;
+    top: -24px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffd35a,
+            #ffb000 55%,
+            #b96e00
+        );
+
+    border: 3px solid #0b0b09;
+
+    box-shadow:
+        0 0 12px rgba(255,176,0,.55),
+        0 6px 18px rgba(0,0,0,.45);
+
+    z-index: 6;
+}
+
+
+/* ===============================
+   HÕM / NOTCH
+================================ */
+
+.nav-notch {
+    position: absolute;
+
+    top: -1px;
+    left: 0;
+
+    width: 72px;
+    height: 28px;
+
+    pointer-events: none;
+
+    transform:
+        translateX(var(--active-x))
+        translateX(-50%);
+
+    transition:
+        transform .48s cubic-bezier(.65,0,.2,1);
+
+    z-index: 2;
+}
+
+
+/* phần giữa hõm */
+.nav-notch::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: -15px;
+
+    width: 62px;
+    height: 31px;
+
+    transform: translateX(-50%);
+
+    background: #0b0b09;
+
+    border-radius:
+        0 0 32px 32px;
+}
+
+
+/* glow rất nhẹ dưới hõm */
+.nav-notch::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 10px;
+
+    width: 38px;
+    height: 3px;
+
+    transform: translateX(-50%);
+
+    border-radius: 999px;
+
+    background: rgba(255,176,0,.35);
+
+    filter: blur(4px);
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width: 850px) {
+
+    .huyip-top-nav {
+        padding: 0 8px !important;
+    }
+
+    .huyip-top-nav > a {
+        width: 72px !important;
+        font-size: 9px !important;
+    }
+
+    .huyip-top-nav > a.active::before {
+        width: 48px;
+        height: 48px;
+    }
+
+    .huyip-top-nav > a.active {
+        transform: translateY(-20px) !important;
+    }
+}
+/* ==========================================
+   HUYIP NAV - FLOATING ACTIVE TAB
+========================================== */
+
+.huyip-nav {
+    --active-x: 46px;
+
+    position: relative;
+
+    width: max-content;
+    height: 58px;
+
+    margin: 28px auto 0;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 8px;
+
+    background: #0b0a0e;
+
+    border: 1px solid rgba(255, 176, 0, .35);
+    border-radius: 18px;
+
+    overflow: visible;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.35);
+}
+
+
+/* ==============================
+   CÁI HÕM
+============================== */
+
+.huyip-nav-cutout {
+    position: absolute;
+
+    width: 72px;
+    height: 42px;
+
+    left: var(--active-x);
+    top: -1px;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+
+    transition:
+        left .48s cubic-bezier(.22,.9,.22,1);
+}
+
+
+/* khoét giữa thanh */
+.huyip-nav-cutout::before {
+    content: "";
+
+    position: absolute;
+
+    width: 62px;
+    height: 62px;
+
+    left: 50%;
+    top: -34px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #080806;
+
+    box-shadow:
+        0 12px 0 #080806;
+}
+
+
+/* ==============================
+   ITEM
+============================== */
+
+.huyip-nav-item {
+    position: relative;
+
+    width: 90px;
+    height: 58px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none !important;
+
+    color: rgba(255,255,255,.62) !important;
+
+    z-index: 5;
+
+    transition:
+        color .3s ease;
+}
+
+
+/* icon bình thường */
+.huyip-nav-item .nav-icon {
+    position: relative;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    transition:
+        transform .48s cubic-bezier(.22,.9,.22,1),
+        color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* chữ */
+.huyip-nav-item .nav-text {
+    position: absolute;
+
+    bottom: 6px;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .7px;
+
+    opacity: 0;
+
+    transform: translateY(5px);
+
+    transition:
+        opacity .25s ease,
+        transform .35s ease;
+}
+
+
+/* ==============================
+   ACTIVE
+============================== */
+
+.huyip-nav-item.active {
+    color: #ffb000 !important;
+}
+
+
+/* vòng tròn nhô lên */
+.huyip-nav-item.active .nav-icon {
+    width: 50px;
+    height: 50px;
+
+    transform: translateY(-31px);
+
+    border-radius: 50%;
+
+    color: #0b0a0e;
+
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #ffd864,
+            #ffb000 58%,
+            #c77800
+        );
+
+    border: 4px solid #080806;
+
+    box-shadow:
+        0 0 14px rgba(255,176,0,.55),
+        0 7px 20px rgba(0,0,0,.45);
+}
+
+
+/* chữ active nằm dưới cục tròn */
+.huyip-nav-item.active .nav-text {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    color: #ffb000;
+}
+
+
+/* hover mục chưa active */
+.huyip-nav-item:not(.active):hover {
+    color: #ffb000 !important;
+}
+
+
+/* tắt pseudo CSS menu cũ nếu còn ảnh hưởng */
+.huyip-nav a::before,
+.huyip-nav a::after {
+    content: none !important;
+}
+
+
+/* mobile */
+@media (max-width: 700px) {
+
+    .huyip-nav-item {
+        width: 68px;
+    }
+
+    .huyip-nav-item .nav-text {
+        font-size: 8px;
+    }
+
+}
+/* =========================================
+   HUYIP NAV - U NOTCH FLOATING ACTIVE
+========================================= */
+
+.huyip-nav {
+    --active-x: 56px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;
+    height: 58px;
+
+    margin: 34px auto 0;
+    padding: 0 10px;
+
+    background: #0b0a0e;
+    border: 1px solid rgba(255,176,0,.28);
+    border-radius: 18px;
+
+    overflow: visible;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.32);
+
+    isolation: isolate;
+}
+
+
+/* ===========================
+   U-SHAPED NOTCH
+=========================== */
+
+.huyip-notch {
+    position: absolute;
+
+    left: var(--active-x);
+    top: 0px;
+
+    width: 76px;
+    height: 46px;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+
+    transition:
+        left .5s cubic-bezier(.22,.9,.22,1);
+
+    z-index: 2;
+}
+
+
+/* khoét lõm thật bằng nền trang */
+
+
+/* ===========================
+   NAV ITEMS
+=========================== */
+
+.huyip-nav-item {
+    position: relative;
+
+    width: 92px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255,255,255,.62);
+    text-decoration: none !important;
+
+    z-index: 5;
+}
+
+
+/* tắt pseudo cũ nếu có */
+.huyip-nav-item::before,
+.huyip-nav-item::after {
+    content: none !important;
+}
+
+
+/* icon bình thường */
+.huyip-nav-item .nav-icon {
+    position: absolute;
+
+    top: 10px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    transition:
+        top .48s cubic-bezier(.22,.9,.22,1),
+        width .35s ease,
+        height .35s ease,
+        background .35s ease,
+        color .35s ease,
+        box-shadow .35s ease;
+}
+
+
+/* label */
+.huyip-nav-item .nav-label {
+    position: absolute;
+
+    bottom: 5px;
+
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .7px;
+
+    opacity: .72;
+
+    transition:
+        color .3s ease,
+        opacity .3s ease;
+}
+
+
+/* ===========================
+   ACTIVE
+=========================== */
+
+.huyip-nav-item.active {
+    color: #ffb000;
+}
+
+
+/* cục tròn nhô lên */
+.huyip-nav-item.active .nav-icon {
+    top: -17px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    color: #0b0a0e;
+
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #ffe17d,
+            #ffb000 56%,
+            #c47800
+        );
+
+    border: 3px solid #080806;
+
+    box-shadow:
+        0 0 12px rgba(255,176,0,.55),
+        0 6px 18px rgba(0,0,0,.4);
+
+    z-index: 6;
+}
+
+
+/* chữ active */
+.huyip-nav-item.active .nav-label {
+    color: #ffb000;
+    opacity: 1;
+}
+
+
+/* hover */
+.huyip-nav-item:not(.active):hover {
+    color: #ffb000;
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 760px) {
+
+    .huyip-nav {
+        padding: 0 6px;
+    }
+
+    .huyip-nav-item {
+        width: 70px;
+    }
+
+    .huyip-nav-item .nav-label {
+        font-size: 8px;
+    }
+
+    .huyip-nav-item.active .nav-icon {
+        width: 44px;
+        height: 44px;
+        top: -12px;
+    }
+
+}
+/* ===== HÕM CHỮ U THẬT ===== */
+
+.huyip-nav {
+    background: transparent !important;
+    border: 0 !important;
+}
+
+/* thân thanh có hõm khoét thật */
+.huyip-nav::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: #0b0a0e;
+
+    border: 1px solid rgba(255,176,0,.35);
+    border-radius: 18px;
+
+    -webkit-mask:
+        radial-gradient(
+            circle 34px at var(--active-x) -1px,
+            transparent 33px,
+            #000 34px
+        );
+
+    mask:
+        radial-gradient(
+            circle 34px at var(--active-x) -1px,
+            transparent 33px,
+            #000 34px
+        );
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* chỉ giữ đường cong vàng của hõm */
+.huyip-notch {
+    position: absolute;
+
+    left: var(--active-x);
+    top: -1px;
+
+    width: 62px;
+    height: 31px;
+
+    transform: translateX(-50%);
+
+    border-radius: 0 0 32px 32px;
+
+    border-bottom: 2px solid #ffb000;
+
+    box-shadow:
+        0 4px 8px rgba(255,176,0,.25);
+
+    transition:
+        left .5s cubic-bezier(.22,.9,.22,1);
+
+    pointer-events: none;
+    z-index: 3;
+}
+/* =========================================
+   FINAL U-NOTCH - GIỐNG MẪU
+========================================= */
+
+.huyip-nav {
+    --notch-size: 82px;
+
+    position: relative !important;
+    overflow: visible !important;
+
+    background: transparent !important;
+    border: 0 !important;
+}
+
+
+/* THÂN THANH + HÕM CHỮ U THẬT */
+.huyip-nav::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: #0b0a0e;
+
+    border: 1px solid rgba(255,176,0,.30);
+    border-radius: 18px;
+
+    -webkit-mask:
+        radial-gradient(
+            circle 42px at var(--active-x) 0px,
+            transparent 41px,
+            #000 42px
+        );
+
+    mask:
+        radial-gradient(
+            circle 42px at var(--active-x) 0px,
+            transparent 41px,
+            #000 42px
+        );
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* VIỀN CONG CHỮ U */
+.huyip-notch {
+    position: absolute !important;
+
+    left: var(--active-x) !important;
+    top: -1px !important;
+
+    width: 84px !important;
+    height: 42px !important;
+
+    transform: translateX(-50%) !important;
+
+    border: 0 !important;
+    border-bottom: 2px solid #ffb000 !important;
+
+    border-radius:
+        0 0 44px 44px !important;
+
+    box-shadow:
+        0 5px 10px rgba(255,176,0,.28) !important;
+
+    pointer-events: none !important;
+
+    transition:
+        left .5s cubic-bezier(.22,.9,.22,1) !important;
+
+    z-index: 3 !important;
+}
+
+
+/* TẮT 2 HÌNH GIẢ CŨ */
+.huyip-notch::before,
+.huyip-notch::after {
+    content: none !important;
+}
+
+
+/* CỤC ACTIVE */
+.huyip-nav-item.active .nav-icon {
+    top: -18px !important;
+
+    width: 50px !important;
+    height: 50px !important;
+
+    border-radius: 50% !important;
+
+    border: 3px solid #080806 !important;
+
+    z-index: 10 !important;
+}
+
+
+/* MOBILE CŨ KHÔNG ĐƯỢC ĐÈ VỊ TRÍ NÀY */
+@media (max-width: 760px) {
+
+    .huyip-nav-item.active .nav-icon {
+        top: -18px !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .huyip-notch {
+        width: 84px !important;
+        height: 42px !important;
+    }
+
+}
+/* ===== CĂN CỤC ACTIVE VÀO TRONG HÕM ===== */
+
+.huyip-nav-item.active .nav-icon {
+    top: -6px !important;
+
+    width: 50px !important;
+    height: 50px !important;
+
+    border: 3px solid #080806 !important;
+
+    z-index: 20 !important;
+}
+
+@media (max-width: 760px) {
+    .huyip-nav-item.active .nav-icon {
+        top: -6px !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+}
+/* HẠ CỤC ACTIVE XUỐNG RÕ RỆT */
+.huyip-nav-item.active .nav-icon {
+    top: -18px !important;
+
+    
+
+    width: 50px !important;
+    height: 50px !important;
+
+    z-index: 20 !important;
+}
+
+@media (max-width: 760px) {
+    .huyip-nav-item.active .nav-icon {
+        top: -18px !important;
+    
+    }
+}
+/* =========================================
+   HUYIP NAV - FINAL SVG NOTCH
+========================================= */
+
+.huyip-nav {
+    position: relative !important;
+
+    width: min(460px, calc(100vw - 32px)) !important;
+    height: 82px !important;
+
+    margin: 26px auto 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: flex-end !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+
+    overflow: visible !important;
+
+    isolation: isolate;
+}
+
+
+/* SVG THÂN THANH */
+.huyip-nav-shape {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 82px;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+#huyipNavPath {
+    fill: #0b0a0e;
+
+    stroke: rgba(255,176,0,.55);
+    stroke-width: 1.2;
+
+    filter:
+        drop-shadow(0 10px 18px rgba(0,0,0,.35));
+}
+
+
+/* MỖI MỤC */
+.huyip-nav-item {
+    position: relative !important;
+
+    flex: 1 1 0 !important;
+    width: auto !important;
+    height: 60px !important;
+
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    color: rgba(255,255,255,.65) !important;
+    text-decoration: none !important;
+
+    transform: none !important;
+
+    z-index: 5 !important;
+}
+
+
+/* GIẾT pseudo cũ */
+.huyip-nav-item::before,
+.huyip-nav-item::after {
+    content: none !important;
+}
+
+
+/* ICON */
+.huyip-nav-item .nav-icon {
+    position: absolute !important;
+
+    top: 13px !important;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border: 0 !important;
+    border-radius: 50% !important;
+
+    background: transparent !important;
+
+    color: rgba(255,255,255,.78) !important;
+
+    font-size: 17px !important;
+    font-weight: 900 !important;
+
+    transform: translateY(0) !important;
+
+    box-shadow: none !important;
+
+    transition:
+        top .42s cubic-bezier(.2,.9,.2,1),
+        width .42s cubic-bezier(.2,.9,.2,1),
+        height .42s cubic-bezier(.2,.9,.2,1),
+        background .3s ease,
+        color .3s ease,
+        box-shadow .3s ease !important;
+
+    z-index: 8 !important;
+}
+
+
+/* CHỮ */
+.huyip-nav-item .nav-label {
+    position: absolute !important;
+
+    bottom: 7px !important;
+
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: .65px !important;
+
+    color: rgba(255,255,255,.64) !important;
+
+    white-space: nowrap;
+
+    transition:
+        color .3s ease,
+        opacity .3s ease !important;
+}
+
+
+/* ACTIVE */
+.huyip-nav-item.active .nav-icon {
+    top: -17px !important;
+
+    width: 52px !important;
+    height: 52px !important;
+
+    background:
+        radial-gradient(
+            circle at 34% 28%,
+            #ffe27a 0%,
+            #ffb000 58%,
+            #c77800 100%
+        ) !important;
+
+    color: #090909 !important;
+
+    border: 3px solid #090909 !important;
+
+    box-shadow:
+        0 0 12px rgba(255,176,0,.75),
+        0 0 26px rgba(255,176,0,.28),
+        0 8px 18px rgba(0,0,0,.42) !important;
+}
+
+
+.huyip-nav-item.active .nav-label {
+    color: #ffb000 !important;
+}
+
+
+/* HOVER */
+.huyip-nav-item:not(.active):hover .nav-icon,
+.huyip-nav-item:not(.active):hover .nav-label {
+    color: #ffb000 !important;
+}
+
+
+@media (max-width: 760px) {
+
+    .huyip-nav {
+        width: min(430px, calc(100vw - 24px)) !important;
+    }
+
+    .huyip-nav-item .nav-label {
+        font-size: 8px !important;
+        letter-spacing: .35px !important;
+    }
+
+}
+
+
+/* ===== HUYIP TOP NAV — FINAL U-NOTCH ===== */
+.huyip-nav#huyipNav {
+    position: relative !important;
+    width: min(620px, calc(100vw - 32px)) !important;
+    height: 96px !important;
+    margin: 20px auto 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: stretch !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    isolation: isolate !important;
+}
+.huyip-nav#huyipNav::before,
+.huyip-nav#huyipNav::after { content:none !important; display:none !important; }
+
+.huyip-nav#huyipNav .huyip-nav-shape {
+    position:absolute !important; inset:0 !important;
+    width:100% !important; height:96px !important;
+    overflow:visible !important; pointer-events:none !important; z-index:0 !important;
+}
+.huyip-nav#huyipNav #huyipNavPath {
+    fill:rgba(10,10,13,.97) !important;
+    stroke:rgba(255,176,0,.78) !important;
+    stroke-width:1.25 !important;
+    vector-effect:non-scaling-stroke;
+    filter:drop-shadow(0 12px 18px rgba(0,0,0,.52)) drop-shadow(0 0 5px rgba(255,176,0,.08)) !important;
+}
+.huyip-nav#huyipNav .huyip-nav-item {
+    position:relative !important;
+    flex:1 1 20% !important; width:20% !important; height:65px !important;
+    margin:0 !important; padding:0 2px 8px !important;
+    display:flex !important; flex-direction:column !important;
+    align-items:center !important; justify-content:flex-end !important; gap:3px !important;
+    color:rgba(255,255,255,.78) !important;
+    text-decoration:none !important; transform:none !important;
+    background:transparent !important; border:0 !important; z-index:5 !important;
+}
+.huyip-nav#huyipNav .huyip-nav-item::before,
+.huyip-nav#huyipNav .huyip-nav-item::after { content:none !important; display:none !important; }
+
+.huyip-nav#huyipNav .nav-icon {
+    position:absolute !important; top:6px !important; left:50% !important;
+    transform:translateX(-50%) !important;
+    width:31px !important; height:31px !important;
+    display:flex !important; align-items:center !important; justify-content:center !important;
+    border:0 !important; border-radius:50% !important;
+    background:transparent !important; color:rgba(255,255,255,.86) !important;
+    box-shadow:none !important; font-size:18px !important; line-height:1 !important; font-weight:800 !important;
+    transition:top .42s cubic-bezier(.22,.9,.22,1),width .42s cubic-bezier(.22,.9,.22,1),height .42s cubic-bezier(.22,.9,.22,1),background .3s ease,color .3s ease,box-shadow .3s ease !important;
+}
+.huyip-nav#huyipNav .nav-label {
+    position:static !important; margin:0 !important; padding:0 !important;
+    color:rgba(255,255,255,.72) !important;
+    font-size:10px !important; line-height:1 !important; font-weight:700 !important;
+    letter-spacing:.45px !important; white-space:nowrap !important;
+    opacity:1 !important; transform:none !important; transition:color .3s ease !important;
+}
+.huyip-nav#huyipNav .huyip-nav-item.active .nav-icon {
+    top:-29px !important; width:66px !important; height:66px !important;
+    background:radial-gradient(circle at 35% 27%,#fff0a4 0%,#ffd44e 24%,#ffb000 62%,#d88600 100%) !important;
+    color:#090909 !important; border:3px solid #080808 !important;
+    box-shadow:0 0 12px rgba(255,176,0,.92),0 0 28px rgba(255,176,0,.42),0 8px 18px rgba(0,0,0,.55) !important;
+    z-index:20 !important;
+}
+.huyip-nav#huyipNav .huyip-nav-item.active .nav-label {
+    color:#ffbd18 !important; font-weight:800 !important;
+}
+.huyip-nav#huyipNav .huyip-nav-item:not(.active):hover .nav-icon,
+.huyip-nav#huyipNav .huyip-nav-item:not(.active):hover .nav-label { color:#ffbd18 !important; }
+
+@media (max-width:760px) {
+    .huyip-nav#huyipNav { width:calc(100vw - 24px) !important; max-width:560px !important; height:90px !important; }
+    .huyip-nav#huyipNav .huyip-nav-shape { height:96px !important; }
+    .huyip-nav#huyipNav .nav-label { font-size:8px !important; letter-spacing:.15px !important; }
+    .huyip-nav#huyipNav .huyip-nav-item.active .nav-icon { top:-27px !important; width:62px !important; height:62px !important; }
+}
+
+/* ===== HUYIP NAV ICONS — CLEAN FINAL ===== */
+#huyipNav .huyip-nav-item .nav-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    font-size: 0 !important;
+}
+
+/* icon thường */
+#huyipNav .huyip-nav-item:not(.active) .nav-icon {
+    width: 40px !important;
+    height: 40px !important;
+    color: #f4f4f4 !important;
+}
+
+#huyipNav .nav-icon svg {
+    display: block !important;
+    width: 28px !important;
+    height: 28px !important;
+    overflow: visible !important;
+
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 1.9 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#huyipNav .nav-icon svg path,
+#huyipNav .nav-icon svg circle,
+#huyipNav .nav-icon svg rect {
+    vector-effect: non-scaling-stroke;
+}
+
+/* active: icon lớn, đen nằm trong cục vàng */
+#huyipNav .huyip-nav-item.active .nav-icon {
+    width: 66px !important;
+    height: 66px !important;
+    color: #111 !important;
+}
+
+#huyipNav .huyip-nav-item.active .nav-icon svg {
+    width: 32px !important;
+    height: 32px !important;
+    stroke: #111 !important;
+}
+
+/* dấu chấm FAQ */
+#huyipNav .nav-dot {
+    fill: currentColor !important;
+    stroke: none !important;
+}
+
+/* hover nhẹ */
+#huyipNav .huyip-nav-item:not(.active):hover .nav-icon {
+    color: #ffbd18 !important;
+}
+
+/* ===== NAV FIXED BOTTOM - FINAL ===== */
+
+html body #huyipNav {
+    position: fixed !important;
+
+    top: auto !important;
+    right: auto !important;
+
+    bottom: 25px !important;
+    left: 50% !important;
+
+    margin: 0 !important;
+
+    transform: translate3d(-50%, 0, 0) !important;
+
+    width: min(620px, calc(100vw - 40px)) !important;
+
+    z-index: 999999 !important;
+}
+
+/* chừa chỗ dưới trang cho thanh nav */
+body {
+    padding-bottom: 150px !important;
+}
+/* ===== NAV CỐ ĐỊNH DƯỚI MÀN HÌNH ===== */
+
+#huyipNav.nav-fixed-bottom {
+    position: fixed !important;
+
+    left: 50% !important;
+    right: auto !important;
+
+    top: auto !important;
+    bottom: 18px !important;
+
+    margin: 0 !important;
+
+    transform: translateX(-50%) !important;
+
+    width: min(620px, calc(100vw - 32px)) !important;
+
+    z-index: 2147483647 !important;
+}
+
+body {
+    padding-bottom: 135px !important;
+}
+/* ẨN NAV KHI ĐANG Ở MÀN HÌNH WELCOME */
+body:has(#huyipWelcome[aria-hidden="false"]) #huyipNav {
+    display: none !important;
+}
+
+/* =========================================================
+   HUYIP BOTTOM NAV — FINAL SMOOTH MOVING BALL + U NOTCH
+   ========================================================= */
+
+#huyipNav.nav-fixed-bottom,
+html body #huyipNav {
+    position: fixed !important;
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 18px !important;
+    transform: translateX(-50%) !important;
+    width: min(620px, calc(100vw - 32px)) !important;
+    height: 96px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: 0 !important;
+    z-index: 2147483647 !important;
+    isolation: isolate !important;
+}
+
+#huyipNav .huyip-nav-shape {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 96px !important;
+    overflow: visible !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+#huyipNav #huyipNavPath {
+    fill: rgba(8, 8, 11, .98) !important;
+    stroke: rgba(255, 176, 0, .82) !important;
+    stroke-width: 1.25 !important;
+    vector-effect: non-scaling-stroke !important;
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,.48)) !important;
+}
+
+/* 5 tab luôn nằm yên; chỉ cục vàng + hõm chạy */
+#huyipNav .huyip-nav-item {
+    position: relative !important;
+    flex: 1 1 20% !important;
+    width: 20% !important;
+    height: 64px !important;
+    margin: 0 !important;
+    padding: 0 2px 7px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 3px !important;
+    background: transparent !important;
+    border: 0 !important;
+    text-decoration: none !important;
+    z-index: 6 !important;
+}
+
+#huyipNav .huyip-nav-item::before,
+#huyipNav .huyip-nav-item::after {
+    content: none !important;
+    display: none !important;
+}
+
+#huyipNav .huyip-nav-item .nav-icon {
+    position: absolute !important;
+    left: 50% !important;
+    top: 7px !important;
+    transform: translateX(-50%) !important;
+    width: 34px !important;
+    height: 34px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #f2f2f2 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 7 !important;
+}
+
+#huyipNav .huyip-nav-item .nav-icon svg {
+    width: 25px !important;
+    height: 25px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 1.9 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+
+#huyipNav .nav-dot {
+    fill: currentColor !important;
+    stroke: none !important;
+}
+
+#huyipNav .huyip-nav-item .nav-label {
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: rgba(255,255,255,.74) !important;
+    font-size: 9px !important;
+    line-height: 1 !important;
+    font-weight: 700 !important;
+    letter-spacing: .35px !important;
+    white-space: nowrap !important;
+    opacity: 1 !important;
+}
+
+/* Icon của tab active nằm trong moving ball nên icon gốc được ẩn. */
+
+
+#huyipNav .huyip-nav-item.active .nav-label {
+    color: #ffbd18 !important;
+    font-weight: 800 !important;
+}
+
+#huyipNav .huyip-nav-item:not(.active):hover .nav-icon,
+#huyipNav .huyip-nav-item:not(.active):hover .nav-label {
+    color: #ffbd18 !important;
+}
+
+/* CỤC TRÒN VÀNG LỒI LÊN — luôn tồn tại và chạy cùng hõm */
+#huyipNav .nav-moving-ball {
+    position: absolute !important;
+    left: 0;
+    top: -1px !important;
+    width: 66px !important;
+    height: 66px !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle at 35% 27%, #fff1a6 0%, #ffd34b 24%, #ffb000 62%, #d88600 100%) !important;
+    border: 3px solid #080808 !important;
+    box-shadow: 0 0 12px rgba(255,176,0,.95), 0 0 28px rgba(255,176,0,.42), 0 8px 18px rgba(0,0,0,.55) !important;
+    pointer-events: none !important;
+    z-index: 20 !important;
+    will-change: left !important;
+}
+
+#huyipNav .nav-moving-ball svg {
+    width: 31px !important;
+    height: 31px !important;
+    fill: none !important;
+    stroke: #111 !important;
+    stroke-width: 2 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+
+#huyipNav .nav-moving-ball .nav-dot {
+    fill: #111 !important;
+    stroke: none !important;
+}
+
+/* Trong lúc chạy, label cũ vẫn vàng tới khi cục tới nơi; không có nháy layout. */
+#huyipNav.is-sliding .huyip-nav-item {
+    pointer-events: auto !important;
+}
+
+/* Chừa khoảng trống để nav không che nội dung cuối trang */
+body {
+    padding-bottom: 135px !important;
+}
+
+/* Welcome mở thì nav tuyệt đối không xuất hiện */
+body:has(#huyipWelcome[aria-hidden="false"]) #huyipNav {
+    display: none !important;
+}
+
+@media (max-width: 760px) {
+    #huyipNav.nav-fixed-bottom,
+    html body #huyipNav {
+        width: calc(100vw - 20px) !important;
+        max-width: 560px !important;
+        bottom: 10px !important;
+    }
+
+    #huyipNav .huyip-nav-item .nav-label {
+        font-size: 8px !important;
+        letter-spacing: .1px !important;
+    }
+
+    #huyipNav .nav-moving-ball {
+        width: 62px !important;
+        height: 62px !important;
+        top: 1px !important;
+    }
+
+    #huyipNav .nav-moving-ball svg {
+        width: 29px !important;
+        height: 29px !important;
+    }
+}
+/* ===== GIỮ ICON ĐỨNG YÊN, KHÔNG NHẢY ===== */
+
+#huyipNav .huyip-nav-item .nav-icon {
+    top: 6px !important;
+    width: 40px !important;
+    height: 40px !important;
+
+    opacity: 1 !important;
+    transform: translateX(-50%) !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* active không bay lên nữa */
+#huyipNav .huyip-nav-item.active .nav-icon {
+    top: 6px !important;
+    width: 40px !important;
+    height: 40px !important;
+    opacity: 1 !important;
+}
+
+/* icon thường trắng */
+#huyipNav .huyip-nav-item:not(.active) .nav-icon svg {
+    stroke: #f4f4f4 !important;
+}
+
+/* icon tab active đổi đen khi cục tới */
+#huyipNav .huyip-nav-item.active .nav-icon svg {
+    stroke: #111 !important;
+}
+
+/* ===== CHỈ GIỮ 1 CỤC VÀNG ===== */
+
+#huyipNav .huyip-nav-item.active .nav-icon {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    top: 6px !important;
+    opacity: 1 !important;
+}
+
+/* không để pseudo-element cũ tạo thêm hình tròn */
+#huyipNav .huyip-nav-item.active .nav-icon::before,
+#huyipNav .huyip-nav-item.active .nav-icon::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* cục vàng duy nhất */
+#huyipNav .nav-moving-ball {
+    display: flex !important;
+    opacity: 1 !important;
+}
+
+
+
+/* =========================================================
+   HUYIP DOCK NAV — ISOLATED CLEAN VERSION
+   Không dùng class cũ nên 18 block CSS nav cũ không thể đè.
+   ========================================================= */
+
+html body #huyipDockNav.huyip-dock {
+    position: fixed !important;
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 18px !important;
+    transform: translateX(-50%) !important;
+
+    width: min(620px, calc(100vw - 32px)) !important;
+    height: 96px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    align-items: flex-end !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    overflow: visible !important;
+
+    z-index: 2147483647 !important;
+    isolation: isolate !important;
+}
+
+#huyipDockNav .dock-shape {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 96px !important;
+    pointer-events: none !important;
+    overflow: visible !important;
+    z-index: 0 !important;
+}
+
+#huyipDockNav #huyipDockPath {
+    fill: rgba(8,8,11,.98) !important;
+    stroke: rgba(255,176,0,.82) !important;
+    stroke-width: 1.25 !important;
+    vector-effect: non-scaling-stroke !important;
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,.48)) !important;
+}
+
+/* 5 tab đứng yên hoàn toàn */
+#huyipDockNav > .dock-item {
+    position: relative !important;
+    flex: 1 1 20% !important;
+    width: 20% !important;
+    height: 64px !important;
+
+    margin: 0 !important;
+    padding: 0 2px 7px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 3px !important;
+
+    transform: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    text-decoration: none !important;
+
+    z-index: 10 !important;
+}
+
+#huyipDockNav > .dock-item > .dock-icon {
+    position: absolute !important;
+    left: 50% !important;
+    top: 7px !important;
+    transform: translateX(-50%) !important;
+
+    width: 34px !important;
+    height: 34px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #f2f2f2 !important;
+
+    z-index: 11 !important;
+}
+
+#huyipDockNav > .dock-item > .dock-icon svg {
+    width: 25px !important;
+    height: 25px !important;
+    fill: none !important;
+    stroke: #f2f2f2 !important;
+    stroke-width: 1.9 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+
+/* active icon gốc ẩn; moving ball đang chứa icon đó */
+#huyipDockNav > .dock-item.active > .dock-icon {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+#huyipDockNav .dock-dot {
+    fill: currentColor !important;
+    stroke: none !important;
+}
+
+#huyipDockNav > .dock-item > .dock-label {
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+
+    color: rgba(255,255,255,.75) !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: .25px !important;
+    white-space: nowrap !important;
+
+    opacity: 1 !important;
+}
+
+#huyipDockNav > .dock-item.active > .dock-label {
+    color: #ffbd18 !important;
+    font-weight: 800 !important;
+}
+
+/* CỤC VÀNG DUY NHẤT */
+#huyipDockNav > #huyipDockBall.dock-ball {
+    position: absolute !important;
+    top: -1px !important;
+    left: 0;
+
+    width: 66px !important;
+    height: 66px !important;
+
+    transform: translateX(-50%) !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 50% !important;
+
+    background:
+        radial-gradient(
+            circle at 35% 27%,
+            #fff1a6 0%,
+            #ffd34b 24%,
+            #ffb000 62%,
+            #d88600 100%
+        ) !important;
+
+    border: 3px solid #080808 !important;
+
+    box-shadow:
+        0 0 12px rgba(255,176,0,.95),
+        0 0 28px rgba(255,176,0,.42),
+        0 8px 18px rgba(0,0,0,.55) !important;
+
+    pointer-events: none !important;
+    z-index: 100 !important;
+    will-change: left !important;
+}
+
+#huyipDockNav > #huyipDockBall.dock-ball svg {
+    width: 31px !important;
+    height: 31px !important;
+
+    fill: none !important;
+    stroke: #111 !important;
+    stroke-width: 2 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+
+#huyipDockNav > #huyipDockBall.dock-ball .dock-dot {
+    fill: #111 !important;
+    stroke: none !important;
+}
+
+body {
+    padding-bottom: 135px !important;
+}
+
+/* welcome mở thì nav ẩn */
+body:has(#huyipWelcome[aria-hidden="false"]) #huyipDockNav {
+    display: none !important;
+}
+
+@media (max-width: 760px) {
+    html body #huyipDockNav.huyip-dock {
+        width: calc(100vw - 20px) !important;
+        max-width: 560px !important;
+        bottom: 10px !important;
+    }
+
+    #huyipDockNav > .dock-item > .dock-label {
+        font-size: 8px !important;
+    }
+
+    #huyipDockNav > #huyipDockBall.dock-ball {
+        width: 62px !important;
+        height: 62px !important;
+        top: 1px !important;
+    }
+
+    #huyipDockNav > #huyipDockBall.dock-ball svg {
+        width: 29px !important;
+        height: 29px !important;
+    }
+}
+
