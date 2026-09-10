@@ -8322,4 +8322,21 @@ body:has(#huyipWelcome[aria-hidden="false"]) #huyipDockNav {
         height: 29px !important;
     }
 }
+/* ẨN THANH MENU DƯỚI — KHÔNG XÓA */
+.bottom-nav {
+    display: none !important;
+}
 
+/* ẨN THANH HUYIP DOCK - KHÔNG XÓA HTML */
+#huyipDockNav {
+    display: none !important;
+}
+/* ẨN HUYIP DOCK - GIỮ NGUYÊN HTML + JS */
+nav.huyip-dock,
+#huyipDockNav,
+.huyip-dock {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
