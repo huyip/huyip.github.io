@@ -8340,95 +8340,13 @@ nav.huyip-dock,
     opacity: 0 !important;
     pointer-events: none !important;
 }
-/* ===== FIX MOBILE - GIỮ LAYOUT NHƯ ẢNH MẪU ===== */
-@media (max-width: 760px) {
-
-    .container {
-        width: calc(100% - 68px) !important;
-        max-width: none !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .layout {
-        width: 100% !important;
-        display: block !important;
-    }
-
-    .left-column,
-    .right-column {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    .left-column {
-        margin-bottom: 20px !important;
-    }
-
-    .right-column {
-        margin-top: 20px !important;
-    }
-}
-/* ===== MOBILE GAME TABLE FIX ===== */
-@media (max-width: 760px) {
-
-    .game-dropdown-menu {
-    width: 100% !important;
-    overflow-x: auto !important;
-    overflow-y: visible !important;
+.game-status a {
+    color: #ffb000;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
 }
 
-    .game-row {
-        display: grid !important;
-        grid-template-columns: 68px 82px minmax(0, 1fr) !important;
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    .game-code {
-        min-width: 0 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-    }
-
-    .game-meta {
-        min-width: 0 !important;
-        white-space: normal !important;
-        overflow: hidden !important;
-        font-size: 9px !important;
-    }
-
-    .game-status {
-        min-width: 0 !important;
-        width: 100% !important;
-        padding: 8px 5px !important;
-        font-size: 9px !important;
-        line-height: 1.35 !important;
-        white-space: normal !important;
-        word-break: normal !important;
-        overflow-wrap: break-word !important;
-        text-align: center !important;
-    }
-}
-@media (max-width: 760px) {
-    html,
-    body {
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        height: auto !important;
-    }
-
-    .container {
-        overflow: visible !important;
-    }
-
-    .layout {
-        overflow: visible !important;
-    }
-
-    .game-dropdown-menu {
-        overflow-x: auto !important;
-        overflow-y: visible !important;
-    }
+.game-status a:hover {
+    color: #ffc533;
 }
