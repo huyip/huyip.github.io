@@ -928,27 +928,10 @@ gameDropdownBtn.addEventListener("click", function () {
 });
 
 document.querySelectorAll(".game-row").forEach(function (row) {
-    row.addEventListener("click", function (event) {
-
-        const game = row.dataset.game;
-
-        // BẤM TÊN CỔNG BÊN TRÁI -> CHỌN CỔNG
-        if (event.target.closest(".game-code")) {
-            selectedGame.textContent = game;
-            gameDropdown.classList.remove("open");
-            updateRunButton();
-            return;
-        }
-
-        // BẤM PHẦN GIỮA -> GIỮ CHỨC NĂNG CŨ
-        if (game === "1-XX88") {
-            window.location.href =
-                "https://dggqb.xx0733.com/register.html";
-            return;
-        }
-
-        // Các cổng khác
-        showLowRateWarning();
+    row.addEventListener("click", function () {
+        selectedGame.textContent = row.dataset.game;
+        gameDropdown.classList.remove("open");
+        updateRunButton();
     });
 });
 

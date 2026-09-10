@@ -9317,8 +9317,12 @@ nav.huyip-dock,
   }
 
   #process .process-mini {
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    color: #ffc563;
+    opacity: 1;
   }
 
   #process .process-head h3 {
@@ -9440,5 +9444,14 @@ nav.huyip-dock,
     height: auto;
     margin-top: 12px;
     box-sizing: border-box;
+  }
+}
+
+/* Match the Code Manager icon's gold color on desktop. */
+@media (min-width: 761px) {
+  #system .left-column > .panel:first-child .title-icon > svg {
+    fill: #ffb000;
+    stroke: #ffb000;
+    filter: drop-shadow(0 0 2px rgba(255, 176, 0, .45));
   }
 }
