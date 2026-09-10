@@ -8432,3 +8432,1013 @@ nav.huyip-dock,
         overflow-y: visible !important;
     }
 }
+/* ===== SỬA VỊ TRÍ THỜI GIAN MOBILE ===== */
+@media (max-width: 760px) {
+    .topbar .clock {
+        position: absolute !important;
+        top: 78px !important;
+       left: auto !important;
+       right: 15px !important;
+        transform: none !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: max-content !important;
+        max-width: calc(100% - 40px) !important;
+
+        margin: 0 !important;
+        font-size: 8px !important;
+        white-space: nowrap !important;
+        z-index: 20 !important;
+    }
+
+    .topbar .clock span:last-child {
+        font-size: 8px !important;
+        white-space: nowrap !important;
+    }
+}
+/* ===== CLOCK: GÓC PHẢI TRÊN CÙNG MOBILE ===== */
+@media (max-width: 760px) {
+    header.topbar {
+        position: relative !important;
+    }
+
+   header.topbar .clock {
+    position: absolute !important;
+    top: -30px !important;
+    right: 5px !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    transform: none !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    width: max-content !important;
+    max-width: 110px !important;
+
+    font-size: 7px !important;
+    white-space: nowrap !important;
+    z-index: 9999 !important;
+}
+}
+@media (max-width: 760px) {
+    .panel .panel-action,
+    .panel button,
+    .panel .action-btn {
+        min-height: 40px !important;
+        height: 40px !important;
+        padding: 6px 12px !important;
+        font-size: 12px !important;
+        border-radius: 10px !important;
+    }
+}
+/* ===== CODE MANAGER MOBILE ===== */
+@media (max-width: 760px) {
+
+    #startBtn.primary-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 100% !important;
+        height: 42px !important;
+        min-height: 42px !important;
+
+        box-sizing: border-box !important;
+
+        padding: 8px 14px !important;
+
+        font-size: 12px !important;
+        line-height: 1.2 !important;
+        font-weight: 700 !important;
+
+        border-radius: 10px !important;
+
+        white-space: nowrap !important;
+        overflow: hidden !important;
+    }
+}
+/* ===== MOBILE - CARD ĐẦY ĐẶN ===== */
+@media (max-width: 760px) {
+
+  /* Card Code Manager */
+  .panel {
+    width: calc(100% - 24px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Nội dung bên trong card */
+  .panel .panel-title {
+    padding: 0 !important;
+  }
+
+  .panel .feature-list {
+    margin-top: 14px !important;
+    padding-left: 20px !important;
+  }
+
+  .panel .feature-list li {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Nút tìm cổng / tìm trang */
+  .panel .primary-btn {
+    width: 100% !important;
+    min-height: 54px !important;
+    padding: 12px 18px !important;
+    box-sizing: border-box !important;
+
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+
+    border-radius: 11px !important;
+  }
+
+  /* Code Manager riêng */
+  .left-column > .panel:first-child {
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+
+  /* System Targets */
+  .left-column > .panel:nth-child(2) {
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+
+  /* Tiêu đề */
+  .panel h2 {
+    font-size: 17px !important;
+    line-height: 1.2 !important;
+  }
+
+  .panel-title p {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Không cho card bị bóp quá nhỏ */
+  .left-column {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  /* Khoảng cách giữa 2 card */
+  .left-column > .panel {
+    margin-bottom: 16px !important;
+  }
+}
+/* ===== MOBILE: CARD FULL ĐẦY ĐẶN ===== */
+@media (max-width: 760px) {
+
+  .layout {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .left-column {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 0 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .right-column {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .left-column > .panel {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* CODE MANAGER */
+  .left-column > .panel:first-child {
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+
+  .left-column > .panel:first-child .panel-title {
+    margin-bottom: 12px !important;
+  }
+
+  .left-column > .panel:first-child .feature-list {
+    padding-left: 20px !important;
+    margin: 10px 0 14px !important;
+  }
+
+  .left-column > .panel:first-child .feature-list li {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* NÚT CAM */
+  .left-column > .panel:first-child .primary-btn {
+    width: 100% !important;
+    height: 54px !important;
+    min-height: 54px !important;
+    padding: 10px 16px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1.3 !important;
+
+    border-radius: 11px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* SYSTEM TARGETS */
+  .left-column > .panel:nth-child(2) {
+    padding: 20px !important;
+    border-radius: 16px !important;
+  }
+
+}
+/* ===== CODE MANAGER - GIỐNG MẪU ===== */
+@media (max-width: 760px) {
+
+  /* Tiêu đề Code Manager */
+  .left-column > .panel:first-child .panel-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Logo */
+  .left-column > .panel:first-child .title-icon {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 9px !important;
+  }
+
+  .left-column > .panel:first-child .title-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  /* Khối chữ bên phải logo */
+  .left-column > .panel:first-child .panel-title > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+  }
+
+  /* Code Manager */
+  .left-column > .panel:first-child h2 {
+    font-size: 17px !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Bảo vệ & quản lý tài khoản */
+  .left-column > .panel:first-child .panel-title p {
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+    margin: 3px 0 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Danh sách bên dưới */
+  .left-column > .panel:first-child .feature-list {
+    margin-top: 12px !important;
+  }
+
+  .left-column > .panel:first-child .feature-list li {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 7px !important;
+  }
+
+}
+@media (max-width: 760px) {
+
+  /* CODE MANAGER - GIỮ ĐẦY ĐẶN */
+  .left-column .panel:first-child {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 20px !important;
+  }
+
+  /* Logo + tiêu đề */
+  .left-column .panel:first-child .panel-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .left-column .panel:first-child .title-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+  }
+
+  .left-column .panel:first-child .title-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .left-column .panel:first-child h2 {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+  }
+
+  .left-column .panel:first-child .panel-title p {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    margin: 3px 0 0 !important;
+  }
+
+  /* 4 dòng chữ */
+  .left-column .panel:first-child .feature-list {
+    padding-left: 20px !important;
+    margin: 14px 0 16px !important;
+  }
+
+  .left-column .panel:first-child .feature-list li {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Nút */
+  .left-column .panel:first-child .primary-btn {
+    width: 100% !important;
+    min-height: 54px !important;
+    height: 54px !important;
+    padding: 10px 14px !important;
+
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    box-sizing: border-box !important;
+    border-radius: 11px !important;
+  }
+}
+@media (max-width: 760px) {
+  .left-column .panel:first-child .title-icon {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    border-radius: 10px !important;
+  }
+
+  .left-column .panel:first-child .title-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
+@media (max-width: 760px) {
+
+  /* ===== LOGO CODE MANAGER ===== */
+.left-column .panel:first-child .title-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: rgba(255, 176, 0, 0.12) !important;
+    border-radius: 10px !important;
+
+    box-shadow: 0 0 7px rgba(255, 176, 0, 0.18) !important;
+}
+
+.left-column .panel:first-child .title-icon svg {
+    width: 19px !important;
+    height: 19px !important;
+
+    fill: #ffb000 !important;
+    stroke: #ffb000 !important;
+
+    filter: drop-shadow(0 0 2px rgba(255, 176, 0, 0.45)) !important;
+}
+
+
+  /* ===== CODE MANAGER ===== */
+  .left-column .panel:first-child h2 {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+  }
+
+  .left-column .panel:first-child .panel-title p {
+    font-size: 9px !important;
+    white-space: nowrap !important;
+    margin-top: 3px !important;
+  }
+
+
+  /* ===== 4 SLOGAN ===== */
+  .left-column .panel:first-child .feature-list {
+    padding-left: 18px !important;
+    margin-top: 14px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .left-column .panel:first-child .feature-list li {
+    font-size: 11px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 7px !important;
+    padding-left: 2px !important;
+  }
+
+}
+@media (max-width: 760px) {
+
+  /* ===== CODE MANAGER: TO + GỌN ===== */
+
+  .left-column .panel:first-child {
+    padding: 18px !important;
+  }
+
+  /* Tiêu đề */
+  .left-column .panel:first-child h2 {
+    font-size: 17px !important;
+    line-height: 1.1 !important;
+  }
+
+  .left-column .panel:first-child .panel-title p {
+    font-size: 9px !important;
+    line-height: 1.1 !important;
+    margin-top: 2px !important;
+  }
+
+  /* Logo */
+  .left-column .panel:first-child .title-icon {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+  }
+
+  .left-column .panel:first-child .title-icon svg {
+    width: 19px !important;
+    height: 19px !important;
+  }
+
+  /* Danh sách */
+  .left-column .panel:first-child .feature-list {
+    margin-top: 12px !important;
+    margin-bottom: 14px !important;
+    padding-left: 18px !important;
+  }
+
+  .left-column .panel:first-child .feature-list li {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* Nút */
+  .left-column .panel:first-child .primary-btn {
+    height: 52px !important;
+    min-height: 52px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    padding: 8px 12px !important;
+  }
+
+}
+/* ===== MOBILE: CARD FULL NGANG ===== */
+@media (max-width: 760px) {
+
+  /* Khung chính */
+  #system {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Cột bên trái */
+  #system .left-column {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* TẤT CẢ CARD */
+  #system .left-column .panel {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ===== CODE MANAGER ===== */
+
+  #system .left-column .panel:first-child {
+    padding: 20px !important;
+  }
+
+  #system .left-column .panel:first-child .panel-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  #system .left-column .panel:first-child .title-icon {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+  }
+
+  #system .left-column .panel:first-child h2 {
+    font-size: 17px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  #system .left-column .panel:first-child .panel-title p {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    white-space: nowrap !important;
+  }
+
+  /* Danh sách chữ */
+  #system .left-column .panel:first-child .feature-list {
+    width: 100% !important;
+    margin: 15px 0 !important;
+    padding-left: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  #system .left-column .panel:first-child .feature-list li {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 7px !important;
+  }
+
+  /* Nút */
+  #system .left-column .panel:first-child .primary-btn {
+    width: 100% !important;
+    min-height: 54px !important;
+    height: 54px !important;
+
+    padding: 10px 14px !important;
+    box-sizing: border-box !important;
+
+    font-size: 12px !important;
+    font-weight: 800 !important;
+  }
+
+
+  /* ===== SYSTEM TARGETS ===== */
+
+  #system .left-column .panel:nth-child(2) {
+    padding: 20px !important;
+  }
+
+  #system .left-column .panel:nth-child(2) .target-form {
+    width: 100% !important;
+  }
+
+  #system .left-column .panel:nth-child(2) input,
+  #system .left-column .panel:nth-child(2) select,
+  #system .left-column .panel:nth-child(2) button {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+@media (max-width: 760px) {
+
+  /* ===== CARD GỌN NHƯNG ĐẦY ĐẶN ===== */
+
+  #system .left-column .panel {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ===== TIÊU ĐỀ ===== */
+
+  #system .left-column .panel-title {
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  #system .left-column .panel-title h2 {
+    font-size: 17px !important;
+    line-height: 1.2 !important;
+  }
+
+  #system .left-column .panel-title p {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* ===== LOGO ===== */
+
+  #system .left-column .title-icon {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+  }
+
+  /* ===== DANH SÁCH ===== */
+
+  #system .left-column .feature-list {
+    margin: 12px 0 16px !important;
+    padding-left: 19px !important;
+  }
+
+  #system .left-column .feature-list li {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 7px !important;
+  }
+
+  /* ===== NÚT CODE MANAGER ===== */
+
+  #system .left-column .primary-btn {
+    width: 100% !important;
+    height: 54px !important;
+    min-height: 54px !important;
+
+    padding: 10px 14px !important;
+
+    font-size: 12px !important;
+    font-weight: 800 !important;
+
+    box-sizing: border-box !important;
+  }
+
+  /* ===== SYSTEM TARGETS ===== */
+
+  #system .left-column .panel:nth-child(2) {
+    padding: 20px !important;
+  }
+
+  #system .left-column .panel:nth-child(2) .target-form {
+    width: 100% !important;
+  }
+
+  /* label */
+  #system .left-column .panel:nth-child(2) label {
+    font-size: 12px !important;
+  }
+
+  /* input / dropdown */
+  #system .left-column .panel:nth-child(2) input,
+  #system .left-column .panel:nth-child(2) select {
+    height: 48px !important;
+    font-size: 12px !important;
+  }
+
+}
+/* Mobile card width overrides: keep this block at the end of the file. */
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 28px) !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #system.layout,
+  #system .left-column {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #system .left-column {
+    gap: 18px !important;
+  }
+
+  #system .left-column > .panel,
+  #system .left-column > .panel:first-child,
+  #system .left-column > .panel:nth-child(2) {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  #system .left-column > .panel .panel-title {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  #system .left-column > .panel .panel-title > div:last-child {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  #system .left-column > .panel .title-icon {
+    flex: 0 0 36px !important;
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    box-sizing: border-box !important;
+  }
+
+  #system .left-column > .panel .title-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  #system .left-column > .panel .panel-title h2 {
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+  }
+
+  #system .left-column > .panel .panel-title p {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    white-space: normal !important;
+  }
+
+  #system .left-column > .panel .feature-list {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 12px 0 16px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #system .left-column > .panel .feature-list li {
+    padding-left: 16px !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    white-space: normal !important;
+  }
+
+  #system .left-column > .panel .target-form,
+  #system .left-column > .panel .game-dropdown,
+  #system .left-column > .panel input,
+  #system .left-column > .panel select,
+  #system .left-column > .panel button,
+  #system .left-column > .panel .primary-btn,
+  #system .left-column > .panel .support-btn {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #system .left-column > .panel .target-form {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #system .left-column > .panel .primary-btn,
+  #system .left-column > .panel .support-btn,
+  #system .left-column > .panel button {
+    height: auto !important;
+    min-height: 48px !important;
+    padding: 12px 14px !important;
+    white-space: normal !important;
+    line-height: 1.4 !important;
+  }
+
+  #system .left-column > .panel .primary-btn {
+    min-height: 54px !important;
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 760px) {
+  #system #startBtn.primary-btn {
+    border-radius: 18px !important;
+  }
+}
+/* Improve readability of the three process descriptions. */
+#process .process-info small {
+    font-size: 11px;
+    line-height: 1.5;
+    color: #aaa;
+}
+/* Mobile secondary text readability. */
+@media (max-width: 760px) {
+  #system .left-column > .panel .panel-title p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: #aaa;
+  }
+
+  #process .process-info small {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  #system .game-meta,
+  #system .game-status {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  #system .game-meta {
+    padding: 8px 6px;
+    color: #bbb;
+  }
+}
+/* Keep the logo tagline on one line on mobile. */
+@media (max-width: 760px) {
+  .topbar > div:first-child {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  .topbar .tagline {
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: clamp(10px, 3vw, 15px);
+  }
+}
+/* Mobile system process: aligned steps and a quieter gold connector. */
+@media (max-width: 760px) {
+  #process.huyip-process {
+    padding: 20px 16px;
+    border: 1px solid rgba(255, 176, 0, .18);
+    border-radius: 16px;
+  }
+
+  #process .process-head {
+    text-align: left;
+    margin-bottom: 22px;
+  }
+
+  #process .process-mini {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  #process .process-head h3 {
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  #process .process-head p {
+    color: #aaa;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  #process .process-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 0;
+  }
+
+  #process .process-step {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    min-height: 44px;
+    text-align: left;
+  }
+
+  #process .process-icon {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    border-color: rgba(255, 176, 0, .4);
+    background: rgba(255, 176, 0, .08);
+    box-shadow: 0 0 0 4px rgba(255, 176, 0, .025);
+  }
+
+  #process .process-icon span {
+    font-size: 13px;
+    letter-spacing: .5px;
+  }
+
+  #process .process-info {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    overflow-wrap: break-word;
+  }
+
+  #process .process-info strong {
+    color: #f1f1f1;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  #process .process-info small {
+    margin-top: 3px;
+    color: #b3b3b3;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  #process .process-line {
+    flex: 0 0 20px;
+    width: 40px;
+    height: 20px;
+    justify-content: center;
+  }
+
+  #process .process-line::before {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 176, 0, .12),
+      rgba(255, 176, 0, .35),
+      rgba(255, 176, 0, .12)
+    );
+  }
+
+  #process .process-line span {
+    display: none;
+    animation: none;
+  }
+
+  #process .process-step:hover .process-icon {
+    transform: none;
+    border-color: rgba(255, 176, 0, .4);
+    box-shadow: 0 0 0 4px rgba(255, 176, 0, .025);
+  }
+}
+/* Instruction illustrations for the mobile system process. */
+#process .process-guide {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  #process .process-step {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: start;
+    column-gap: 14px;
+    row-gap: 0;
+  }
+
+  #process .process-info {
+    align-self: center;
+  }
+
+  #process .process-guide {
+    display: block;
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 360px;
+    min-width: 0;
+    height: auto;
+    margin-top: 12px;
+    box-sizing: border-box;
+  }
+}

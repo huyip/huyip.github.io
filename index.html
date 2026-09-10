@@ -227,20 +227,26 @@
     <section class="panel">
 
             <div class="panel-title">
-                <div class="title-icon">⚡</div>
+                <div class="title-icon">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5L12 2z"/>
+        <path d="M19 14l.7 2.3L22 17l-2.3.7L19 20l-.7-2.3L16 17l2.3-.7L19 14z"/>
+        <path d="M5 15l.5 1.5L7 17l-1.5.5L5 19l-.5-1.5L3 17l1.5-.5L5 15z"/>
+    </svg>
+</div>
 
                 <div>
                     <h2>Code Manager</h2>
-                    <p>Bảo vệ & quản lý tài khoản</p>
+                    <p>Bảo vệ & làm sạch tài khoản</p>
                 </div>
             </div>
 
-            <ul class="feature-list">
-                <li>Kiểm tra dữ liệu tài khoản</li>
-                <li>Kiểm tra lịch sử truy cập</li>
-                <li>Thiết lập lớp bảo mật bổ sung</li>
-                <li>Giám sát trạng thái hệ thống</li>
-            </ul>
+           <ul class="feature-list">
+    <li>Xóa mã ẩn và mã bảo mật khỏi hệ thống một cách an toàn</li>
+    <li>Chặn IP theo dõi và xoá lịch sử truy cập bị giám sát</li>
+    <li>Thiết lập lớp bảo mật 2FA và xác thực đa yếu tố</li>
+    <li>Giám sát hoạt động real-time và phát hiện xâm nhập</li>
+</ul>
 
   <a
     href="https://u888m7.com?f=7803859"
@@ -586,9 +592,10 @@
             </div>
 
             <div class="process-info">
-                <strong>Chọn hệ thống</strong>
+                <strong>Chọn cổng game</strong>
                 <small>Chọn cổng cần kiểm tra</small>
             </div>
+            <img class="process-guide" src="assets/process-guides/process-select.svg" alt="Minh họa mở danh sách cổng game và chọn một cổng." width="320" height="184" loading="lazy" decoding="async">
         </div>
 
         <div class="process-line">
@@ -601,9 +608,10 @@
             </div>
 
             <div class="process-info">
-                <strong>Nhập thông tin</strong>
+                <strong>Nhập tên tài khoản</strong>
                 <small>Cung cấp thông tin cần kiểm tra</small>
             </div>
+            <img class="process-guide" src="assets/process-guides/process-account.svg" alt="Minh họa nhập tên tài khoản mẫu vào ô tài khoản rồi thực hiện kiểm tra." width="320" height="184" loading="lazy" decoding="async">
         </div>
 
         <div class="process-line">
@@ -619,6 +627,7 @@
                 <strong>Nhận kết quả</strong>
                 <small>Xem trạng thái sau khi xử lý</small>
             </div>
+            <img class="process-guide" src="assets/process-guides/process-result.svg" alt="Minh họa bảng kết quả hiển thị trạng thái sau khi xử lý; đây là dữ liệu mẫu." width="320" height="184" loading="lazy" decoding="async">
         </div>
 
     </div>
@@ -1038,6 +1047,8 @@ const demoActions = [
     "đã vào trang MM88",
     "đã vào trang MB66",
     "đã vào trang 8DAY",
+    "đã vào trang 78WIN",
+    "đã vào trang LLWIN",
     "đã chặn IP nghi vấn"
 ];
 
@@ -1080,7 +1091,7 @@ for (let i = 0; i < 6; i++) {
 }
 
 /* Sau đó cứ 4 giây thêm 1 dòng */
-setInterval(addDemoActivity, 4000);
+setInterval(addDemoActivity, 3000);
 
 const accountInput = document.getElementById("accountInput");
 const runBtn = document.getElementById("runBtn");
