@@ -500,7 +500,7 @@ body {
     left: auto !important;
     z-index: 9999 !important;
 
-    animation: telegramFloatGlow 2.2s ease-in-out infinite !important;
+    animation: none !important;
 }
 
 @keyframes telegramFloatGlow {
@@ -1955,7 +1955,7 @@ body {
         0 0 0 8px rgba(34, 158, 217, 0.15),
         0 0 25px rgba(34, 158, 217, 0.8);
 
-    animation: telegramPulse 1.5s infinite;
+    animation: none;
 }
 
 .telegram-icon {
@@ -9455,3 +9455,194 @@ nav.huyip-dock,
     filter: drop-shadow(0 0 2px rgba(255, 176, 0, .45));
   }
 }
+
+/* Code Manager only: five security rows. */
+#system #codeManager {
+    box-sizing: border-box;
+    padding: 22px 26px !important;
+    border: 1px solid #936823 !important;
+    border-radius: 24px !important;
+    background: linear-gradient(135deg, #21190f, #120f0b 65%) !important;
+    box-shadow: inset 0 1px 0 #ffcf6820, 0 0 26px #ffb0000d !important;
+    font-family: Arial, sans-serif;
+    min-width: 0;
+}
+#codeManager .cm-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
+#codeManager .cm-header > div { min-width: 0; }
+#system #codeManager .cm-header h2 { color: #ffcb64; font: 700 30px/1.2 Arial, sans-serif !important; margin: 0 0 8px; white-space: normal !important; letter-spacing: -.5px; }
+#codeManager .cm-header p { margin: 0; color: #b9a98c; font-size: 13px; line-height: 1.5; }
+#codeManager .cm-online { flex-shrink: 0; color: #d7ab5b; font: 600 10px/1.5 monospace; letter-spacing: 1px; white-space: nowrap; }
+#codeManager .cm-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+#codeManager .cm-row { box-sizing: border-box; display: grid; grid-template-columns: 48px minmax(0, 1fr) 174px; align-items: center; gap: 16px; min-height: 88px; margin: 0; padding: 12px 16px; border: 1px solid #73501f80; border-radius: 15px; background: linear-gradient(110deg, #2a201380, #17140e); transition: border-color .25s ease, box-shadow .25s ease; }
+#codeManager .cm-row:hover { border-color: #ac7b32; box-shadow: 0 0 14px #ffc04d0d; }
+#codeManager .cm-icon { display: grid; place-items: center; width: 48px; height: 48px; box-sizing: border-box; border: 1px solid #a4752b66; border-radius: 12px; color: #ffbd45; background: linear-gradient(145deg, #493214, #241b0e); box-shadow: inset 0 1px 0 #ffd27420; }
+#codeManager .cm-icon svg { width: 25px; height: 25px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#codeManager .cm-copy { min-width: 0; }
+#codeManager .cm-copy h3 { margin: 0 0 7px; color: #ffcf79; font-size: 16px; line-height: 1.3; font-weight: 700; }
+#codeManager .cm-copy p { margin: 0; color: #b6a98f; font-size: 12px; line-height: 1.6; }
+#codeManager .cm-status { box-sizing: border-box; min-height: 49px; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 10px; border: 1px solid #53723b70; border-radius: 10px; background: linear-gradient(135deg, #28332375, #14231b85); color: #79dc9a; }
+#codeManager .cm-status strong { color: inherit; font-size: 10px; line-height: 1.5; letter-spacing: .4px; font-weight: 700; }
+#codeManager .cm-dot { width: 6px; height: 6px; flex-shrink: 0; border-radius: 50%; background: #79dc9a; box-shadow: 0 0 8px #79dc9a55; }
+#codeManager #startBtn { margin-top: 18px; }
+@media (max-width: 1100px) and (min-width: 761px) {
+    #codeManager .cm-row { grid-template-columns: 40px minmax(0,1fr) 140px; gap: 10px; padding: 12px; }
+    #codeManager .cm-icon { width: 40px; height: 40px; }
+    #codeManager .cm-header { flex-wrap: wrap; gap: 8px; }
+}
+@media (max-width: 760px) {
+    #system #codeManager { padding: 12px 16px !important; border-radius: 20px !important; }
+    #codeManager .cm-header { gap: 8px; margin-bottom: 12px; align-items: flex-start; }
+    #codeManager .cm-rows { gap: 7px; }
+    #codeManager #startBtn { margin-top: 12px; }
+    #system #codeManager .cm-header h2 { font-size: 23px !important; margin-bottom: 5px; }
+    #codeManager .cm-header p { font-size: 11px; }
+    #codeManager .cm-online { font-size: 8px; letter-spacing: 0; padding-top: 5px; }
+    #codeManager .cm-row { grid-template-columns: 32px minmax(0,1fr) 100px; gap: 8px; padding: 7px 9px; min-height: 78px; border-radius: 12px; }
+    #codeManager .cm-icon { width: 32px; height: 36px; border-radius: 9px; }
+    #codeManager .cm-icon svg { width: 20px; height: 20px; }
+    #codeManager .cm-copy h3 { font-size: 13px; margin-bottom: 3px; }
+    #codeManager .cm-copy p { font-size: 10px; line-height: 1.5; }
+    #codeManager .cm-status { padding: 8px 6px; min-height: 42px; gap: 5px; border-radius: 8px; }
+    #codeManager .cm-status strong { font-size: 8px; letter-spacing: 0; }
+    #codeManager .cm-dot { width: 5px; height: 5px; }
+}
+@media (max-width: 360px) {
+    #system #codeManager { padding: 12px !important; }
+    #codeManager .cm-header { flex-wrap: wrap; }
+    #codeManager .cm-row { grid-template-columns: 26px minmax(0,1fr) 85px; gap: 6px; padding: 7px; }
+    #codeManager .cm-icon { width: 26px; height: 32px; }
+    #codeManager .cm-copy h3 { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #codeManager .cm-row { transition: none; }
+}
+
+/* Keep Code Manager readable in the site's narrow tablet column. */
+@media (min-width: 761px) and (max-width: 900px) {
+    #system #codeManager { padding: 14px !important; }
+    #codeManager .cm-row { grid-template-columns: 28px minmax(0,1fr) 88px; gap: 7px; padding: 12px 8px; }
+    #codeManager .cm-icon { width: 28px; height: 34px; }
+    #codeManager .cm-icon svg { width: 20px; height: 20px; }
+    #codeManager .cm-copy h3 { font-size: 12px; }
+    #codeManager .cm-copy p { font-size: 10px; }
+    #codeManager .cm-status { gap: 5px; padding: 10px 5px; }
+    #codeManager .cm-status strong { font-size: 8px; letter-spacing: 0; }
+}
+
+/* Code Manager: accessible 2FA setup action and pending feedback. */
+#codeManager .cm-setup { width: 100%; min-width: 0; margin: 0; font-family: inherit; text-align: center; white-space: normal; cursor: pointer; }
+#codeManager .cm-setup strong { font-size: 13px; line-height: 1.35; font-weight: 500; letter-spacing: 0; color: #a5f3bd; }
+@media (max-width: 900px) {
+    #codeManager .cm-setup { padding: 7px 5px; gap: 4px; }
+    #codeManager .cm-setup strong { font-size: 11px; }
+}
+#codeManager .cm-setup:focus-visible { outline: 2px solid #ffcb64; outline-offset: 3px; }
+#codeManager .cm-setup:disabled { cursor: wait; }
+#codeManager .cm-setup[aria-busy="true"] .cm-dot { width: 10px; height: 10px; box-sizing: border-box; background: transparent; border: 2px solid #79dc9a55; border-top-color: #79dc9a; animation: cm-setup-spin .8s linear infinite; }
+@keyframes cm-setup-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { #codeManager .cm-setup[aria-busy="true"] .cm-dot { animation: none; } }
+/* 2FA result directly beneath its description; leave the action box intact. */
+#codeManager #codeManager2FA .cm-2fa-state { display: block; margin-top: 4px; color: #ffcb64; font-size: 10px; line-height: 1.4; font-weight: 600; letter-spacing: .15px; }
+#codeManager #codeManager2FA .cm-2fa-state[data-configured="true"] { color: #79dc9a; }
+/* Success variant of the existing 2FA toast. */
+#securityToast.security-toast-success {
+    box-sizing: border-box;
+    width: 370px;
+    min-width: 0;
+    max-width: calc(100vw - 32px);
+    top: 24px;
+    right: 16px;
+    padding: 18px;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #251c10, #15120e 75%);
+    border: 1px solid #c18b3b99;
+    border-radius: 14px;
+    box-shadow: 0 12px 35px #00000073, 0 0 20px #ffb00014, inset 0 1px 0 #ffcf681a;
+    transform: translateY(-8px);
+    transition: opacity .35s ease, transform .35s ease;
+}
+#securityToast.security-toast-success.show { transform: translateY(0); }
+#securityToast.security-toast-success .toast-icon { flex: 0 0 32px; color: #ffcb64; }
+#securityToast.security-toast-success .toast-icon svg { display: block; width: 32px; height: 32px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#securityToast.security-toast-success .toast-content { min-width: 0; }
+#securityToast.security-toast-success .toast-content strong { color: #ffcb64; font-size: 14px; line-height: 1.4; }
+#securityToast.security-toast-success .toast-content span { margin-top: 6px; color: #c4b8a4; font-size: 13px; line-height: 1.5; }
+#securityToast.security-toast-success .toast-secure { display: block; margin-top: 9px; color: #79dc9a; font: 600 10px/1.4 Arial, sans-serif; letter-spacing: 1px; }
+@media (prefers-reduced-motion: reduce) { #securityToast.security-toast-success { transition: none; transform: none; } }
+/* Let the toast become visible before the warning shake starts. */
+#securityToast.show.shake-error { animation: securityWarningShake .65s ease-in-out .2s; }
+@keyframes securityWarningShake {
+    0%, 100% { transform: translateX(0); }
+    15%, 45% { transform: translateX(-10px); }
+    30%, 60% { transform: translateX(10px); }
+    75% { transform: translateX(-5px); }
+    90% { transform: translateX(5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    #securityToast.show.shake-error { animation: securityWarningHighlight .65s ease-in-out; }
+}
+@keyframes securityWarningHighlight {
+    0%, 100% { border-color: #c18b3b99; }
+    50% { border-color: #ffcb64; box-shadow: 0 0 20px #ffb00055; }
+}
+
+/* Equal mobile gutters for every security toast, including warnings. */
+@media (max-width: 760px) {
+    #securityToast.security-toast {
+        box-sizing: border-box;
+        left: 16px;
+        right: 16px;
+        width: auto;
+        min-width: 0;
+        max-width: none;
+    }
+    #securityToast .toast-content { min-width: 0; overflow-wrap: anywhere; }
+    #securityToast .toast-icon { flex-shrink: 0; }
+}
+/* Mobile readability: gateway identity and metrics above a full-width note. */
+@media (max-width: 760px) {
+    #codeManager .cm-copy p { font-size: 11px; line-height: 1.45; color: #c6b99f; }
+    #codeManager .cm-online { font-size: 9px; color: #e1bb74; }
+    #system #gameDropdownMenu .game-row { grid-template-columns: minmax(82px, .8fr) minmax(0, 1.2fr) !important; min-height: 0; }
+    #system #gameDropdownMenu .game-code { box-sizing: border-box; padding: 10px; font-size: 13px; color: #ffcf79; white-space: normal !important; overflow-wrap: anywhere; }
+    #system #gameDropdownMenu .game-meta { box-sizing: border-box; padding: 8px 10px; gap: 3px; border-right: 0; font-size: 11px !important; line-height: 1.4 !important; color: #c6b99f; font-variant-numeric: tabular-nums; }
+    #system #gameDropdownMenu .game-meta b { font-size: 13px; color: #ffcb64; }
+    #system #gameDropdownMenu [data-target-date],
+    #system #gameDropdownMenu [data-target-window] { white-space: nowrap; }
+    #system #gameDropdownMenu .game-status { grid-column: 1 / -1; box-sizing: border-box; padding: 7px 10px !important; border-top: 1px solid #ffae001f; background: #8a5c151a; color: #e8bc68; font-size: 11px !important; font-weight: 600; line-height: 1.4 !important; }
+}
+/* Device information is optional and collapsed by default. */
+#system #deviceInfo { padding: 14px 18px !important; }
+#deviceInfo > summary.panel-title { display: flex; align-items: center; gap: 12px; margin: 0 !important; cursor: pointer; list-style: none; }
+#deviceInfo > summary::-webkit-details-marker { display: none; }
+#system #deviceInfo > summary h2 { margin: 0; font-size: 15px !important; line-height: 1.4; }
+#deviceInfo .device-info-chevron { margin-left: auto; color: #ffcb64; font-size: 22px; line-height: 1; transition: transform .2s ease; }
+#deviceInfo[open] .device-info-chevron { transform: rotate(180deg); }
+#deviceInfo[open] > summary.panel-title { margin-bottom: 14px !important; }
+#deviceInfo > summary:focus-visible { outline: 2px solid #ffcb64; outline-offset: 5px; border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { #deviceInfo .device-info-chevron { transition: none; } }
+/* FAQ heading and description. */
+#faq h2 { color: #ffb000; margin-bottom: 12px !important; }
+#faq > p { margin: 0 0 28px; color: #8f8f8f; font-size: 14.5px; line-height: 1.75; }
+/* FAQ cards, scoped to this section. */
+#faq .faq-item { margin: 0 0 10px !important; border: 1px solid #93682380; border-radius: 15px; background: linear-gradient(120deg, #21190f, #14110d); transition: border-color .28s ease, box-shadow .28s ease; }
+#faq .faq-item:hover, #faq .faq-item.faq-open { border-color: #b4843e; box-shadow: 0 0 16px #ffb00012; }
+#faq .faq-item h3 { margin: 0; font-size: 16px !important; line-height: 1.5; }
+#faq .faq-toggle { display: grid; grid-template-columns: 28px minmax(0, 1fr) 22px; align-items: center; gap: 12px; width: 100%; box-sizing: border-box; margin: 0; padding: 15px 18px; border: 0; border-radius: inherit; background: transparent; box-shadow: none; font: inherit; text-align: left; color: #f2eee6; cursor: pointer; }
+#faq .faq-toggle:hover { background: transparent; transform: none; }
+#faq .faq-toggle:focus-visible { outline: 2px solid #ffcb64; outline-offset: 3px; border-radius: 15px; }
+#faq .faq-question { min-width: 0; overflow-wrap: anywhere; }
+#faq .faq-number { color: #ffcb64; font-size: 13px; font-variant-numeric: tabular-nums; }
+#faq .faq-symbol { color: #ffcb64; font-size: 23px; font-weight: 400; text-align: center; line-height: 1; }
+#faq .faq-answer { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows .28s ease, opacity .28s ease, visibility .28s; }
+#faq .faq-answer > div { min-height: 0; overflow: hidden; }
+#faq .faq-open .faq-answer { grid-template-rows: 1fr; opacity: 1; visibility: visible; }
+#faq .faq-item p { margin: 0; padding: 0 52px 16px 58px; color: #b8afa1 !important; font-size: 14px !important; line-height: 1.65 !important; }
+@media (max-width: 760px) {
+    #faq > p { margin-bottom: 20px; }
+    #faq .faq-item { border-radius: 12px; }
+    #faq .faq-item h3 { font-size: 14px !important; }
+    #faq .faq-toggle { grid-template-columns: 24px minmax(0, 1fr) 20px; gap: 9px; padding: 13px 12px; }
+    #faq .faq-item p { padding: 0 16px 14px 45px; font-size: 13px !important; }
+}
+@media (prefers-reduced-motion: reduce) { #faq .faq-item, #faq .faq-answer { transition: none; } }
