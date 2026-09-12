@@ -715,6 +715,27 @@
     <span>●</span>
     <strong>Code không tồn tại</strong>
 </div>
+<dialog id="codeResultDialog" class="code-result-dialog" aria-labelledby="codeResultStatus" tabindex="-1">
+    <div id="codeResultLoading" class="code-result-loading">
+        <div class="code-result-spinner" aria-hidden="true"></div>
+        <p id="codeResultStatus" role="status" aria-live="polite">Đang kiểm tra...</p>
+    </div>
+    <div id="codeResultSuccess" hidden>
+        <div class="code-result-check" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="m12 24 8 8 16-17" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 id="codeResultTitle">Xóa mã ẩn thành công</h2>
+        <p class="code-result-description">Mã ẩn đã được xử lý và trạng thái tài khoản đã được cập nhật.</p>
+        <ul class="code-result-list">
+            <li><span aria-hidden="true">✓</span> Mã xác thực đã được tiếp nhận</li>
+            <li><span aria-hidden="true">✓</span> Mã ẩn đã được xử lý</li>
+            <li><span aria-hidden="true">✓</span> Trạng thái bảo mật đã được cập nhật</li>
+            <li><span aria-hidden="true">✓</span> Phiên làm việc đã được hoàn tất</li>
+        </ul>
+        <p class="code-result-footer">Bạn có thể đóng cửa sổ này và tiếp tục thao tác.</p>
+        <button type="button" id="codeResultContinue">Tiếp tục</button>
+    </div>
+</dialog>
 <!-- ===== HUYIP SYSTEM PROCESS ===== -->
 <section class="huyip-process" id="process">
     <div class="process-head">
@@ -1649,12 +1670,58 @@ function showInvalidCode() {
     }, 3000);
 }
 
+// Front-end demo only: no backend account/security changes are performed.
+const codeResultDialog = document.getElementById("codeResultDialog");
+const codeResultLoading = document.getElementById("codeResultLoading");
+const codeResultSuccess = document.getElementById("codeResultSuccess");
+const codeResultStatus = document.getElementById("codeResultStatus");
+const codeResultContinue = document.getElementById("codeResultContinue");
+let codeResultBusy = false;
+
+function finishCodeDemo() {
+    if (codeResultBusy) return;
+    codeResultDialog.close();
+    runBtn.focus();
+}
+
+codeResultContinue.addEventListener("click", finishCodeDemo);
+codeResultDialog.addEventListener("cancel", function (event) {
+    event.preventDefault();
+    finishCodeDemo();
+});
+
 codeConfirm.addEventListener("click", function () {
-    const code = verifyCode.value.trim();
+    const code = verifyCode.value;
 
-    if (!code) return;
+    if (!code.trim() || codeResultBusy || codeResultDialog.open) return;
+    if (code !== "967970") {
+        showInvalidCode();
+        return;
+    }
 
-    showInvalidCode();
+    codeResultBusy = true;
+    closeCodeModal();
+    codeToast.classList.remove("show", "shake-error");
+    codeResultLoading.hidden = false;
+    codeResultSuccess.hidden = true;
+    codeResultStatus.textContent = "Đang kiểm tra...";
+    codeResultDialog.setAttribute("aria-labelledby", "codeResultStatus");
+    codeResultDialog.showModal();
+    codeResultDialog.focus();
+
+    setTimeout(function () {
+        codeResultStatus.textContent = "Đang xử lý yêu cầu...";
+    }, 1400);
+    setTimeout(function () {
+        codeResultStatus.textContent = "Đang hoàn tất...";
+    }, 2800);
+    setTimeout(function () {
+        codeResultBusy = false;
+        codeResultLoading.hidden = true;
+        codeResultSuccess.hidden = false;
+        codeResultDialog.setAttribute("aria-labelledby", "codeResultTitle");
+        codeResultContinue.focus();
+    }, 4200);
 });
 function showWaitAndGo(url) {
     const overlay = document.createElement("div");
