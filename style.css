@@ -5872,342 +5872,6 @@ body:has(#huyipWelcome:not(.huyip-intro-leaving))
     }
 }
 
-/* ==================================================
-   HUYIP SYSTEM PROCESS
-================================================== */
-
-.huyip-process {
-    position: relative;
-    width: 100%;
-    margin: 20px 0;
-
-    padding: 24px 24px 26px;
-
-    box-sizing: border-box;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(255,176,0,.055),
-            transparent 55%
-        ),
-        rgba(8,8,8,.55);
-
-    border-top: 1px solid rgba(255,176,0,.22);
-    border-bottom: 1px solid rgba(255,176,0,.13);
-
-    overflow: hidden;
-}
-
-
-/* ---------- TITLE ---------- */
-
-.process-head {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.process-mini {
-    display: block;
-
-    color: #ffb000;
-
-    font-size: 9px;
-    font-weight: 800;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 7px;
-
-    opacity: .75;
-}
-
-.process-head h3 {
-    margin: 0;
-
-    color: #fff;
-
-    font-size: 18px;
-    font-weight: 800;
-
-    letter-spacing: .3px;
-}
-
-.process-head p {
-    margin: 5px 0 0;
-
-    color: #777;
-
-    font-size: 11px;
-}
-
-
-/* ---------- STEPS ---------- */
-
-.process-steps {
-    display: grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        70px
-        minmax(0,1fr)
-        70px
-        minmax(0,1fr);
-
-    align-items: start;
-
-    width: 100%;
-}
-
-
-/* ---------- STEP ---------- */
-
-.process-step {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    text-align: center;
-
-    cursor: default;
-}
-
-
-/* ---------- NUMBER ---------- */
-
-.process-icon {
-    position: relative;
-
-    width: 48px;
-    height: 48px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255,176,0,.55);
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,176,0,.15),
-            rgba(255,176,0,.025) 65%
-        );
-
-    box-shadow:
-        0 0 0 5px rgba(255,176,0,.025),
-        0 0 22px rgba(255,176,0,.08);
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease,
-        border-color .3s ease;
-}
-
-.process-icon span {
-    color: #ffb000;
-
-    font-size: 12px;
-    font-weight: 900;
-
-    letter-spacing: 1px;
-}
-
-
-/* ---------- CONNECTOR ---------- */
-
-.process-line {
-    position: relative;
-
-    height: 48px;
-
-    display: flex;
-    align-items: center;
-}
-
-.process-line::before {
-    content: "";
-
-    width: 100%;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255,176,0,.15),
-            rgba(255,176,0,.8),
-            rgba(255,176,0,.15)
-        );
-}
-
-.process-line span {
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: #ffb000;
-
-    box-shadow:
-        0 0 8px #ffb000,
-        0 0 15px rgba(255,176,0,.7);
-
-    animation: huyipProcessSignal 2.6s linear infinite;
-}
-
-
-/* ---------- TEXT ---------- */
-
-.process-info {
-    margin-top: 12px;
-}
-
-.process-info strong {
-    display: block;
-
-    color: #eee;
-
-    font-size: 12px;
-    font-weight: 750;
-
-    transition:
-        color .25s ease,
-        text-shadow .25s ease;
-}
-
-.process-info small {
-    display: block;
-
-    margin-top: 4px;
-
-    color: #666;
-
-    font-size: 9px;
-}
-
-
-/* ---------- HOVER ---------- */
-
-.process-step:hover .process-icon {
-    transform: translateY(-3px) scale(1.06);
-
-    border-color: #ffb000;
-
-    box-shadow:
-        0 0 0 6px rgba(255,176,0,.04),
-        0 0 28px rgba(255,176,0,.25);
-}
-
-.process-step:hover .process-info strong {
-    color: #ffb000;
-
-    text-shadow:
-        0 0 12px rgba(255,176,0,.3);
-}
-
-
-/* ---------- SIGNAL ---------- */
-
-@keyframes huyipProcessSignal {
-
-    0% {
-        left: 0;
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    85% {
-        opacity: 1;
-    }
-
-    100% {
-        left: calc(100% - 5px);
-        opacity: 0;
-    }
-}
-
-
-/* ==================================================
-   MOBILE
-================================================== */
-
-@media (max-width: 650px) {
-
-    .huyip-process {
-        padding: 22px 16px;
-        margin: 15px 0;
-    }
-
-    .process-head {
-        margin-bottom: 22px;
-    }
-
-    .process-steps {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .process-step {
-        flex-direction: row;
-
-        text-align: left;
-
-        gap: 14px;
-    }
-
-    .process-icon {
-        width: 44px;
-        height: 44px;
-
-        flex: 0 0 44px;
-    }
-
-    .process-info {
-        margin-top: 3px;
-    }
-
-    .process-info strong {
-        font-size: 12px;
-    }
-
-    .process-info small {
-        font-size: 9px;
-    }
-
-    .process-line {
-        width: 44px;
-        height: 34px;
-
-        justify-content: center;
-    }
-
-    .process-line::before {
-        width: 1px;
-        height: 100%;
-
-        background:
-            linear-gradient(
-                180deg,
-                rgba(255,176,0,.15),
-                rgba(255,176,0,.8),
-                rgba(255,176,0,.15)
-            );
-    }
-
-    .process-line span {
-        display: none;
-    }
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -9257,23 +8921,13 @@ nav.huyip-dock,
     border-radius: 18px !important;
   }
 }
-/* Improve readability of the three process descriptions. */
-#process .process-info small {
-    font-size: 11px;
-    line-height: 1.5;
-    color: #aaa;
-}
+
 /* Mobile secondary text readability. */
 @media (max-width: 760px) {
   #system .left-column > .panel .panel-title p {
     font-size: 13px !important;
     line-height: 1.5 !important;
     color: #aaa;
-  }
-
-  #process .process-info small {
-    font-size: 12px;
-    line-height: 1.5;
   }
 
   #system .game-meta,
@@ -9303,150 +8957,6 @@ nav.huyip-dock,
     font-size: clamp(10px, 3vw, 15px);
   }
 }
-/* Mobile system process: aligned steps and a quieter gold connector. */
-@media (max-width: 760px) {
-  #process.huyip-process {
-    padding: 20px 16px;
-    border: 1px solid rgba(255, 176, 0, .18);
-    border-radius: 16px;
-  }
-
-  #process .process-head {
-    text-align: left;
-    margin-bottom: 22px;
-  }
-
-  #process .process-mini {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    line-height: 1.4;
-    color: #ffc563;
-    opacity: 1;
-  }
-
-  #process .process-head h3 {
-    font-size: 18px;
-    line-height: 1.35;
-  }
-
-  #process .process-head p {
-    color: #aaa;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-
-  #process .process-steps {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    min-width: 0;
-  }
-
-  #process .process-step {
-    flex-direction: row;
-    align-items: center;
-    gap: 14px;
-    min-width: 0;
-    min-height: 44px;
-    text-align: left;
-  }
-
-  #process .process-icon {
-    flex: 0 0 40px;
-    width: 40px;
-    height: 40px;
-    box-sizing: border-box;
-    border-color: rgba(255, 176, 0, .4);
-    background: rgba(255, 176, 0, .08);
-    box-shadow: 0 0 0 4px rgba(255, 176, 0, .025);
-  }
-
-  #process .process-icon span {
-    font-size: 13px;
-    letter-spacing: .5px;
-  }
-
-  #process .process-info {
-    flex: 1;
-    min-width: 0;
-    margin: 0;
-    overflow-wrap: break-word;
-  }
-
-  #process .process-info strong {
-    color: #f1f1f1;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.4;
-  }
-
-  #process .process-info small {
-    margin-top: 3px;
-    color: #b3b3b3;
-    font-size: 12px;
-    line-height: 1.5;
-  }
-
-  #process .process-line {
-    flex: 0 0 20px;
-    width: 40px;
-    height: 20px;
-    justify-content: center;
-  }
-
-  #process .process-line::before {
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(255, 176, 0, .12),
-      rgba(255, 176, 0, .35),
-      rgba(255, 176, 0, .12)
-    );
-  }
-
-  #process .process-line span {
-    display: none;
-    animation: none;
-  }
-
-  #process .process-step:hover .process-icon {
-    transform: none;
-    border-color: rgba(255, 176, 0, .4);
-    box-shadow: 0 0 0 4px rgba(255, 176, 0, .025);
-  }
-}
-/* Instruction illustrations for the mobile system process. */
-#process .process-guide {
-  display: none;
-}
-
-@media (max-width: 760px) {
-  #process .process-step {
-    display: grid;
-    grid-template-columns: 40px minmax(0, 1fr);
-    align-items: start;
-    column-gap: 14px;
-    row-gap: 0;
-  }
-
-  #process .process-info {
-    align-self: center;
-  }
-
-  #process .process-guide {
-    display: block;
-    grid-column: 1 / -1;
-    width: 100%;
-    max-width: 360px;
-    min-width: 0;
-    height: auto;
-    margin-top: 12px;
-    box-sizing: border-box;
-  }
-}
-
 /* Match the Code Manager icon's gold color on desktop. */
 @media (min-width: 761px) {
   #system .left-column > .panel:first-child .title-icon > svg {
@@ -9698,3 +9208,45 @@ nav.huyip-dock,
     .code-result-spinner { animation-duration: 2s; }
     #codeResultSuccess { animation: none; }
 }
+/* Simulated leaderboard: scoped to the replacement section. */
+.huyip-leaderboard {
+    --leaderboard-gold: #ffc563;
+    width: 100%; min-width: 0; margin: 20px 0; padding: 24px;
+    border: 1px solid rgba(255,176,0,.18); border-radius: 16px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,176,0,.06), transparent 60%), #0b0b0b;
+    box-shadow: 0 0 22px rgba(255,176,0,.035);
+}
+.huyip-leaderboard .leaderboard-head { text-align: center; margin-bottom: 20px; }
+.huyip-leaderboard h3 { color: var(--leaderboard-gold); font-size: 18px; line-height: 1.5; font-weight: 800; }
+.huyip-leaderboard .leaderboard-head p { margin-top: 8px; color: #ddd; font-size: 13px; font-variant-numeric: tabular-nums; }
+.huyip-leaderboard .leaderboard-head small { display: block; margin-top: 8px; color: #aaa; font-size: 11px; line-height: 1.5; }
+.huyip-leaderboard .leaderboard-list { display: flex; flex-direction: column; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.huyip-leaderboard .leaderboard-row {
+    position: relative; display: grid;
+    grid-template-columns: 64px minmax(0,1fr) 24px 54px;
+    align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px;
+    border: 1px solid rgba(255,176,0,.12); border-radius: 12px; background: #12110f;
+    font-size: 14px; font-variant-numeric: tabular-nums;
+    transition: border-color .4s ease, box-shadow .4s ease;
+}
+.huyip-leaderboard .leaderboard-row.is-first { border-color: rgba(255,176,0,.5); box-shadow: 0 0 14px rgba(255,176,0,.09); }
+.huyip-leaderboard .leaderboard-rank { color: var(--leaderboard-gold); font-size: 12px; font-weight: 800; white-space: nowrap; }
+.huyip-leaderboard .leaderboard-name { color: #eee; overflow-wrap: anywhere; }
+.huyip-leaderboard .leaderboard-move { color: #888; text-align: center; transition: color .35s ease; }
+.huyip-leaderboard .leaderboard-move.is-up { color: #35d07f; }
+.huyip-leaderboard .leaderboard-move.is-down { color: #ff5865; }
+.huyip-leaderboard .leaderboard-value { color: var(--leaderboard-gold); text-align: right; transition: color .35s ease, text-shadow .35s ease; }
+.huyip-leaderboard .leaderboard-value.is-changed { color: #fff1b8; text-shadow: 0 0 10px rgba(255,176,0,.4); }
+@media (max-width: 650px) {
+    .huyip-leaderboard { padding: 20px 12px; margin: 15px 0; }
+    .huyip-leaderboard h3 { font-size: 16px; }
+    .huyip-leaderboard .leaderboard-row { grid-template-columns: 52px minmax(0,1fr) 18px 43px; gap: 8px; padding: 12px 10px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .huyip-leaderboard .leaderboard-row,
+    .huyip-leaderboard .leaderboard-move,
+    .huyip-leaderboard .leaderboard-value { transition: none; }
+}
+.huyip-leaderboard .leaderboard-row[hidden] { display: none; }
+.huyip-leaderboard .leaderboard-list { overflow: hidden; }
+.huyip-leaderboard .leaderboard-move { font-size: 20px; font-weight: 900; line-height: 1; }
