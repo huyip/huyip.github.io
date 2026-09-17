@@ -308,7 +308,7 @@
 
             <div class="game-meta">
                 <span data-target-date>--/--/----</span>
-                <span>Tỷ lệ mô phỏng <b>85%</b></span>
+                <span>Tỷ lệ mô phỏng <b>84%</b></span>
                 <span>Khung giờ <strong data-target-window>--:--–--:--</strong></span>
             </div>
 
@@ -1119,7 +1119,7 @@ const selectedGame = document.getElementById("selectedGame");
     function updateRates(animate) {
         const nextRates = entries.map(({ row, value }) => {
             const preferred = row.dataset.game === "1-U888";
-            return randomRate(preferred ? 88 : 30, preferred ? 99 : 87,
+            return randomRate(preferred ? 91 : 30, preferred ? 99 : 84,
                 Number.parseInt(value.textContent, 10));
         });
         entries.forEach(({ value }, index) => {
