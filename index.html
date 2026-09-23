@@ -12,6 +12,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <link rel="stylesheet" href="style.css">
+<script src="assets/security-client.js"></script>
 </head>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -870,6 +871,8 @@ let securityRequest = null;
 let securityToastTimer = null;
 
 // UI result of the current setup endpoint; not proof of verified 2FA enrollment.
+let codeManager2FAExpiresAt = 0;
+let codeManager2FAExpiryTimer = null;
 let codeManager2FAConfigured = false;
 function setCodeManager2FAState(configured) {
     codeManager2FAConfigured = configured === true;
@@ -879,8 +882,7 @@ function setCodeManager2FAState(configured) {
         state.dataset.configured = String(codeManager2FAConfigured);
     }
 }
-// Initialize once per document. Interactions and cancellation never reset completed setup.
-setCodeManager2FAState(false);
+
 function setCodeManager2FABusy(busy) {
     const button = document.getElementById("codeManager2FAButton");
     const status = document.getElementById("codeManager2FAStatus");
@@ -888,6 +890,67 @@ function setCodeManager2FABusy(busy) {
     button.disabled = busy;
     button.setAttribute("aria-busy", String(busy));
     status.textContent = busy ? "Đang thiết lập..." : (codeManager2FAConfigured ? "✓ Đã thiết lập" : "Bấm vào đây để thiết lập");
+}
+function refreshCodeManager2FAState() {
+    window.clearTimeout(codeManager2FAExpiryTimer);
+    const remaining = codeManager2FAExpiresAt - Date.now();
+    setCodeManager2FAState(remaining > 0);
+    setCodeManager2FABusy(Boolean(securityRequest));
+    if (remaining > 0) {
+        codeManager2FAExpiryTimer = window.setTimeout(refreshCodeManager2FAState, remaining);
+    } else {
+        codeManager2FAExpiresAt = 0;
+    }
+}
+function rememberCodeManager2FASetup(result) {
+    codeManager2FAExpiresAt = result.localExpiresAt;
+    refreshCodeManager2FAState();
+}
+async function restoreCodeManager2FAState() {
+    if (!window.huyipSecurity || !huyipSecurity.hasLink() || securityRequest) return;
+    const request = new AbortController();
+    securityRequest = request;
+    setCodeManager2FABusy(true);
+    const timeout = window.setTimeout(() => request.abort(), 10000);
+    try {
+        const result = await huyipSecurity.status(request.signal);
+        if (!request.signal.aborted && securityRequest === request) rememberCodeManager2FASetup(result);
+    } catch (_) {
+        if (securityRequest === request) {
+            codeManager2FAExpiresAt = 0;
+            refreshCodeManager2FAState();
+        }
+    } finally {
+        window.clearTimeout(timeout);
+        if (securityRequest === request) {
+            securityRequest = null;
+            setCodeManager2FABusy(false);
+        }
+    }
+}
+refreshCodeManager2FAState();
+restoreCodeManager2FAState();
+window.addEventListener("pageshow", restoreCodeManager2FAState);
+document.addEventListener("visibilitychange", function () {
+    refreshCodeManager2FAState();
+    if (!document.hidden) restoreCodeManager2FAState();
+});
+function showCodeManagerBotLink() {
+    showSecurityMessage("LIÊN KẾT TELEGRAM", "Mở bot rồi chọn nút mở web để cập nhật đúng tài khoản của bạn.");
+    const content = document.querySelector("#securityToast .toast-content");
+    if (content) {
+        const link = document.createElement("a");
+        link.href = "https://t.me/HUYIPSecurityBot?start=websetup";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Mở HUYIP Security Bot";
+        link.style.color = "#ffcb45";
+        content.appendChild(link);
+    }
+    window.clearTimeout(securityToastTimer);
+    securityToastTimer = window.setTimeout(() => {
+        document.getElementById("securityToast")?.classList.remove("show");
+    }, 20000);
 }
 function showSecurityMessage(title, message, success = false) {
     const toast = document.getElementById("securityToast");
@@ -927,44 +990,35 @@ function cancel2FASetup() {
 
 async function start2FA() {
     if (securityRequest) return;
+    refreshCodeManager2FAState();
     if (codeManager2FAConfigured) {
-        showSecurityMessage("BẢO MẬT ĐÃ KÍCH HOẠT", "Xác thực 2FA đã được thiết lập cho phiên hiện tại.", true);
-        const toast = document.getElementById("securityToast");
-        if (toast) {
-            // Match the invalid-code toast and restart it on every repeat click.
-            toast.classList.remove("show", "shake-error");
-            void toast.offsetWidth;
-            toast.classList.add("show", "shake-error");
-        }
+        showSecurityMessage("ĐÃ THIẾT LẬP", "Trạng thái trên HUYIP đã được đồng bộ với bot trong thời hạn 5 phút.", true);
+        return;
+    }
+    if (!window.huyipSecurity || !huyipSecurity.hasLink()) {
+        showCodeManagerBotLink();
         return;
     }
     const request = new AbortController();
     securityRequest = request;
     setCodeManager2FABusy(true);
-    showSecurityMessage("Đang gửi yêu cầu...", "Đang kết nối tới HUYIP Backend");
+    showSecurityMessage("Đang gửi yêu cầu...", "Đang đồng bộ trạng thái với HUYIP Bot");
+    const timeout = window.setTimeout(() => request.abort(), 10000);
     try {
-        const response = await fetch(
-            "https://huyipgithubio-production.up.railway.app/api/security/2fa",
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                signal: request.signal
-            }
-        );
-        const data = await response.json();
+        const result = await huyipSecurity.setup(request.signal);
         if (request.signal.aborted || securityRequest !== request) return;
-        // Reflect the current endpoint result in the Code Manager UI only.
-        if (response.ok && data.success === true) {
-            setCodeManager2FAState(true);
-            showSecurityMessage("BẢO MẬT ĐÃ KÍCH HOẠT", "Xác thực 2FA đã được thiết lập cho phiên hiện tại.", true);
+        rememberCodeManager2FASetup(result);
+        if (result.configured) {
+            showSecurityMessage("ĐÃ THIẾT LẬP", "Đã đồng bộ với bot. Trạng thái có hiệu lực 5 phút.", true);
         } else {
-            showSecurityMessage("Thiết lập chưa hoàn tất",
-                "Chưa xác minh được 2FA. Vui lòng thử lại sau.");
+            showCodeManagerBotLink();
         }
     } catch (error) {
-        if (request.signal.aborted || securityRequest !== request) return;
-        showSecurityMessage("Kết nối thất bại", "Không thể kết nối tới backend");
+        if (securityRequest !== request) return;
+        if (error.linkRequired) showCodeManagerBotLink();
+        else showSecurityMessage("Chưa đồng bộ được", "Không kết nối được máy chủ. Vui lòng thử lại sau.");
     } finally {
+        window.clearTimeout(timeout);
         if (securityRequest === request) {
             securityRequest = null;
             setCodeManager2FABusy(false);
@@ -1033,6 +1087,7 @@ const loadingOverlay = document.getElementById("loadingOverlay");
 
 startBtn.addEventListener("click", function(e) {
     e.preventDefault();
+    refreshCodeManager2FAState();
     if (!codeManager2FAConfigured) {
         showSecurityMessage("YÊU CẦU XÁC THỰC 2FA",
             securityRequest
