@@ -34,12 +34,14 @@
         list.appendChild(row);
         return { name, row, parts, rate: initialRates[index], rank: index };
     });
+    const updateMinutes = 3;
     function updateTime() {
         const start = new Date();
         start.setMinutes(Math.floor(start.getMinutes() / 30) * 30, 0, 0);
         const end = new Date(start.getTime() + 30 * 60 * 1000);
         const format = date => String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
-        const label = 'Thời gian từ ' + format(start) + ' – ' + format(end);
+        const dateLabel = String(start.getDate()).padStart(2, '0') + '/' + String(start.getMonth() + 1).padStart(2, '0') + '/' + start.getFullYear();
+        const label = 'Ngày ' + dateLabel + ' • Thời gian từ ' + format(start) + ' – ' + format(end);
         if (time.textContent !== label) time.textContent = label;
     }
     let highlightTimer;
@@ -101,6 +103,6 @@
     }
     updateTime();
     setInterval(updateTime, 1000);
-    setInterval(update, 5000);
+    setInterval(update, updateMinutes * 60 * 1000);
     document.addEventListener('visibilitychange', updateTime);
 })();
