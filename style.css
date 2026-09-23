@@ -9250,3 +9250,50 @@ nav.huyip-dock,
 .huyip-leaderboard .leaderboard-row[hidden] { display: none; }
 .huyip-leaderboard .leaderboard-list { overflow: hidden; }
 .huyip-leaderboard .leaderboard-move { font-size: 20px; font-weight: 900; line-height: 1; }
+/* Gold date and time panel under the leaderboard title. */
+.huyip-leaderboard .leaderboard-head #leaderboardTime {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 14px auto 0;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 197, 99, .28);
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 197, 99, .10), rgba(255, 197, 99, .025));
+    box-shadow: inset 0 1px 0 rgba(255, 232, 183, .07), 0 5px 18px rgba(0, 0, 0, .18);
+    line-height: 1.5;
+}
+.huyip-leaderboard .leaderboard-date,
+.huyip-leaderboard .leaderboard-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 14px;
+    white-space: nowrap;
+}
+.huyip-leaderboard .leaderboard-date { padding-left: 0; }
+.huyip-leaderboard .leaderboard-hours {
+    padding-right: 0;
+    border-left: 1px solid rgba(255, 197, 99, .22);
+}
+.huyip-leaderboard .leaderboard-time-caption {
+    color: #c4ac80;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+}
+.huyip-leaderboard #leaderboardTime strong {
+    color: #ffe1a1;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .4px;
+}
+.huyip-leaderboard .leaderboard-time-dash { color: #a98a52; }
+@media (max-width: 360px) {
+    .huyip-leaderboard .leaderboard-head #leaderboardTime { padding: 9px 10px; }
+    .huyip-leaderboard .leaderboard-date { padding-right: 10px; }
+    .huyip-leaderboard .leaderboard-hours { padding-left: 10px; }
+    .huyip-leaderboard #leaderboardTime strong { font-size: 12px; letter-spacing: 0; }
+}

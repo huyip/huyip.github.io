@@ -42,7 +42,11 @@
         const format = date => String(date.getHours()).padStart(2, '0') + ':' + String(date.getMinutes()).padStart(2, '0');
         const dateLabel = String(start.getDate()).padStart(2, '0') + '/' + String(start.getMonth() + 1).padStart(2, '0') + '/' + start.getFullYear();
         const label = 'Ngày ' + dateLabel + ' • Thời gian từ ' + format(start) + ' – ' + format(end);
-        if (time.textContent !== label) time.textContent = label;
+        if (time.getAttribute('aria-label') !== label) {
+            time.setAttribute('aria-label', label);
+            time.innerHTML = '<span class="leaderboard-date"><span class="leaderboard-time-caption">NGÀY</span><strong>' + dateLabel + '</strong></span>'
+                + '<span class="leaderboard-hours"><span class="leaderboard-time-caption">KHUNG GIỜ</span><strong>' + format(start) + ' <span class="leaderboard-time-dash">–</span> ' + format(end) + '</strong></span>';
+        }
     }
     let highlightTimer;
     function update() {
