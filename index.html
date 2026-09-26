@@ -244,7 +244,7 @@
             <li class="cm-row" id="codeManager2FA">
                 <span class="cm-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></svg></span>
                 <div class="cm-copy"><h3>Xác nhận thao tác</h3><p>Xác nhận để tiếp tục · hiệu lực 5 phút</p><span id="codeManager2FAState" class="cm-2fa-state" role="status" aria-live="polite" data-configured="false">CHƯA XÁC NHẬN</span></div>
-                <button type="button" class="cm-status cm-setup" id="codeManager2FAButton" onclick="start2FA()" aria-busy="false"><span class="cm-dot" aria-hidden="true"></span><strong id="codeManager2FAStatus" role="status" aria-live="polite">Bấm để xác nhận</strong></button>
+                <button type="button" class="cm-status cm-setup" id="codeManager2FAButton" onclick="start2FA()" aria-busy="false"><span class="cm-dot" aria-hidden="true"></span><strong id="codeManager2FAStatus" role="status" aria-live="polite">Bấm để thiết lập 2FA</strong></button>
             </li>
         </ul>
 
@@ -889,7 +889,7 @@ function setCodeManager2FABusy(busy) {
     if (!button || !status) return;
     button.disabled = busy;
     button.setAttribute("aria-busy", String(busy));
-    status.textContent = busy ? "Đang xác nhận..." : (codeManager2FAConfigured ? "✓ Đã xác nhận" : "Bấm để xác nhận");
+    status.textContent = busy ? "Đang xác nhận..." : (codeManager2FAConfigured ? "✓ Đã xác nhận" : "Bấm để thiết lập 2FA");
 }
 function refreshCodeManager2FAState() {
     window.clearTimeout(codeManager2FAExpiryTimer);
