@@ -3,11 +3,11 @@
     const list = document.getElementById('leaderboardList');
     const time = document.getElementById('leaderboardTime');
     if (!list || !time) return;
-    // Simulation only. U888 changes within 91–99%; other gateways stay at or below 84%.
+    // Simulation only. LLWIN changes within 91–99%; other gateways stay at or below 84%.
     const names = [
-        'U888', 'OPEN88', 'MM88', 'GC88', 'FLY88', 'SC88',
-        'ON68', 'CM88', 'LLWIN', 'QH88', 'MB66', '8DAY',
-        '78WIN', 'XX88', 'RR88', 'SHBET', 'NEW88', '789BET',
+        'LLWIN', 'OPEN88', 'MM88', 'GC88', 'FLY88', 'SC88',
+        'ON68', 'CM88', 'SHBET', 'QH88', 'MB66', '8DAY',
+        '78WIN', 'XX88', 'RR88', 'U888', 'NEW88', '789BET',
         'C168', 'UU88', 'J88', 'ABC8', '88CLB', 'GG88', 'TT88', 'QQ88'
     ];
     const initialRates = names.map((name, index) => index === 0 ? 98 : Math.max(55, 84 - Math.floor((index - 1) * 1.5)));
@@ -51,8 +51,8 @@
     let highlightTimer;
     function update() {
         if (document.hidden) return;
-        // Update U888 and 2–4 candidates within their separate rate limits.
-        const leader = entries.find(entry => entry.name === 'U888');
+        // Update LLWIN and 2–4 candidates within their separate rate limits.
+        const leader = entries.find(entry => entry.name === 'LLWIN');
         const candidates = entries.filter(entry => entry !== leader);
         for (let i = candidates.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -68,7 +68,7 @@
         entries.forEach(entry => {
             const delta = selected.has(entry) ? Math.floor(Math.random() * 7) - 3 : 0;
             // Keep all other gateways strictly below 85%.
-            // Since U888 falls by at most 3, this correction also stays within 3 points.
+            // Since LLWIN falls by at most 3, this correction also stays within 3 points.
             const next = entry === leader ? nextLeaderRate
                 : Math.max(55, Math.min(ceiling, entry.rate + delta));
             entry.parts[3].classList.toggle('is-changed', next !== entry.rate);
