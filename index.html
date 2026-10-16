@@ -289,8 +289,8 @@
 
     <div class="game-dropdown-menu" id="gameDropdownMenu">
 
-        <div class="game-row" data-game="1-U888">
-            <div class="game-code">1-U888</div>
+        <div class="game-row" data-game="1-LLWIN">
+            <div class="game-code">1-LLWIN</div>
 
             <div class="game-meta">
                 <span data-target-date>--/--/----</span>
@@ -304,8 +304,8 @@
             </div>
         </div>
 
-        <div class="game-row" data-game="2-OPEN88">
-            <div class="game-code">2-OPEN88</div>
+        <div class="game-row" data-game="2-SHBET">
+            <div class="game-code">2-SHBET</div>
 
             <div class="game-meta">
                 <span data-target-date>--/--/----</span>
@@ -428,8 +428,8 @@
 </div>
 
 <!-- CỔNG 10 -->
-<div class="game-row" data-game="10-LLWIN">
-    <div class="game-code">10-LLWIN</div>
+<div class="game-row" data-game="10-U888">
+    <div class="game-code">10-U888</div>
 
     <div class="game-meta">
         <span data-target-date>--/--/----</span>
@@ -518,8 +518,8 @@
         ẨN NGAY TẠI ĐÂY
     </div>
 </div>
-<div class="game-row" data-game="16-SHBET">
-    <div class="game-code">16-SHBET</div>
+<div class="game-row" data-game="16-OPEN88">
+    <div class="game-code">16-OPEN88</div>
 
     <div class="game-meta">
         <span data-target-date>--/--/----</span>
@@ -1114,7 +1114,7 @@ const selectedGame = document.getElementById("selectedGame");
     }
     function updateRates(animate) {
         const nextRates = entries.map(({ row, value }) => {
-            const preferred = row.dataset.game === "1-U888";
+            const preferred = row.dataset.game === "1-LLWIN";
             return randomRate(preferred ? 91 : 30, preferred ? 99 : 84,
                 Number.parseInt(value.textContent, 10));
         });
