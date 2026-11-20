@@ -3,14 +3,18 @@
     const list = document.getElementById('leaderboardList');
     const time = document.getElementById('leaderboardTime');
     if (!list || !time) return;
-    // Simulation only. LLWIN changes within 91–99%; other gateways stay at or below 84%.
+    // Simulation only. V79 changes within 91–99%; LLWIN and other gateways stay at or below 84%.
     const names = [
-        'LLWIN', 'OPEN88', 'MM88', 'GC88', 'FLY88', 'SC88',
-        'ON68', 'CM88', 'SHBET', 'QH88', 'MB66', '8DAY',
+        'V79', 'OPEN88', 'MM88', 'GC88', 'FLY88', 'SC88',
+        'ON68', 'CM88', 'SHBET', 'LLWIN', 'QH88', 'MB66', '8DAY',
         '78WIN', 'XX88', 'RR88', 'U888', 'NEW88', '789BET',
         'C168', 'UU88', 'J88', 'ABC8', '88CLB', 'GG88', 'TT88', 'QQ88'
     ];
-    const initialRates = names.map((name, index) => index === 0 ? 98 : Math.max(55, 84 - Math.floor((index - 1) * 1.5)));
+    const initialRates = names.map((name, index) => {
+        if (name === 'V79') return 99;
+        if (name === 'LLWIN') return 72;
+        return Math.max(55, 84 - Math.floor(index * 1.5));
+    });
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const entries = names.map((name, index) => {
         const row = document.createElement('li');
@@ -51,9 +55,10 @@
     let highlightTimer;
     function update() {
         if (document.hidden) return;
-        // Update LLWIN and 2–4 candidates within their separate rate limits.
-        const leader = entries.find(entry => entry.name === 'LLWIN');
-        const candidates = entries.filter(entry => entry !== leader);
+        // Update V79 and 2–4 candidates within their separate rate limits.
+        const leader = entries.find(entry => entry.name === 'V79');
+        const llwin = entries.find(entry => entry.name === 'LLWIN');
+        const candidates = entries.filter(entry => entry !== leader && entry !== llwin);
         for (let i = candidates.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
@@ -67,9 +72,9 @@
         const ceiling = 84;
         entries.forEach(entry => {
             const delta = selected.has(entry) ? Math.floor(Math.random() * 7) - 3 : 0;
-            // Keep all other gateways strictly below 85%.
-            // Since LLWIN falls by at most 3, this correction also stays within 3 points.
+            // Keep LLWIN and all other gateways below 85%.
             const next = entry === leader ? nextLeaderRate
+                : entry === llwin ? Math.max(55, Math.min(72, entry.rate + (Math.floor(Math.random() * 5) - 2)))
                 : Math.max(55, Math.min(ceiling, entry.rate + delta));
             entry.parts[3].classList.toggle('is-changed', next !== entry.rate);
             entry.rate = next;
