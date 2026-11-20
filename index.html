@@ -249,7 +249,7 @@
         </ul>
 
   <a
-    href="https://www.09llwin.com/?id=572323000"
+    href="https://v79quoctego.com/"
     class="primary-btn"
     id="startBtn"
 >
@@ -289,17 +289,17 @@
 
     <div class="game-dropdown-menu" id="gameDropdownMenu">
 
-        <div class="game-row" data-game="1-LLWIN">
-            <div class="game-code">1-LLWIN</div>
+        <div class="game-row" data-game="1-V79">
+            <div class="game-code">1-V79</div>
 
             <div class="game-meta">
                 <span data-target-date>--/--/----</span>
-                <span>Tỷ lệ mô phỏng <b>98%</b></span>
+                <span>Tỷ lệ mô phỏng <b>99%</b></span>
                 <span>Khung giờ <strong data-target-window>--:--–--:--</strong></span>
             </div>
 
             <div class="game-status">
-                CỔNG TỐI ƯU HÓA MÃ ẨN<br>
+                CỔNG ƯU TIÊN - V79 ĐANG ĐƯỢC TỐI ƯU<br>
                 ẤN NGAY TẠI ĐÂY
             </div>
         </div>
@@ -1114,7 +1114,7 @@ const selectedGame = document.getElementById("selectedGame");
     }
     function updateRates(animate) {
         const nextRates = entries.map(({ row, value }) => {
-            const preferred = row.dataset.game === "1-LLWIN";
+            const preferred = row.dataset.game === "1-V79";
             return randomRate(preferred ? 91 : 30, preferred ? 99 : 84,
                 Number.parseInt(value.textContent, 10));
         });
@@ -1742,8 +1742,6 @@ if (getCodeBtn) {
 
 </div>
 <!-- ===== END CSKH FLOAT ===== -->
-     </div>
-    <!-- ===== END CSKH FLOAT ===== -->
 
 
 <style>
@@ -2110,7 +2108,7 @@ document.getElementById("navContact")?.addEventListener("click", function (event
 
     const LONG = {
         vi: [
-            "Mã ẩn là đoạn code do nhà cái cài vào, dùng AI để theo dõi hành vi nạp cược nhằm nhấp nhả, kích thích và thao túng tâm lý người chơi.",
+            "Mã ẩn là đoạn code do nhà cái cài vào, dùng AI để theo dõi hành vi nạp cược nhằm nhấp nhá, kích thích và thao túng tâm lý người chơi.",
             "Trang huyip.com là hệ thống kiểm tra và bóc tách mã độc ra khỏi tài khoản của khách hàng. Đồng thời hệ thống này cũng tạo lớp vỏ bọc giúp thoát khỏi các chương trình theo dõi của nhà cái và tránh các phiền phức khi tham gia cờ bạc mạng."
         ],
         en: [
@@ -2166,279 +2164,6 @@ document.getElementById("navContact")?.addEventListener("click", function (event
         const saved = localStorage.getItem("huyip_language");
         if (saved) window.applySiteLanguage(saved);
     });
-})();
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const intro = document.getElementById("huyipWelcome");
-    const exploreBtn = document.getElementById("huyipExploreBtn");
-
-    if (!intro || !exploreBtn) return;
-
-
-    /* =========================
-       NÚT KHÁM PHÁ
-       ========================= */
-
-    exploreBtn.addEventListener("click", function () {
-
-        intro.classList.add("explore-open");
-
-        const languageArea =
-            intro.querySelector(".welcome-languages");
-
-        if (languageArea) {
-
-            setTimeout(function () {
-
-                languageArea.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-            }, 150);
-        }
-
-    });
-
- });  
-</script>
-<div id="huyipLoader" class="huyip-loader">
-    <div class="huyip-loader-ring">
-        <div class="huyip-loader-core">H</div>
-    </div>
-
-    <div class="huyip-loader-title">ĐANG THIẾT LẬP KẾT NỐI</div>
-    <div class="huyip-loader-line"></div>
-    <div class="huyip-loader-status">SECURE ACCESS • INITIALIZING</div>
-</div>
-<script>
-(function () {
-
-    const stars =
-        document.querySelector(".huyip-stars");
-
-    if (!stars) return;
-
-
-    const particleCount =
-        window.innerWidth <= 650 ? 22 : 48;
-
-
-    for (let i = 0; i < particleCount; i++) {
-
-        const particle =
-            document.createElement("span");
-
-        particle.className =
-            "huyip-particle";
-
-
-        /* vị trí ngang */
-        particle.style.left =
-            Math.random() * 100 + "%";
-
-
-        /* xuất phát ngẫu nhiên */
-        particle.style.bottom =
-            (-10 + Math.random() * 45) + "%";
-
-
-        /* kích thước */
-        const size =
-            1 + Math.random() * 3;
-
-        particle.style.width =
-            size + "px";
-
-        particle.style.height =
-            size + "px";
-
-
-        /* tốc độ */
-        particle.style.setProperty(
-            "--duration",
-            (9 + Math.random() * 12) + "s"
-        );
-
-
-        /* delay */
-        particle.style.setProperty(
-            "--delay",
-            (-Math.random() * 15) + "s"
-        );
-
-
-        /* độ sáng */
-        particle.style.setProperty(
-            "--opacity",
-            (.2 + Math.random() * .65)
-        );
-
-
-        /* lệch trái/phải khi bay */
-        particle.style.setProperty(
-            "--drift",
-            (-70 + Math.random() * 140) + "px"
-        );
-
-
-        stars.appendChild(particle);
-    }
-
-})();
-</script>
-
-<script>
-(() => {
-    const nav = document.getElementById("huyipDockNav");
-    const path = document.getElementById("huyipDockPath");
-    const ball = document.getElementById("huyipDockBall");
-
-    if (!nav || !path || !ball) return;
-
-    const items = [...nav.querySelectorAll(".dock-item")];
-    let activeItem = nav.querySelector(".dock-item.active") || items[0];
-    let currentX = 0;
-    let raf = null;
-
-    function getCenter(item) {
-        const navRect = nav.getBoundingClientRect();
-        const itemRect = item.getBoundingClientRect();
-        return itemRect.left - navRect.left + itemRect.width / 2;
-    }
-
-    function copyIcon(item) {
-        const svg = item.querySelector(".dock-icon svg");
-        ball.innerHTML = svg ? svg.outerHTML : "";
-    }
-
-    function draw(xRaw) {
-        const w = nav.clientWidth;
-        const h = 96;
-
-        const top = 31;
-        const bottom = 92;
-        const corner = 18;
-        const shoulder = 40;
-        const inner = 31;
-        const notchBottom = 74;
-
-        const minX = corner + shoulder + 2;
-        const maxX = w - corner - shoulder - 2;
-        const x = Math.max(minX, Math.min(maxX, xRaw));
-
-        path.setAttribute("viewBox", `0 0 ${w} ${h}`);
-        path.setAttribute("d", `
-            M ${corner} ${top}
-            L ${x - shoulder} ${top}
-            C ${x - 35} ${top}, ${x - 35} ${notchBottom - 22}, ${x - inner} ${notchBottom - 14}
-            C ${x - 23} ${notchBottom - 3}, ${x - 15} ${notchBottom}, ${x} ${notchBottom}
-            C ${x + 15} ${notchBottom}, ${x + 23} ${notchBottom - 3}, ${x + inner} ${notchBottom - 14}
-            C ${x + 35} ${notchBottom - 22}, ${x + 35} ${top}, ${x + shoulder} ${top}
-            L ${w - corner} ${top}
-            Q ${w} ${top} ${w} ${top + corner}
-            L ${w} ${bottom - corner}
-            Q ${w} ${bottom} ${w - corner} ${bottom}
-            L ${corner} ${bottom}
-            Q 0 ${bottom} 0 ${bottom - corner}
-            L 0 ${top + corner}
-            Q 0 ${top} ${corner} ${top}
-            Z
-        `);
-
-        ball.style.left = x + "px";
-        currentX = x;
-    }
-
-    function easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
-    }
-
-    function activate(item) {
-        if (!item || item === activeItem) return;
-
-        if (raf) cancelAnimationFrame(raf);
-
-        const startX = currentX || getCenter(activeItem);
-        const targetX = getCenter(item);
-        const distance = targetX - startX;
-        const duration = 250;
-        const started = performance.now();
-
-        // Cục vàng mang icon tab đích trong lúc trượt.
-        copyIcon(item);
-
-        function tick(now) {
-            const t = Math.min((now - started) / duration, 1);
-            draw(startX + distance * easeOutCubic(t));
-
-            if (t < 1) {
-                raf = requestAnimationFrame(tick);
-            } else {
-                items.forEach(i => i.classList.remove("active"));
-                item.classList.add("active");
-                activeItem = item;
-                draw(getCenter(item));
-                raf = null;
-            }
-        }
-
-        raf = requestAnimationFrame(tick);
-    }
-
-    items.forEach(item => {
-        item.addEventListener("click", () => activate(item));
-    });
-
-    function refreshDock() {
-    if (!activeItem) return;
-
-    /* Nếu nav còn đang ẩn thì chưa vẽ */
-    if (nav.offsetWidth === 0) return;
-
-    copyIcon(activeItem);
-
-    requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            draw(getCenter(activeItem));
-        });
-    });
-}
-
-function init() {
-    refreshDock();
-
-    const welcome = document.getElementById("huyipWelcome");
-
-    if (welcome) {
-        const observer = new MutationObserver(() => {
-
-            /* Welcome đóng => nav vừa xuất hiện */
-            if (welcome.getAttribute("aria-hidden") === "true") {
-                setTimeout(refreshDock, 30);
-            }
-
-        });
-
-        observer.observe(welcome, {
-            attributes: true,
-            attributeFilter: ["aria-hidden"]
-        });
-    }
-}
-
-    window.addEventListener("resize", () => {
-    if (raf) {
-        cancelAnimationFrame(raf);
-        raf = null;
-    }
-
-    refreshDock();
-});
-
-    init();
 })();
 </script>
 <script>
